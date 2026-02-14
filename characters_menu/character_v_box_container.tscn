@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://cheq6g2khaqcw"]
+
+[ext_resource type="Script" uid="uid://bhauewmlfwtli" path="res://characters_menu/character_v_box_container.gd" id="1_5qw8b"]
+[ext_resource type="Texture2D" uid="uid://dai4n8kmntrv8" path="res://dotpack/Charas/Touhou6/Charas_008_4.png" id="1_74fvy"]
+
+[node name="CharacterVBoxContainer" type="VBoxContainer" unique_id=1153589870]
+script = ExtResource("1_5qw8b")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=918588075]
+texture_filter = 1
+custom_minimum_size = Vector2(144, 144)
+layout_mode = 2
+texture = ExtResource("1_74fvy")
+
+[node name="Label" type="Label" parent="." unique_id=1873734130]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

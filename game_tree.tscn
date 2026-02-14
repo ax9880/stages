@@ -1,0 +1,207 @@
+[gd_scene format=3 uid="uid://cbwqru3euxsmh"]
+
+[ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://server.gd" id="1_bdowf"]
+[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://server_connector.gd" id="1_mfwdf"]
+[ext_resource type="PackedScene" uid="uid://bhxeo5a3qdbh8" path="res://card.tscn" id="3_uotic"]
+[ext_resource type="Texture2D" uid="uid://cbhleq23xtolw" path="res://icon.svg" id="3_ve5dy"]
+[ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://card_data_loader.tscn" id="5_wg18t"]
+[ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://spawner.gd" id="6_45ghq"]
+[ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://pile.tscn" id="7_bcih5"]
+[ext_resource type="PackedScene" uid="uid://b63wl543jj5tj" path="res://hand.tscn" id="7_rrxdr"]
+[ext_resource type="Script" uid="uid://bjrlmkkxodevi" path="res://shared_pile.gd" id="7_wg18t"]
+
+[node name="GameTree" type="Node" unique_id=642685009]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2061058605]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=974869240]
+layout_mode = 2
+color = Color(0.23999402, 0.4197377, 0.26322687, 1)
+metadata/_edit_lock_ = true
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer" unique_id=1900551066]
+layout_mode = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer2" unique_id=2094622736]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="SubmitButton" type="Button" parent="MarginContainer/MarginContainer2/VBoxContainer" unique_id=66505599]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+text = "SUBMIT_HAND"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer2/VBoxContainer" unique_id=1952480747]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1290280865]
+layout_mode = 2
+text = "SCORE"
+
+[node name="Label2" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=2143409328]
+layout_mode = 2
+text = "9999"
+
+[node name="Label3" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=847384943]
+layout_mode = 2
+text = "TIME"
+
+[node name="Label4" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=416606176]
+layout_mode = 2
+text = "99:99"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer2/VBoxContainer" unique_id=1177377324]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+
+[node name="Network" type="Node" parent="." unique_id=11863385]
+
+[node name="Server" type="Node" parent="Network" unique_id=841859432]
+script = ExtResource("1_bdowf")
+
+[node name="ServerConnector" type="Node" parent="Network" unique_id=1368213008]
+script = ExtResource("1_mfwdf")
+
+[node name="World" type="Node2D" parent="." unique_id=845418800]
+z_index = 10
+metadata/_edit_lock_ = true
+
+[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button")]
+script = ExtResource("6_45ghq")
+piles_count = 3
+card_packed_scene = ExtResource("3_uotic")
+shared_pile_add_time_seconds = 0.0
+submit_button = NodePath("../../MarginContainer/MarginContainer2/VBoxContainer/SubmitButton")
+metadata/_edit_lock_ = true
+
+[node name="CardDataLoader" parent="World/Spawner" unique_id=1588851902 instance=ExtResource("5_wg18t")]
+
+[node name="Deck" type="Node2D" parent="World/Spawner" unique_id=1420116537]
+position = Vector2(178, 186)
+metadata/_edit_lock_ = true
+
+[node name="Piles3" type="Node2D" parent="World/Spawner" unique_id=1355684810]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Pile" parent="World/Spawner/Piles3" unique_id=747233574 instance=ExtResource("7_bcih5")]
+position = Vector2(686, 572)
+
+[node name="Pile2" parent="World/Spawner/Piles3" unique_id=1150206649 instance=ExtResource("7_bcih5")]
+position = Vector2(939, 572)
+
+[node name="Pile3" parent="World/Spawner/Piles3" unique_id=72795638 instance=ExtResource("7_bcih5")]
+position = Vector2(1187, 572)
+
+[node name="Piles4" type="Node2D" parent="World/Spawner" unique_id=350163231]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Pile" parent="World/Spawner/Piles4" unique_id=1154622778 instance=ExtResource("7_bcih5")]
+position = Vector2(556, 567)
+
+[node name="Pile2" parent="World/Spawner/Piles4" unique_id=1843986011 instance=ExtResource("7_bcih5")]
+position = Vector2(809, 567)
+
+[node name="Pile3" parent="World/Spawner/Piles4" unique_id=328927042 instance=ExtResource("7_bcih5")]
+position = Vector2(1057, 567)
+
+[node name="Pile4" parent="World/Spawner/Piles4" unique_id=788757732 instance=ExtResource("7_bcih5")]
+position = Vector2(1297, 565)
+
+[node name="Piles5" type="Node2D" parent="World/Spawner" unique_id=965632308]
+visible = false
+metadata/_edit_lock_ = true
+
+[node name="Pile" parent="World/Spawner/Piles5" unique_id=402174197 instance=ExtResource("7_bcih5")]
+position = Vector2(679, 508)
+
+[node name="Pile2" parent="World/Spawner/Piles5" unique_id=1794007133 instance=ExtResource("7_bcih5")]
+position = Vector2(932, 508)
+
+[node name="Pile3" parent="World/Spawner/Piles5" unique_id=761211449 instance=ExtResource("7_bcih5")]
+position = Vector2(1180, 508)
+
+[node name="Pile4" parent="World/Spawner/Piles5" unique_id=322459868 instance=ExtResource("7_bcih5")]
+position = Vector2(679, 753)
+
+[node name="Pile5" parent="World/Spawner/Piles5" unique_id=1465979100 instance=ExtResource("7_bcih5")]
+position = Vector2(1180, 760)
+
+[node name="SharedPile" type="Node2D" parent="World/Spawner" unique_id=1732153458]
+position = Vector2(547, 192)
+script = ExtResource("7_wg18t")
+shared_pile_add_time_seconds = 0.0
+
+[node name="SharedPileArea" type="MarginContainer" parent="World/Spawner/SharedPile" unique_id=670906194]
+offset_left = -87.0
+offset_top = -84.0
+offset_right = 840.0
+offset_bottom = 222.0
+mouse_filter = 0
+mouse_default_cursor_shape = 7
+metadata/_edit_lock_ = true
+
+[node name="Icon" type="Sprite2D" parent="World/Spawner/SharedPile" unique_id=109548133]
+texture = ExtResource("3_ve5dy")
+metadata/_edit_lock_ = true
+
+[node name="Hand" parent="World/Spawner" unique_id=1242478005 instance=ExtResource("7_rrxdr")]
+position = Vector2(559, 970)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=36277276]
+visible = false
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1091781380]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer" unique_id=1050557886]
+layout_mode = 2
+color = Color(0.22745098, 0.22745098, 0.22745098, 0.2784314)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=470176652]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=740927549]
+layout_mode = 2
+text = "GAME_FINISHED"
+
+[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1475057989]
+layout_mode = 2
+text = "SCORE: 9999"
+
+[node name="Label3" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1334616520]
+layout_mode = 2
+text = "TIME: 99:99"
+
+[node name="Label4" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1184178626]
+layout_mode = 2
+text = "PERFECT_HANDS: 9"
+
+[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=151209635]
+layout_mode = 2
+text = "PLAY_AGAIN"
+
+[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1281830411]
+layout_mode = 2
+text = "MAIN_MENU"
+
+[connection signal="gui_input" from="World/Spawner/SharedPile/SharedPileArea" to="World/Spawner/SharedPile" method="_on_shared_pile_area_gui_input"]

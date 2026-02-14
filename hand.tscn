@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://b63wl543jj5tj"]
+
+[ext_resource type="Script" uid="uid://dwuq8pfssxtw8" path="res://hand.gd" id="1_bfasp"]
+[ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="2_e75s6"]
+
+[sub_resource type="Curve2D" id="Curve2D_ve5dy"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, -100, 0, 100, 0, 375, -20, 0, 0, 0, 0, 750, 0)
+}
+point_count = 3
+
+[node name="Hand" type="Node2D" unique_id=1242478005]
+script = ExtResource("1_bfasp")
+card_add_time_seconds = 0.5
+
+[node name="HandArea" type="MarginContainer" parent="." unique_id=1807598761]
+offset_left = -97.0
+offset_top = -127.0
+offset_right = 862.0
+offset_bottom = 119.0
+
+[node name="Path2D" type="Path2D" parent="." unique_id=1629098761]
+curve = SubResource("Curve2D_ve5dy")
+metadata/_edit_lock_ = true
+
+[node name="AddCardTimer" type="Timer" parent="." unique_id=2081117670]
+wait_time = 0.05
+
+[node name="SwapCardAudio" type="AudioStreamPlayer" parent="." unique_id=1414809199]
+stream = ExtResource("2_e75s6")
+bus = &"Sound effects"
+
+[connection signal="gui_input" from="HandArea" to="." method="_on_hand_area_gui_input"]
+[connection signal="mouse_entered" from="HandArea" to="." method="_on_hand_area_mouse_entered"]
+[connection signal="mouse_exited" from="HandArea" to="." method="_on_hand_area_mouse_exited"]

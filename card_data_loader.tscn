@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://d3n5t1kqv46ka"]
+
+[ext_resource type="Script" uid="uid://becbwtg3oy7t7" path="res://card_data_loader.gd" id="1_apsoj"]
+
+[node name="CardDataLoader" type="Node" unique_id=1588851902]
+script = ExtResource("1_apsoj")

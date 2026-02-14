@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dxrydo0jablpa"]
+
+[ext_resource type="Script" uid="uid://bwehwd412sxxy" path="res://characters_menu/characters.gd" id="1_j24f1"]
+[ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://card_data_loader.tscn" id="2_eekhk"]
+[ext_resource type="PackedScene" uid="uid://fxq2mrolcqfb" path="res://characters_menu/game_h_box_container.tscn" id="2_j24f1"]
+
+[node name="Characters" type="MarginContainer" unique_id=2023050909]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j24f1")
+game_h_box_container_packed_scene = ExtResource("2_j24f1")
+
+[node name="CardDataLoader" parent="." unique_id=1588851902 instance=ExtResource("2_eekhk")]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1390115480]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1032280881]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer" unique_id=1038045231]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ScrollContainer" unique_id=1201133658]
+layout_mode = 2

@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://jhrpt5l1vqaw"]
+
+[node name="MainMenu" type="MarginContainer" unique_id=813007979]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=710832880]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=897000781]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1451473545]
+layout_mode = 2
+text = "GAME_TITLE"
+horizontal_alignment = 1
+
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=131046630]
+layout_mode = 2
+text = "START"
+
+[node name="CharactersButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=11407471]
+layout_mode = 2
+text = "CHARACTERS"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1973108945]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=77010763]
+layout_mode = 2
+text = "IP_ADDRESS"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=960966395]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "192.168.1.100"
+placeholder_text = "IP_ADDRESS"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=266305291]
+layout_mode = 2
+text = "PORT"
+
+[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=82524240]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "10801"
+placeholder_text = "IP_ADDRESS"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=218701941]
+layout_mode = 2
+text = "JOIN
+"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=82980520]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=20719700]
+layout_mode = 2
+text = "PORT"
+
+[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=580389728]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "10801"
+placeholder_text = "IP_ADDRESS"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1005940352]
+layout_mode = 2
+text = "HOST"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=477216813]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1189604418]
+layout_mode = 2
+text = "PILES"
+
+[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1651615929]
+layout_mode = 2
+selected = 1
+item_count = 3
+popup/item_0/text = "4"
+popup/item_0/id = 0
+popup/item_1/text = "5"
+popup/item_1/id = 1
+popup/item_2/text = "6"
+popup/item_2/id = 2
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer" unique_id=776197096]
+layout_mode = 2
+button_pressed = true
+text = "PENALTIES"
+
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=720223461]
+layout_mode = 2
+text = "QUIT"

@@ -1,2 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
+
+dotpack/**/*.png
+*.wav
+*.ogg
+
+*.png
+
+development/
