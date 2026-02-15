@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bwboqo5yexejc" path="res://board/submit_button.gd" id="2_nv1sn"]
 [ext_resource type="PackedScene" uid="uid://bsjlil3mkoujl" path="res://board/score/floating_score_label.tscn" id="3_6yuor"]
 [ext_resource type="PackedScene" uid="uid://bhxeo5a3qdbh8" path="res://card/card.tscn" id="3_uotic"]
+[ext_resource type="PackedScene" uid="uid://by48rkg3nrht0" path="res://board/score/multiplayer_score_tracker.tscn" id="4_drss4"]
+[ext_resource type="FontFile" uid="uid://bucib1m3mxg2k" path="res://font/Dosis-ExtraBold.ttf" id="4_wxf2d"]
 [ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="5_wg18t"]
 [ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://board/spawner.gd" id="6_45ghq"]
 [ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://board/pile.tscn" id="7_bcih5"]
@@ -52,7 +54,7 @@ _data = {
 
 [node name="GameTree" type="Node" unique_id=642685009]
 
-[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "time_label")]
+[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "time_label", "player_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -61,6 +63,7 @@ grow_vertical = 2
 script = ExtResource("1_nv1sn")
 score_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/Label2")
 time_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer2/Label4")
+player_label = NodePath("MarginContainer2/VBoxContainer2/PlayerLabel")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="BoardMenuContainer" unique_id=974869240]
@@ -141,18 +144,18 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="BoardMenuContainer/MarginContainer2" unique_id=1431897490]
-custom_minimum_size = Vector2(320, 320)
+[node name="VBoxContainer2" type="VBoxContainer" parent="BoardMenuContainer/MarginContainer2" unique_id=1311165394]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-theme_override_constants/separation = 32
+mouse_filter = 2
 
-[node name="Label" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer2" unique_id=1102146070]
+[node name="PlayerLabel" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer2" unique_id=1983950561]
 layout_mode = 2
-text = "PLAYER_1
-0/6
-9999"
+theme_override_fonts/font = ExtResource("4_wxf2d")
+text = "PLAYER_1"
+horizontal_alignment = 1
+
+[node name="MultiplayerScoreTracker" parent="BoardMenuContainer/MarginContainer2/VBoxContainer2" unique_id=1619415324 instance=ExtResource("4_drss4")]
+layout_mode = 2
 
 [node name="Network" type="Node" parent="." unique_id=11863385]
 
@@ -166,12 +169,14 @@ script = ExtResource("1_mfwdf")
 z_index = 10
 metadata/_edit_lock_ = true
 
-[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button")]
+[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker")]
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
 shared_pile_add_time_seconds = 0.0
+can_randomize = false
 submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
+multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
 metadata/_edit_lock_ = true
 
 [node name="CardDataLoader" parent="World/Spawner" unique_id=1588851902 instance=ExtResource("5_wg18t")]
@@ -264,4 +269,5 @@ visible = false
 [connection signal="all_hands_submitted" from="World/Spawner" to="CanvasLayer/ScoreMenuContainer" method="_on_spawner_all_hands_submitted"]
 [connection signal="score_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_score_updated"]
 [connection signal="timeout" from="World/Spawner/PlayTimer" to="BoardMenuContainer" method="_on_play_timer_timeout"]
+[connection signal="card_requested" from="World/Spawner/SharedPile" to="World/Spawner" method="_on_shared_pile_card_requested"]
 [connection signal="gui_input" from="World/Spawner/SharedPile/SharedPileArea" to="World/Spawner/SharedPile" method="_on_shared_pile_area_gui_input"]

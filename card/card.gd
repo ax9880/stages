@@ -18,6 +18,8 @@ var _card_data: CardData
 
 var _position_tween: Tween
 
+var peer_id: int = 0
+
 
 func _ready() -> void:
 	set_physics_process(false)

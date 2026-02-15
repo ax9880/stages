@@ -6,7 +6,7 @@ PLAYERS,Players,Jugadores
 PORT,Port,Puerto
 IP_ADDRESS,IP address,Dirección IP
 HOST,Host,Crear partida
-JOIN,Join,Unirse
+JOIN_MATCH,Join,Unirse
 PENALTIES,Penalties,Penalidades
 SOUND_EFFECTS,Sound Effects,Efectos de sonido
 MUSIC,Music,Música
@@ -28,3 +28,4 @@ WAITING_FOR_PLAYERS,Waiting for players...,Esperando jugadores...
 JOINING,Joining match,Uniéndose a partida...
 CONNECTED,Connected,Conectado
 CANCEL,Cancel,Cancelar
+WAITING_FOR_OTHER_PLAYERS_TO_FINISH,Waiting for other players to finish,Esperando que terminen los otros jugadores

@@ -21,6 +21,9 @@ func _ready() -> void:
 	EventBus.card_picked_up_from_hand.connect(_on_card_picked_up_from_hand)
 	EventBus.card_returned_to_hand.connect(_on_card_returned_to_hand)
 	
+	EventBus.started_submitting_hand.connect(_on_card_picked_up_from_hand)
+	EventBus.finished_submitting_hand.connect(_on_card_returned_to_hand)
+	
 	disable_area()
 
 

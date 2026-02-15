@@ -242,6 +242,7 @@ func drop_card_in_shared_pile(shared_pile: Node2D) -> void:
 	_card.stop_following_cursor()
 	_card.reparent(shared_pile)
 	_card.card_clicked.disconnect(_on_card_clicked)
+	_card.peer_id = 0
 	
 	_cards.remove_at(_cards.find(_card))
 	

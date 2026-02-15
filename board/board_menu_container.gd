@@ -3,7 +3,12 @@ extends MarginContainer
 @export var score_label: Label
 @export var time_label: Label
 
+@export var player_label: Label
+
 var _time_elapsed: float = 0
+
+func _ready() -> void:
+	player_label.text = "%s %d" % [tr("PLAYER"), GameData.get_player_number() + 1]
 
 
 func _process(delta: float) -> void:

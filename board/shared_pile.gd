@@ -3,10 +3,13 @@ extends Node2D
 @export var shared_pile_add_time_seconds: float = 0.2
 
 signal cards_added
+signal card_requested(card: Card)
 
 @onready var hand: Node2D = $"../Hand"
 
 var _card: Card = null
+
+var _is_waiting_for_server: bool = false
 
 
 func _ready() -> void:
@@ -48,14 +51,16 @@ func remove_card(card: Card) -> void:
 	_disconnect_signals(card)
 
 
-func _on_card_clicked(card: Card) -> void:
+func handle_card(card: Card) -> void:
 	if hand.is_missing_one_card():
 		print("Missing one card")
+		
 		_disconnect_signals(card)
 		
 		hand.transfer_from_shared_pile(card)
 	elif hand.get_active_card() != null:
 		print("Swapping cards")
+		
 		_connect_signals(hand.get_active_card())
 		
 		_disconnect_signals(card)
@@ -64,22 +69,30 @@ func _on_card_clicked(card: Card) -> void:
 	else:
 		pass
 		# TODO: Allow moving card but not swapping
+	
+	_is_waiting_for_server = false
+
+
+func _on_card_clicked(card: Card) -> void:
+	if _is_waiting_for_server:
+		return
+	
+	if GameData.players > 1:
+		_is_waiting_for_server = true
+		
+		card_requested.emit(card)
+	else:
+		handle_card(card)
 
 
 func _on_shared_pile_area_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
-		if false:
-			_card.stop_following_cursor()
-			_card.reparent($Cards)
-			
-			_card = null
-		else:
-			var card: Card = hand.get_active_card()
-			
-			hand.drop_card_in_shared_pile($Cards)
-			
-			if card != null:
-				_connect_signals(card)
+		var card: Card = hand.get_active_card()
+		
+		hand.drop_card_in_shared_pile($Cards)
+		
+		if card != null:
+			_connect_signals(card)
 
 
 func _connect_signals(card: Card) -> void:

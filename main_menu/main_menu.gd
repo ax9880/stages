@@ -32,6 +32,9 @@ func _ready() -> void:
 	
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.server_disconnected.connect(_on_disconnected_to_server)
+	
+	_update_piles(piles_option_button.selected)
+	_update_players(players_option_button.selected)
 
 
 func _on_start_button_pressed() -> void:

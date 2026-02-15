@@ -14,6 +14,8 @@ func start_server(port: int) -> void:
 		multiplayer.peer_connected.connect(_on_peer_connected)
 		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	
+	multiplayer.multiplayer_peer.refuse_new_connections = false
+	
 	_network.create_server(port, GameData.players)
 	
 	multiplayer.multiplayer_peer = _network
@@ -30,9 +32,16 @@ func _on_peer_connected(_id: int) -> void:
 	on_peer_connection_status_change.emit(multiplayer.get_peers().size())
 	
 	if multiplayer.get_peers().size() + 1 >= GameData.players:
-		_start_game.rpc()
+		multiplayer.multiplayer_peer.refuse_new_connections = true
 		
-		_start_game()
+		GameData.player_numbers.clear()
+		
+		GameData.player_numbers[1] = 0
+		
+		for i in multiplayer.get_peers().size():
+			GameData.player_numbers[multiplayer.get_peers()[i]] = i + 1
+		
+		_start_game.rpc(GameData.player_numbers.keys().size(), GameData.piles, GameData.player_numbers)
 
 
 func _on_peer_disconnected(_id: int) -> void:
@@ -41,9 +50,17 @@ func _on_peer_disconnected(_id: int) -> void:
 	on_peer_connection_status_change.emit(multiplayer.get_peers().size())
 
 
-@rpc
-func _start_game() -> void:
+@rpc("call_local")
+func _start_game(players: int, piles: int, player_numbers: Dictionary) -> void:
+	# TODO: Randomize seed
 	seed(1)
+	
+	GameData.players = players
+	GameData.piles = piles
+	GameData.player_numbers = player_numbers
+	
 	GameData.connected_peers = multiplayer.get_peers().size()
+	
+	print("Players: ", GameData.players)
 	
 	Loader.change_scene("res://board/game_tree.tscn")

@@ -314,14 +314,14 @@ _data = {
 script = ExtResource("2_rjlel")
 velocity_pixels_per_second = 64.0
 
-[node name="Shadow" type="Sprite2D" parent="." unique_id=107583571]
+[node name="Card" type="Sprite2D" parent="." unique_id=782429156]
+texture = ExtResource("4_e484p")
+
+[node name="Shadow" type="Sprite2D" parent="Card" unique_id=107583571]
 modulate = Color(0, 0, 0, 0.5294118)
 z_index = -5
 texture = ExtResource("1_rjlel")
 offset = Vector2(-5, 5)
-
-[node name="Card" type="Sprite2D" parent="." unique_id=782429156]
-texture = ExtResource("4_e484p")
 
 [node name="Character" type="Sprite2D" parent="Card" unique_id=481162636]
 visible = false

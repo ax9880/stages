@@ -366,7 +366,6 @@ layout_mode = 2
 text = "CANCEL"
 
 [node name="JoinHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1973108945]
-visible = false
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
@@ -393,11 +392,10 @@ layout_mode = 2
 text = "30000"
 placeholder_text = "IP_ADDRESS"
 
-[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=218701941]
+[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=761923145]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
-text = "JOIN
-"
+text = "JOIN_MATCH"
 
 [node name="JoinWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=627679541]
 custom_minimum_size = Vector2(0, 52)

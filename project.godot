@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Touhou Station Jam 2026"
-run/main_scene="uid://cbwqru3euxsmh"
+run/main_scene="uid://jhrpt5l1vqaw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,8 +23,8 @@ buses/default_bus_layout="uid://cx1qjqxcgkrm0"
 
 Loader="*uid://drqegc3f40m74"
 EventBus="*uid://dgr1bc1b3y16e"
-GameData="*uid://2ar1kvfwq7bp"
 GameMusic="*uid://ocgffq7k1o50"
+GameData="*uid://dgrtntdlaeg3r"
 
 [display]
 
