@@ -24,6 +24,9 @@ func add_cards(cards: Array, can_flip_cards: bool = false) -> void:
 		var card: Card = cards[i]
 		card.reparent(self)
 		
+		# Add to z index so cards appear on top of other piles
+		card.z_index += 1
+		
 		card.reset_position(card_add_time_seconds, Vector2(- i * spacing/2.0, i * spacing))
 		
 		if can_flip_cards:

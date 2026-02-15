@@ -74,6 +74,10 @@ func reset_position(time_seconds: float, target_position: Vector2 = Vector2.ZERO
 	# .set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	_position_tween.tween_property(self, "position", target_position, time_seconds)
 	_position_tween.tween_property(self, "rotation", 0, time_seconds)
+	
+	await _position_tween.finished
+	
+	z_index = 0
 
 
 func reveal_number() -> void:

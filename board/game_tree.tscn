@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="1_mfwdf"]
 [ext_resource type="Script" uid="uid://c8folvfmyonr0" path="res://board/board_menu_container.gd" id="1_nv1sn"]
 [ext_resource type="PackedScene" uid="uid://bhxeo5a3qdbh8" path="res://card/card.tscn" id="3_uotic"]
-[ext_resource type="Texture2D" uid="uid://cbhleq23xtolw" path="res://icon.svg" id="3_ve5dy"]
 [ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="5_wg18t"]
 [ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://board/spawner.gd" id="6_45ghq"]
 [ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://board/pile.tscn" id="7_bcih5"]
@@ -99,7 +98,7 @@ metadata/_edit_lock_ = true
 
 [node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button")]
 script = ExtResource("6_45ghq")
-piles_count = 3
+piles_count = 4
 card_packed_scene = ExtResource("3_uotic")
 shared_pile_add_time_seconds = 0.0
 can_randomize = false
@@ -180,10 +179,6 @@ metadata/_edit_lock_ = true
 layout_mode = 2
 mouse_filter = 2
 color = Color(0.26293245, 0.26293245, 0.26293242, 0.5254902)
-metadata/_edit_lock_ = true
-
-[node name="Icon" type="Sprite2D" parent="World/Spawner/SharedPile" unique_id=109548133]
-texture = ExtResource("3_ve5dy")
 metadata/_edit_lock_ = true
 
 [node name="Hand" parent="World/Spawner" unique_id=1242478005 instance=ExtResource("7_rrxdr")]

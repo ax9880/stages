@@ -107,6 +107,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1189604418]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "PILES"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1651615929]
@@ -126,6 +127,7 @@ layout_mode = 2
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=1517712754]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "TIME_LIMIT"
 
 [node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=242426872]
@@ -184,7 +186,7 @@ text = "QUIT"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=539759399]
 layout_mode = 2
-text = "Assemble hands of characters from stages 1 to 6 in any order, without repeating the stage number"
+text = "INSTRUCTIONS"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=759145798]
 layout_mode = 2
