@@ -242,6 +242,15 @@ func is_valid() -> bool:
 	return true
 
 
+func show_cards_stages() -> void:
+	for path_follow2d in $Path2D.get_children():
+		var card = path_follow2d.get_child(0)
+		
+		await card.reveal_number()
+	
+	await get_tree().create_timer(0.5).timeout
+
+
 func _on_hand_area_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		_drop_card()

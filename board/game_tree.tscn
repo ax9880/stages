@@ -1,70 +1,87 @@
 [gd_scene format=3 uid="uid://cbwqru3euxsmh"]
 
-[ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://server.gd" id="1_bdowf"]
-[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://server_connector.gd" id="1_mfwdf"]
-[ext_resource type="PackedScene" uid="uid://bhxeo5a3qdbh8" path="res://card.tscn" id="3_uotic"]
+[ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="1_bdowf"]
+[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="1_mfwdf"]
+[ext_resource type="Script" uid="uid://c8folvfmyonr0" path="res://board/board_menu_container.gd" id="1_nv1sn"]
+[ext_resource type="PackedScene" uid="uid://bhxeo5a3qdbh8" path="res://card/card.tscn" id="3_uotic"]
 [ext_resource type="Texture2D" uid="uid://cbhleq23xtolw" path="res://icon.svg" id="3_ve5dy"]
-[ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://card_data_loader.tscn" id="5_wg18t"]
-[ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://spawner.gd" id="6_45ghq"]
-[ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://pile.tscn" id="7_bcih5"]
-[ext_resource type="PackedScene" uid="uid://b63wl543jj5tj" path="res://hand.tscn" id="7_rrxdr"]
-[ext_resource type="Script" uid="uid://bjrlmkkxodevi" path="res://shared_pile.gd" id="7_wg18t"]
+[ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="5_wg18t"]
+[ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://board/spawner.gd" id="6_45ghq"]
+[ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://board/pile.tscn" id="7_bcih5"]
+[ext_resource type="PackedScene" uid="uid://b63wl543jj5tj" path="res://board/hand.tscn" id="7_rrxdr"]
+[ext_resource type="Script" uid="uid://bjrlmkkxodevi" path="res://board/shared_pile.gd" id="7_wg18t"]
+[ext_resource type="PackedScene" uid="uid://dnci10os6ib1u" path="res://board/score_menu_container.tscn" id="10_1dkug"]
 
 [node name="GameTree" type="Node" unique_id=642685009]
 
-[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2061058605]
+[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "time_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_nv1sn")
+score_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/Label2")
+time_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer2/Label4")
 metadata/_edit_lock_ = true
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer" unique_id=974869240]
+[node name="ColorRect" type="ColorRect" parent="BoardMenuContainer" unique_id=974869240]
 layout_mode = 2
 color = Color(0.23999402, 0.4197377, 0.26322687, 1)
 metadata/_edit_lock_ = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer" unique_id=1900551066]
+[node name="MarginContainer2" type="MarginContainer" parent="BoardMenuContainer" unique_id=1900551066]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/MarginContainer2" unique_id=2094622736]
+[node name="VBoxContainer" type="VBoxContainer" parent="BoardMenuContainer/MarginContainer2" unique_id=2094622736]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
 alignment = 2
 
-[node name="SubmitButton" type="Button" parent="MarginContainer/MarginContainer2/VBoxContainer" unique_id=66505599]
+[node name="SubmitButton" type="Button" parent="BoardMenuContainer/MarginContainer2/VBoxContainer" unique_id=66505599]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
 text = "SUBMIT_HAND"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer2/VBoxContainer" unique_id=1952480747]
+[node name="HBoxContainer" type="HBoxContainer" parent="BoardMenuContainer/MarginContainer2/VBoxContainer" unique_id=1952480747]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="Label" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1290280865]
+[node name="Label" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=1290280865]
+custom_minimum_size = Vector2(128, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 text = "SCORE"
 
-[node name="Label2" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=2143409328]
+[node name="Label2" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=2143409328]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "9999"
+horizontal_alignment = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=847384943]
+[node name="HBoxContainer2" type="HBoxContainer" parent="BoardMenuContainer/MarginContainer2/VBoxContainer" unique_id=484804863]
 layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label3" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=507039681]
+custom_minimum_size = Vector2(128, 0)
+layout_mode = 2
+size_flags_horizontal = 3
 text = "TIME"
 
-[node name="Label4" type="Label" parent="MarginContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=416606176]
+[node name="Label4" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1484418090]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "99:99"
+horizontal_alignment = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer2/VBoxContainer" unique_id=1177377324]
+[node name="MarginContainer" type="MarginContainer" parent="BoardMenuContainer/MarginContainer2/VBoxContainer" unique_id=1177377324]
 custom_minimum_size = Vector2(0, 32)
 layout_mode = 2
 
@@ -85,10 +102,13 @@ script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
 shared_pile_add_time_seconds = 0.0
-submit_button = NodePath("../../MarginContainer/MarginContainer2/VBoxContainer/SubmitButton")
+can_randomize = false
+submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/SubmitButton")
 metadata/_edit_lock_ = true
 
 [node name="CardDataLoader" parent="World/Spawner" unique_id=1588851902 instance=ExtResource("5_wg18t")]
+
+[node name="PlayTimer" type="Timer" parent="World/Spawner" unique_id=2054629867]
 
 [node name="Deck" type="Node2D" parent="World/Spawner" unique_id=1420116537]
 position = Vector2(178, 186)
@@ -148,12 +168,18 @@ script = ExtResource("7_wg18t")
 shared_pile_add_time_seconds = 0.0
 
 [node name="SharedPileArea" type="MarginContainer" parent="World/Spawner/SharedPile" unique_id=670906194]
-offset_left = -87.0
-offset_top = -84.0
-offset_right = 840.0
-offset_bottom = 222.0
+offset_left = -124.0
+offset_top = -112.0
+offset_right = 877.0
+offset_bottom = 250.0
 mouse_filter = 0
 mouse_default_cursor_shape = 7
+metadata/_edit_lock_ = true
+
+[node name="ColorRect" type="ColorRect" parent="World/Spawner/SharedPile/SharedPileArea" unique_id=1056789790]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.26293245, 0.26293245, 0.26293242, 0.5254902)
 metadata/_edit_lock_ = true
 
 [node name="Icon" type="Sprite2D" parent="World/Spawner/SharedPile" unique_id=109548133]
@@ -161,47 +187,14 @@ texture = ExtResource("3_ve5dy")
 metadata/_edit_lock_ = true
 
 [node name="Hand" parent="World/Spawner" unique_id=1242478005 instance=ExtResource("7_rrxdr")]
-position = Vector2(559, 970)
+position = Vector2(563, 896)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=36277276]
+
+[node name="ScoreMenuContainer" parent="CanvasLayer" unique_id=1246059585 instance=ExtResource("10_1dkug")]
 visible = false
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1091781380]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/MarginContainer" unique_id=1050557886]
-layout_mode = 2
-color = Color(0.22745098, 0.22745098, 0.22745098, 0.2784314)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer" unique_id=470176652]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=740927549]
-layout_mode = 2
-text = "GAME_FINISHED"
-
-[node name="Label2" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1475057989]
-layout_mode = 2
-text = "SCORE: 9999"
-
-[node name="Label3" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1334616520]
-layout_mode = 2
-text = "TIME: 99:99"
-
-[node name="Label4" type="Label" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1184178626]
-layout_mode = 2
-text = "PERFECT_HANDS: 9"
-
-[node name="Button" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=151209635]
-layout_mode = 2
-text = "PLAY_AGAIN"
-
-[node name="Button2" type="Button" parent="CanvasLayer/MarginContainer/VBoxContainer" unique_id=1281830411]
-layout_mode = 2
-text = "MAIN_MENU"
-
+[connection signal="all_hands_submitted" from="World/Spawner" to="CanvasLayer/ScoreMenuContainer" method="_on_spawner_all_hands_submitted"]
+[connection signal="score_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_score_updated"]
+[connection signal="timeout" from="World/Spawner/PlayTimer" to="BoardMenuContainer" method="_on_play_timer_timeout"]
 [connection signal="gui_input" from="World/Spawner/SharedPile/SharedPileArea" to="World/Spawner/SharedPile" method="_on_shared_pile_area_gui_input"]

@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://d076wn80ho2c6"]
+
+[ext_resource type="Texture2D" uid="uid://dai4n8kmntrv8" path="res://dotpack/Charas/Touhou6/Charas_008_4.png" id="1_1n6oy"]
+[ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="1_hvw8x"]
+
+[node name="VBoxContainer" type="VBoxContainer" unique_id=1260589921]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 22
+
+[node name="UiCard" type="TextureRect" parent="." unique_id=1783295652]
+texture_filter = 1
+custom_minimum_size = Vector2(72, 72)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+texture = ExtResource("1_1n6oy")
+
+[node name="TextureRect" type="TextureRect" parent="UiCard" unique_id=730264820]
+show_behind_parent = true
+layout_mode = 1
+offset_right = 140.0
+offset_bottom = 190.0
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_hvw8x")
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="." unique_id=278166624]
+layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1

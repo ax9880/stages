@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://dnci10os6ib1u"]
+
+[ext_resource type="Script" uid="uid://jvscpey8rbkc" path="res://board/score_menu_container.gd" id="1_drih8"]
+
+[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("base_score_label", "perfect_hands_label", "penalties_label", "total_score_label", "time_label")]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_drih8")
+base_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreLabel")
+perfect_hands_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/PerfectHandsLabel")
+penalties_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer5/PenaltiesLabel")
+total_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/TotalLabel")
+time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1816078611]
+layout_mode = 2
+color = Color(0.22745098, 0.22745098, 0.22745098, 0.2784314)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1819189067]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1209133125]
+custom_minimum_size = Vector2(640, 640)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=424545917]
+layout_mode = 2
+theme_override_font_sizes/font_size = 64
+text = "GAME_FINISHED"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1088333007]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=55145666]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BASE_SCORE"
+
+[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2026283146]
+layout_mode = 2
+text = "9999"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=657161802]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=503815951]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PERFECT_HANDS"
+
+[node name="PerfectHandsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=942319179]
+layout_mode = 2
+text = "9 (+150)"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1130567575]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=34502578]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PENALTIES"
+
+[node name="PenaltiesLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=354689160]
+layout_mode = 2
+text = "99 (-300)"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1630725418]
+layout_mode = 2
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=99782350]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TOTAL"
+
+[node name="TotalLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1902230342]
+layout_mode = 2
+text = "9999"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1131009022]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=179374048]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TIME"
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1165583708]
+layout_mode = 2
+text = "99:99"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1529582081]
+layout_mode = 2
+text = "PLAY_AGAIN"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=840732188]
+layout_mode = 2
+text = "MAIN_MENU"

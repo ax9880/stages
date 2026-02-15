@@ -71,8 +71,18 @@ func reset_position(time_seconds: float, target_position: Vector2 = Vector2.ZERO
 
 	_position_tween = get_tree().create_tween()
 	
-	_position_tween.tween_property(self, "position", target_position, time_seconds).set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	# .set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
+	_position_tween.tween_property(self, "position", target_position, time_seconds)
 	_position_tween.tween_property(self, "rotation", 0, time_seconds)
+
+
+func reveal_number() -> void:
+	$StageLabel.text = str(_card_data.stage)
+	$StageLabel/GameLabel.text = str(_card_data.game)
+	
+	$StageLabel/AnimationPlayer.play("reveal_number")
+	
+	await $StageLabel/AnimationPlayer.animation_finished
 
 
 func _on_margin_container_gui_input(event: InputEvent) -> void:

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://ocgffq7k1o50"]
+
+[node name="GameMusic" type="Node" unique_id=445559393]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=35361071]
+bus = &"Music"

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dxrydo0jablpa"]
 
 [ext_resource type="Script" uid="uid://bwehwd412sxxy" path="res://characters_menu/characters.gd" id="1_j24f1"]
-[ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://card_data_loader.tscn" id="2_eekhk"]
+[ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="2_eekhk"]
 [ext_resource type="PackedScene" uid="uid://fxq2mrolcqfb" path="res://characters_menu/game_h_box_container.tscn" id="2_j24f1"]
 
 [node name="Characters" type="MarginContainer" unique_id=2023050909]

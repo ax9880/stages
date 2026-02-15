@@ -6,5 +6,6 @@ dotpack/**/*.png
 *.ogg
 
 *.png
+*.ttf
 
 development/

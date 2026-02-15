@@ -11,7 +11,8 @@ extends Node2D
 
 @export var submit_button: Button
 
-signal all_hands_submitted
+signal all_hands_submitted(score_results: ScoreResults)
+signal score_updated(total_score: int)
 
 # Dictionary<int, Array<Array<CardData>>>
 var games: Dictionary = {}
@@ -20,8 +21,14 @@ var piles: Array = []
 
 var _submitted_hands: int = 0
 
+var score_results: ScoreResults
+
 
 func _ready() -> void:
+	score_results = ScoreResults.new()
+	
+	submit_button.disabled = true
+	
 	$CardDataLoader.load_cards()
 	games = $CardDataLoader.games
 	
@@ -96,6 +103,8 @@ func _add_cards_to_piles(chosen_piles: Node2D, deck_children: Array) -> void:
 		for i in cards_per_pile:
 			cards_to_add.push_back(deck_children.pop_front())
 		
+		cards_to_add.reverse()
+		
 		pile.add_cards(cards_to_add)
 		
 		await pile.cards_added
@@ -118,27 +127,47 @@ func _on_pile_clicked(pile: Pile) -> void:
 		await original_pile.cards_added
 		
 		$Hand.transfer_from_pile(pile)
+		
+		submit_button.disabled = false
 	else:
 		$Hand.transfer_from_pile(pile)
+		
+		submit_button.disabled = false
 
 
-func _return_cards_to_pile(pile: Pile, can_flip_cards: bool = true) -> void:
+func _return_cards_to_pile(pile: Pile, can_flip_cards: bool = true, can_reverse_cards: bool = false) -> void:
+	submit_button.disabled = true
+	
 	var cards: Array = $Hand.take_cards()
-	cards.reverse()
+	
+	if can_reverse_cards:
+		cards.reverse()
 	
 	pile.add_cards(cards, can_flip_cards)
 
 
 func _on_submit_button_pressed() -> void:
 	if $Hand.is_valid():
+		submit_button.disabled = true
+		
 		_submitted_hands += 1
 		
+		score_results.update()
+		
+		score_updated.emit(score_results.get_total_score())
+		
+		await $Hand.show_cards_stages()
+		
 		var original_pile: Pile = $Hand.pile
-		_return_cards_to_pile(original_pile, false)
+		_return_cards_to_pile(original_pile, false, true)
 		
 		await original_pile.cards_added
 		
 		if _submitted_hands == piles_count:
 			print("You won!")
 			
-			all_hands_submitted.emit()
+			all_hands_submitted.emit(score_results)
+	else:
+		score_results.add_penalty()
+	
+	score_updated.emit(score_results.get_total_score())
