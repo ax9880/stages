@@ -1,7 +1,12 @@
 keys,en,es
+START_SINGLE_PLAYER,Start (single player),Comenzar (1 jugador)
 PILES,Piles,Montones
-START,Start,Comenzar
 TIME_LIMIT,Time limit,Límite de tiempo
+PLAYERS,Players,Jugadores
+PORT,Port,Puerto
+IP_ADDRESS,IP address,Dirección IP
+HOST,Host,Crear partida
+JOIN,Join,Unirse
 PENALTIES,Penalties,Penalidades
 SOUND_EFFECTS,Sound Effects,Efectos de sonido
 MUSIC,Music,Música
@@ -18,3 +23,8 @@ PERFECT_HANDS,Perfect hands,Manos perfectas
 TOTAL,Total,Total
 PLAY_AGAIN,Play again,Jugar de nuevo
 MAIN_MENU,Main menu,Menú principal
+PLAYER,Player,Jugador,
+WAITING_FOR_PLAYERS,Waiting for players...,Esperando jugadores...
+JOINING,Joining match,Uniéndose a partida...
+CONNECTED,Connected,Conectado
+CANCEL,Cancel,Cancelar

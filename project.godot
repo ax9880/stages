@@ -19,6 +19,13 @@ config/icon="res://icon.svg"
 
 buses/default_bus_layout="uid://cx1qjqxcgkrm0"
 
+[autoload]
+
+Loader="*uid://drqegc3f40m74"
+EventBus="*uid://dgr1bc1b3y16e"
+GameData="*uid://2ar1kvfwq7bp"
+GameMusic="*uid://ocgffq7k1o50"
+
 [display]
 
 window/size/viewport_width=1920

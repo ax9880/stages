@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dnci10os6ib1u"]
 
-[ext_resource type="Script" uid="uid://jvscpey8rbkc" path="res://board/score_menu_container.gd" id="1_drih8"]
+[ext_resource type="Script" uid="uid://jvscpey8rbkc" path="res://board/score/score_menu_container.gd" id="1_drih8"]
+[ext_resource type="AudioStream" uid="uid://c7g472rvx6vby" path="res://sounds/button25.mp3" id="2_uudvu"]
 
 [node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("base_score_label", "perfect_hands_label", "penalties_label", "total_score_label", "time_label")]
 anchors_preset = 15
@@ -17,7 +18,7 @@ time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1816078611]
 layout_mode = 2
-color = Color(0.22745098, 0.22745098, 0.22745098, 0.2784314)
+color = Color(0.15686275, 0.15686275, 0.15686275, 0.6039216)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1819189067]
 layout_mode = 2
@@ -94,10 +95,17 @@ text = "TIME"
 layout_mode = 2
 text = "99:99"
 
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1529582081]
+[node name="PlayAgainButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1529582081]
 layout_mode = 2
 text = "PLAY_AGAIN"
 
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer" unique_id=840732188]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=840732188]
 layout_mode = 2
 text = "MAIN_MENU"
+
+[node name="GameFinishedAudio" type="AudioStreamPlayer" parent="." unique_id=57707517]
+stream = ExtResource("2_uudvu")
+bus = &"Sound effects"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/MainMenuButton" to="." method="_on_main_menu_button_pressed"]

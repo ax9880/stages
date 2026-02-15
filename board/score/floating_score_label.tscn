@@ -1,0 +1,113 @@
+[gd_scene format=3 uid="uid://bsjlil3mkoujl"]
+
+[ext_resource type="Script" uid="uid://dl85vhvy8ux1e" path="res://board/score/floating_score_label.gd" id="1_cdy57"]
+[ext_resource type="FontFile" uid="uid://bucib1m3mxg2k" path="res://font/Dosis-ExtraBold.ttf" id="2_m2etm"]
+[ext_resource type="AudioStream" uid="uid://c3oouo3o5rgm0" path="res://sounds/button22.mp3" id="2_wlp3i"]
+[ext_resource type="AudioStream" uid="uid://gagvjwpugwhi" path="res://sounds/button53.mp3" id="3_a8863"]
+[ext_resource type="AudioStream" uid="uid://wnxlp7n768d8" path="res://sounds/cancel2.mp3" id="4_w1ons"]
+
+[sub_resource type="Animation" id="Animation_5hdbv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_cdy57"]
+resource_name = "float_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -50)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MarginContainer:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.76666665, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_037tj"]
+_data = {
+&"RESET": SubResource("Animation_5hdbv"),
+&"float_up": SubResource("Animation_cdy57")
+}
+
+[node name="FloatingScoreLabel" type="Node2D" unique_id=1835447406]
+script = ExtResource("1_cdy57")
+default_color = Color(1, 1, 1, 1)
+penalty_color = Color(0.8562232, 0.2218355, 0.29210153, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=992727313]
+offset_right = 400.0
+offset_bottom = 82.0
+size_flags_horizontal = 0
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1279945720]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m2etm")
+theme_override_font_sizes/font_size = 64
+text = "PERFECTO +30"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=16176232]
+libraries/ = SubResource("AnimationLibrary_037tj")
+
+[node name="ScoreAudio" type="AudioStreamPlayer" parent="." unique_id=1408638267]
+stream = ExtResource("2_wlp3i")
+bus = &"Sound effects"
+
+[node name="PerfectAudio" type="AudioStreamPlayer" parent="." unique_id=1822674813]
+stream = ExtResource("3_a8863")
+bus = &"Sound effects"
+
+[node name="PenaltyAudio" type="AudioStreamPlayer" parent="." unique_id=582377779]
+stream = ExtResource("4_w1ons")
+bus = &"Sound effects"

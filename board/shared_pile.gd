@@ -9,13 +9,19 @@ signal cards_added
 var _card: Card = null
 
 
+func _ready() -> void:
+	EventBus.card_picked_up_from_hand.connect(_on_card_picked_up_from_hand)
+	EventBus.card_returned_to_hand.connect(_on_card_returned_to_hand)
+
+
 func add_cards(cards: Array) -> void:
+	assert(cards.size() == 6)
+	
 	for i in cards.size():
 		var card: Card = cards[i]
 		
-		card.reparent(self)
-		
-		_connect_signals(card)
+		add_card(card)
+		card.forbid()
 		
 		var tween = get_tree().create_tween()
 		tween.tween_property(card, "position", Vector2(i * 120, 0), shared_pile_add_time_seconds)
@@ -27,6 +33,19 @@ func add_cards(cards: Array) -> void:
 		await card.flipped_up
 	
 	cards_added.emit()
+
+
+func add_card(card: Card) -> void:
+	card.reparent($Cards)
+	card.enable()
+	
+	_connect_signals(card)
+	
+	card.play_place_audio()
+
+
+func remove_card(card: Card) -> void:
+	_disconnect_signals(card)
 
 
 func _on_card_clicked(card: Card) -> void:
@@ -51,13 +70,13 @@ func _on_shared_pile_area_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if false:
 			_card.stop_following_cursor()
-			_card.reparent(self)
+			_card.reparent($Cards)
 			
 			_card = null
 		else:
 			var card: Card = hand.get_active_card()
 			
-			hand.drop_card_in_shared_pile(self)
+			hand.drop_card_in_shared_pile($Cards)
 			
 			if card != null:
 				_connect_signals(card)
@@ -69,3 +88,13 @@ func _connect_signals(card: Card) -> void:
 
 func _disconnect_signals(card: Card) -> void:
 	card.card_clicked.disconnect(_on_card_clicked)
+
+
+func _on_card_picked_up_from_hand() -> void:
+	for card in $Cards.get_children():
+		card.allow()
+
+
+func _on_card_returned_to_hand() -> void:
+	for card in $Cards.get_children():
+		card.forbid()

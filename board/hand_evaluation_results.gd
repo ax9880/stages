@@ -4,4 +4,4 @@ extends Object
 var is_valid: bool = false
 var is_perfect_hand: bool = false
 
-var wrong_cards: Array[Card]
+var wrong_cards: Array[Card] = []

@@ -3,10 +3,13 @@
 *.translation
 
 dotpack/**/*.png
+
 *.wav
 *.ogg
+*.mp3
 
 *.png
+
 *.ttf
 
 development/

@@ -2,6 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://dr6fbs84tglb5" path="res://theme.tres" id="1_d3a7t"]
 [ext_resource type="FontFile" uid="uid://bucib1m3mxg2k" path="res://font/Dosis-ExtraBold.ttf" id="2_3shxk"]
+[ext_resource type="Script" uid="uid://c5i6u3lngpfar" path="res://main_menu/main_menu.gd" id="2_tr6y3"]
 [ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="3_3shxk"]
 [ext_resource type="Texture2D" uid="uid://d0rbrnltm17fe" path="res://dotpack/Charas/Touhou6/Charas_003_1.png" id="4_qq33v"]
 [ext_resource type="Texture2D" uid="uid://ffwpjt2qve6r" path="res://dotpack/Charas/Touhou7/Charas_013_2.png" id="5_6at21"]
@@ -14,22 +15,38 @@
 [ext_resource type="Texture2D" uid="uid://ddoklwp88iyt7" path="res://dotpack/Charas/Touhou17/Charas_117_6.png" id="15_qq33v"]
 [ext_resource type="Texture2D" uid="uid://mujolpg51hbd" path="res://dotpack/Charas/Touhou20/Charas_126_1.png" id="16_qq33v"]
 [ext_resource type="Texture2D" uid="uid://cvwfikvnkhpdo" path="res://dotpack/Charas/Touhou17/Charas_114_3.png" id="17_ifnh7"]
+[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="17_iri28"]
+[ext_resource type="PackedScene" uid="uid://ebdkkwqr5m8b" path="res://main_menu/volume_slider.tscn" id="17_qq33v"]
+[ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="18_qq33v"]
 [ext_resource type="Texture2D" uid="uid://bbk3r0jdi7xvo" path="res://dotpack/Charas/Touhou16/Charas_096_4.png" id="19_cda7c"]
 
-[node name="MainMenu" type="MarginContainer" unique_id=813007979]
+[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_d3a7t")
+script = ExtResource("2_tr6y3")
+start_button = NodePath("MarginContainer/VBoxContainer/StartButton")
+piles_option_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/PilesOptionButton")
+players_option_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7/PlayersOptionButton")
+host_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer/HostButton")
+join_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinButton")
+characters_button = NodePath("MarginContainer/VBoxContainer/CharactersButton")
+host_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer")
+host_waiting_label = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer/HostWaitingLabel")
+host_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer")
+join_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer")
+join_waiting_label = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer/JoinWaitingLabel")
+join_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=710832880]
 layout_mode = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=897000781]
 layout_mode = 2
@@ -41,67 +58,216 @@ theme_override_font_sizes/font_size = 128
 text = "STAGES!"
 horizontal_alignment = 1
 
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=539759399]
+layout_mode = 2
+text = "INSTRUCTIONS"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1999258813]
+layout_mode = 2
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2006596233]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1783295652 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard" index="0" unique_id=1783295652]
+texture = ExtResource("4_qq33v")
+
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1260589921 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="0" unique_id=1783295652]
+texture = ExtResource("5_6at21")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="1" unique_id=278166624]
+text = "2"
+
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1559422051 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3" index="0" unique_id=1783295652]
+texture = ExtResource("6_og6xe")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3" index="1" unique_id=278166624]
+text = "3"
+
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1944841455 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4" index="0" unique_id=1783295652]
+texture = ExtResource("7_mvfl2")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4" index="1" unique_id=278166624]
+text = "4"
+
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=240579335 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5" index="0" unique_id=1783295652]
+texture = ExtResource("8_qvn4f")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5" index="1" unique_id=278166624]
+text = "5"
+
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=8698106 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6" index="0" unique_id=1783295652]
+texture = ExtResource("9_g1omr")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6" index="1" unique_id=278166624]
+text = "6"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=994401338]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3shxk")
+theme_override_font_sizes/font_size = 64
+text = "OK"
+horizontal_alignment = 1
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2055503340]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1705426529 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5" index="0" unique_id=1783295652]
+texture = ExtResource("14_iri28")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5" index="1" unique_id=278166624]
+text = "5"
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=962683657 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard" index="0" unique_id=1783295652]
+texture = ExtResource("16_qq33v")
+
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=256725856 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2" index="0" unique_id=1783295652]
+texture = ExtResource("5_og6xe")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2" index="1" unique_id=278166624]
+text = "2"
+
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1123059623 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4" index="0" unique_id=1783295652]
+texture = ExtResource("19_cda7c")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4" index="1" unique_id=278166624]
+text = "4"
+
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1130416161 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6" index="0" unique_id=1783295652]
+texture = ExtResource("15_qq33v")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6" index="1" unique_id=278166624]
+text = "6"
+
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1610902906 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3" index="0" unique_id=1783295652]
+texture = ExtResource("17_ifnh7")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3" index="1" unique_id=278166624]
+text = "3"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1505649915]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3shxk")
+theme_override_font_sizes/font_size = 64
+text = "OK"
+horizontal_alignment = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1736476355]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1916671956 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard" index="0" unique_id=1783295652]
+texture = ExtResource("16_qq33v")
+
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1092097388 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="0" unique_id=1783295652]
+texture = ExtResource("5_og6xe")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="1" unique_id=278166624]
+text = "2"
+
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=713705313 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="0" unique_id=1783295652]
+texture = ExtResource("17_ifnh7")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
+theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
+text = "3"
+
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1357741496 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="0" unique_id=1783295652]
+texture = ExtResource("6_og6xe")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="1" unique_id=278166624]
+theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
+text = "3"
+
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=804245333 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5" index="0" unique_id=1783295652]
+texture = ExtResource("8_qvn4f")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5" index="1" unique_id=278166624]
+text = "5"
+
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=611727771 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6" index="0" unique_id=1783295652]
+texture = ExtResource("15_qq33v")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6" index="1" unique_id=278166624]
+text = "6"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=129413270]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_3shxk")
+theme_override_font_sizes/font_size = 64
+text = "X"
+horizontal_alignment = 1
+
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=131046630]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-text = "START"
+text = "START_SINGLE_PLAYER"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=118578740]
+custom_minimum_size = Vector2(720, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1973108945]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=77010763]
-layout_mode = 2
-text = "IP_ADDRESS"
-
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=960966395]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "192.168.1.100"
-placeholder_text = "IP_ADDRESS"
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=266305291]
-layout_mode = 2
-text = "PORT"
-
-[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=82524240]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "10801"
-placeholder_text = "IP_ADDRESS"
-
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=218701941]
-layout_mode = 2
-text = "JOIN
-"
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=82980520]
-visible = false
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=20719700]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
-text = "PORT"
-
-[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=580389728]
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-text = "10801"
-placeholder_text = "IP_ADDRESS"
-
-[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer2" unique_id=1005940352]
-layout_mode = 2
-text = "HOST"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=477216813]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1189604418]
@@ -110,18 +276,19 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "PILES"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1651615929]
+[node name="PilesOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1651615929]
 layout_mode = 2
 selected = 1
 item_count = 3
-popup/item_0/text = "4"
-popup/item_0/id = 0
-popup/item_1/text = "5"
-popup/item_1/id = 1
-popup/item_2/text = "6"
-popup/item_2/id = 2
+popup/item_0/text = "3"
+popup/item_0/id = 3
+popup/item_1/text = "4"
+popup/item_1/id = 0
+popup/item_2/text = "5"
+popup/item_2/id = 1
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2038281241]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=1517712754]
@@ -130,7 +297,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "TIME_LIMIT"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=242426872]
+[node name="TimeLimitOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer6" unique_id=242426872]
 layout_mode = 2
 selected = 0
 item_count = 3
@@ -141,12 +308,120 @@ popup/item_1/id = 1
 popup/item_2/text = "10:00"
 popup/item_2/id = 2
 
+[node name="HBoxContainer7" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=166111996]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=731111146]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PLAYERS"
+
+[node name="PlayersOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=1011769395]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "2"
+popup/item_0/id = 0
+popup/item_1/text = "3"
+popup/item_1/id = 1
+popup/item_2/text = "4"
+popup/item_2/id = 2
+
+[node name="HostHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=82980520]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=20719700]
+custom_minimum_size = Vector2(320, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PORT"
+
+[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=580389728]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "30000"
+placeholder_text = "PORT"
+
+[node name="HostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=1005940352]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "HOST"
+
+[node name="HostWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=501211282]
+visible = false
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+
+[node name="HostWaitingLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer" unique_id=338693557]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "WAITING_FOR_PLAYERS"
+
+[node name="CancelHostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer" unique_id=1070344073]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+text = "CANCEL"
+
+[node name="JoinHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1973108945]
+visible = false
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=77010763]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "IP_ADDRESS"
+
+[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=960966395]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+text = "192.168.0.100"
+placeholder_text = "IP_ADDRESS"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=266305291]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "PORT"
+horizontal_alignment = 2
+
+[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=82524240]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "30000"
+placeholder_text = "IP_ADDRESS"
+
+[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=218701941]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "JOIN
+"
+
+[node name="JoinWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=627679541]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+
+[node name="JoinWaitingLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer" unique_id=1011404213]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "JOINING"
+
+[node name="CancelJoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer" unique_id=1210699654]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+text = "CANCEL"
+
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=776197096]
+visible = false
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 button_pressed = true
 text = "PENALTIES"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1863270963]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=692364787]
@@ -154,12 +429,12 @@ custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 text = "SOUND_EFFECTS"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=708082076]
-custom_minimum_size = Vector2(320, 0)
+[node name="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1383325425 instance=ExtResource("17_qq33v")]
 layout_mode = 2
-size_flags_vertical = 4
+bus_name = "Sound effects"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=119038544]
+custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=2113607130]
@@ -167,10 +442,8 @@ custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 text = "MUSIC"
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1951055284]
-custom_minimum_size = Vector2(320, 0)
+[node name="HSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1506368740 instance=ExtResource("17_qq33v")]
 layout_mode = 2
-size_flags_vertical = 4
 
 [node name="CharactersButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=11407471]
 custom_minimum_size = Vector2(320, 0)
@@ -184,217 +457,43 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "QUIT"
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=539759399]
-layout_mode = 2
-text = "INSTRUCTIONS"
-
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=759145798]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2006596233]
-layout_mode = 2
+[node name="Network" type="Node" parent="." unique_id=371164179]
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1783295652 instance=ExtResource("3_3shxk")]
-layout_mode = 2
+[node name="Server" type="Node" parent="Network" unique_id=1562212262]
+script = ExtResource("18_qq33v")
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("4_qq33v")
+[node name="ServerConnector" type="Node" parent="Network" unique_id=997302448]
+script = ExtResource("17_iri28")
 
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1260589921 instance=ExtResource("3_3shxk")]
-layout_mode = 2
+[connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/PilesOptionButton" to="." method="_on_piles_option_button_item_selected"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7/PlayersOptionButton" to="." method="_on_players_option_button_item_selected"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer/HostButton" to="." method="_on_host_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer/CancelHostButton" to="." method="_on_cancel_host_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer/CancelJoinButton" to="." method="_on_cancel_join_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="on_peer_connection_status_change" from="Network/Server" to="." method="_on_server_on_peer_connection_status_change"]
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_6at21")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard2" index="1" unique_id=278166624]
-text = "2"
-
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1559422051 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("6_og6xe")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard3" index="1" unique_id=278166624]
-text = "3"
-
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=1944841455 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("7_mvfl2")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard4" index="1" unique_id=278166624]
-text = "4"
-
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=240579335 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("8_qvn4f")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard5" index="1" unique_id=278166624]
-text = "5"
-
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=8698106 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("9_g1omr")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard6" index="1" unique_id=278166624]
-text = "6"
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer" unique_id=994401338]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_3shxk")
-theme_override_font_sizes/font_size = 64
-text = "OK"
-horizontal_alignment = 1
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=2055503340]
-layout_mode = 2
-
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1705426529 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("14_iri28")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard5" index="1" unique_id=278166624]
-text = "5"
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=962683657 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("16_qq33v")
-
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=256725856 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_og6xe")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard2" index="1" unique_id=278166624]
-text = "2"
-
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1123059623 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("19_cda7c")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard4" index="1" unique_id=278166624]
-text = "4"
-
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1130416161 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("15_qq33v")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard6" index="1" unique_id=278166624]
-text = "6"
-
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1610902906 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard3" index="1" unique_id=278166624]
-text = "3"
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3" unique_id=1505649915]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_3shxk")
-theme_override_font_sizes/font_size = 64
-text = "OK"
-horizontal_alignment = 1
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2" unique_id=1736476355]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1916671956 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("16_qq33v")
-
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1092097388 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_og6xe")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard2" index="1" unique_id=278166624]
-text = "2"
-
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=713705313 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
-theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
-text = "3"
-
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=1357741496 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("6_og6xe")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard4" index="1" unique_id=278166624]
-theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
-text = "3"
-
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=804245333 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("8_qvn4f")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard5" index="1" unique_id=278166624]
-text = "5"
-
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=611727771 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("15_qq33v")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard6" index="1" unique_id=278166624]
-text = "6"
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=129413270]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_3shxk")
-theme_override_font_sizes/font_size = 64
-text = "X"
-horizontal_alignment = 1
-
-[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1804664841]
-autoplay = true
-bus = &"Music"
-
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer/UiCard6"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard6"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer3/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/VBoxContainer2/HBoxContainer2/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6"]

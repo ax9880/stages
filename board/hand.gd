@@ -3,10 +3,11 @@ extends Node2D
 
 
 @export var max_cards: int = 6
-
 @export var offset: float = 0.5
 
 @export var card_add_time_seconds: float = 0.1
+
+@export var submit_button: Button
 
 signal card_clicked(card: Card)
 
@@ -27,8 +28,6 @@ func _ready() -> void:
 		$Path2D.add_child(path_follow2d)
 		
 		path_follow2d.progress_ratio = (i + 1) * (start + end) / (max_cards + 1)
-		
-		print(path_follow2d.progress_ratio)
 
 
 func _physics_process(_delta: float) -> void:
@@ -51,6 +50,7 @@ func _track_card() -> void:
 			var left_card: Card = left_neighbor.get_child(0)
 			
 			left_card.reparent(_card.get_parent())
+			left_card.play_move_audio()
 			
 			_reset_card_position(left_card)
 			
@@ -63,6 +63,7 @@ func _track_card() -> void:
 			var right_card: Card = right_neighbor.get_child(0)
 			
 			right_card.reparent(_card.get_parent())
+			right_card.play_move_audio()
 			
 			_reset_card_position(right_card)
 			
@@ -101,6 +102,8 @@ func transfer_from_pile(_pile: Pile) -> void:
 	pile = _pile
 	_cards = pile.take_cards()
 	
+	pile.disable_area()
+	
 	for i in _cards.size():
 		var card: Card = _cards[_cards.size() - i - 1]
 		
@@ -112,10 +115,13 @@ func transfer_from_pile(_pile: Pile) -> void:
 		_reset_card_position(card)
 		
 		card.flip_up()
+		card.play_move_to_hand_audio()
 		
 		$AddCardTimer.start()
 		
 		await $AddCardTimer.timeout
+		
+		card.enable()
 
 
 func transfer_from_shared_pile(card: Card) -> void:
@@ -130,11 +136,14 @@ func transfer_from_shared_pile(card: Card) -> void:
 	card.card_clicked.connect(_on_card_clicked.bind(card))
 	
 	_pick_up_card(card)
+	
+	EventBus.card_picked_up_from_shared_pile.emit(card)
 
 
 func swap_with_shared_pile_card(card: Card) -> void:
 	assert(_card != null)
 	
+	# Drop card
 	_card.card_clicked.disconnect(_on_card_clicked)
 	
 	var old_parent = card.get_parent()
@@ -145,11 +154,16 @@ func swap_with_shared_pile_card(card: Card) -> void:
 	_card.stop_following_cursor()
 	_card.global_position = card.global_position
 	
+	EventBus.card_dropped_in_shared_pile.emit(_card)
+	
 	_rebuild_cards_list()
 	
+	# Pick up card
 	card.card_clicked.connect(_on_card_clicked.bind(card))
 	
 	_pick_up_card(card)
+	
+	EventBus.card_picked_up_from_shared_pile.emit(card)
 
 
 func _rebuild_cards_list() -> void:
@@ -192,10 +206,13 @@ func _drop_card() -> void:
 		_return_card(_card)
 		
 		_card = null
+		
+		EventBus.card_returned_to_hand.emit()
+		submit_button.disabled = false
 
 
 func _pick_up_card(card: Card) -> void:
-	$SwapCardAudio.play()
+	card.play_pick_up_audio()
 	
 	_card = card
 	_card.follow_cursor()
@@ -211,11 +228,16 @@ func _on_card_clicked(card: Card) -> void:
 	_pick_up_card(card)
 	
 	card_clicked.emit(card)
+	
+	EventBus.card_picked_up_from_hand.emit()
+	submit_button.disabled = true
 
 
 func drop_card_in_shared_pile(shared_pile: Node2D) -> void:
 	if _card == null:
 		return
+	
+	_card.play_place_audio()
 	
 	_card.stop_following_cursor()
 	_card.reparent(shared_pile)
@@ -223,23 +245,47 @@ func drop_card_in_shared_pile(shared_pile: Node2D) -> void:
 	
 	_cards.remove_at(_cards.find(_card))
 	
+	EventBus.card_dropped_in_shared_pile.emit(_card)
+	
 	_card = null
 
 
-func is_valid() -> bool:
+func is_valid() -> HandEvaluationResults:
+	var results := HandEvaluationResults.new()
+	
 	var stages: Dictionary = {}
+	
+	results.is_valid = true
 	
 	for card: Card in _cards:
 		var card_data: CardData = card._card_data
 		
 		if stages.has(card_data.stage):
+			stages[card_data.stage].push_back(card)
+			
 			print("Invalid hand! Stage %d is repeated" % card_data.stage)
 			
-			return false
-		
-		stages.set(card_data.stage, null)
+			results.is_valid = false
+		else:
+			stages.set(card_data.stage, [card])
 	
-	return true
+	for cards_per_stage in stages.values():
+		if cards_per_stage.size() > 1:
+			for card in cards_per_stage:
+				results.wrong_cards.push_back(card)
+	
+	if results.is_valid:
+		results.is_perfect_hand = true
+		
+		var game: int = _cards.front()._card_data.game
+		
+		for card: Card in _cards:
+			if game != card._card_data.game:
+				results.is_perfect_hand = false
+				
+				break
+	
+	return results
 
 
 func show_cards_stages() -> void:
@@ -247,6 +293,13 @@ func show_cards_stages() -> void:
 		var card = path_follow2d.get_child(0)
 		
 		await card.reveal_number()
+	
+	await get_tree().create_timer(0.5).timeout
+
+
+func show_wrong_cards(results: HandEvaluationResults) -> void:
+	for card in results.wrong_cards:
+		card.show_wrong_number()
 	
 	await get_tree().create_timer(0.5).timeout
 

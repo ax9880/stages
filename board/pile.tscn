@@ -13,6 +13,7 @@ disabled_color = Color(0.91663986, 0.91663986, 0.9166397, 1)
 hover_color = Color(1, 1, 1, 1)
 
 [node name="PileBackground" type="Sprite2D" parent="." unique_id=1217477242]
+z_index = -1
 texture = ExtResource("3_n7xhl")
 metadata/_edit_lock_ = true
 

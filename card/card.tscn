@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://dta0h40cs6hli" path="res://dotpack/Charas/Touhou6/Charas_009_5.png" id="2_e484p"]
 [ext_resource type="Script" uid="uid://ma8vr5ked6er" path="res://card/card.gd" id="2_rjlel"]
 [ext_resource type="Texture2D" uid="uid://bjmpesvr03v2m" path="res://card/cardBack_red3.png" id="4_e484p"]
+[ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="5_346uv"]
+[ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="5_i6okx"]
 
 [sub_resource type="Animation" id="Animation_e484p"]
 length = 0.001
@@ -182,46 +184,6 @@ tracks/3/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_fdnr0"]
-resource_name = "highlight_wrong_number"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19999999, 1.2666667, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:theme_override_colors/font_color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.885591, 0.291714, 0.2968193, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:visible")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_i6okx"]
 resource_name = "reveal_number"
 length = 0.1
@@ -285,12 +247,67 @@ tracks/4/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ShowStageAudio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("5_i6okx")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_fdnr0"]
+resource_name = "show_wrong_number"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999, 1.2666667, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:theme_override_colors/font_color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.885591, 0.291714, 0.2968193, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_346uv"]
 _data = {
 &"RESET": SubResource("Animation_346uv"),
-&"highlight_wrong_number": SubResource("Animation_fdnr0"),
-&"reveal_number": SubResource("Animation_i6okx")
+&"reveal_number": SubResource("Animation_i6okx"),
+&"show_wrong_number": SubResource("Animation_fdnr0")
 }
 
 [node name="Card" type="Sprite2D" unique_id=1737746549]
@@ -346,5 +363,24 @@ offset_right = 40.0
 offset_bottom = 172.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "20"
+
+[node name="PlaceAudio" type="AudioStreamPlayer" parent="." unique_id=1352814550]
+stream = ExtResource("5_346uv")
+bus = &"Sound effects"
+
+[node name="PickUpAudio" type="AudioStreamPlayer" parent="." unique_id=1595816742]
+stream = ExtResource("5_346uv")
+bus = &"Sound effects"
+
+[node name="MoveToHandAudio" type="AudioStreamPlayer" parent="." unique_id=959666544]
+stream = ExtResource("5_346uv")
+bus = &"Sound effects"
+
+[node name="MoveAudio" type="AudioStreamPlayer" parent="." unique_id=447044580]
+stream = ExtResource("5_346uv")
+bus = &"Sound effects"
+
+[node name="ShowStageAudio" type="AudioStreamPlayer" parent="." unique_id=1067033506]
+bus = &"Sound effects"
 
 [connection signal="gui_input" from="MarginContainer" to="." method="_on_margin_container_gui_input"]
