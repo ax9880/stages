@@ -9,6 +9,7 @@ size = Vector2(152, 200)
 
 [node name="Pile" type="Node2D" unique_id=747233574]
 script = ExtResource("1_1o32j")
+card_add_time_seconds = 0.0
 disabled_color = Color(0.91663986, 0.91663986, 0.9166397, 1)
 hover_color = Color(1, 1, 1, 1)
 

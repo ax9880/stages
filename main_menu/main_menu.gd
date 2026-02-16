@@ -38,6 +38,8 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	GameData.players = 1
+	
 	Loader.change_scene("res://board/game_tree.tscn")
 
 

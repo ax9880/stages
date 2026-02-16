@@ -70,6 +70,14 @@ func flip_down() -> void:
 	$AnimationPlayer.play("flip_down")
 
 
+func play_hide() -> void:
+	disable()
+	
+	$AnimationPlayer.play("hide")
+	
+	await $AnimationPlayer.animation_finished
+
+
 func follow_cursor() -> void:
 	set_physics_process(true)
 	

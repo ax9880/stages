@@ -1,7 +1,5 @@
 [gd_scene format=3 uid="uid://cbwqru3euxsmh"]
 
-[ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="1_bdowf"]
-[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="1_mfwdf"]
 [ext_resource type="Script" uid="uid://c8folvfmyonr0" path="res://board/board_menu_container.gd" id="1_nv1sn"]
 [ext_resource type="Script" uid="uid://bwboqo5yexejc" path="res://board/submit_button.gd" id="2_nv1sn"]
 [ext_resource type="PackedScene" uid="uid://bsjlil3mkoujl" path="res://board/score/floating_score_label.tscn" id="3_6yuor"]
@@ -121,7 +119,7 @@ text = "SCORE"
 [node name="Label2" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer" unique_id=2143409328]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "9999"
+text = "0"
 horizontal_alignment = 2
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="BoardMenuContainer/MarginContainer2/VBoxContainer" unique_id=484804863]
@@ -137,7 +135,7 @@ text = "TIME"
 [node name="Label4" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1484418090]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
-text = "99:99"
+text = "00:00"
 horizontal_alignment = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="BoardMenuContainer/MarginContainer2/VBoxContainer" unique_id=1177377324]
@@ -157,26 +155,19 @@ horizontal_alignment = 1
 [node name="MultiplayerScoreTracker" parent="BoardMenuContainer/MarginContainer2/VBoxContainer2" unique_id=1619415324 instance=ExtResource("4_drss4")]
 layout_mode = 2
 
-[node name="Network" type="Node" parent="." unique_id=11863385]
-
-[node name="Server" type="Node" parent="Network" unique_id=841859432]
-script = ExtResource("1_bdowf")
-
-[node name="ServerConnector" type="Node" parent="Network" unique_id=1368213008]
-script = ExtResource("1_mfwdf")
-
 [node name="World" type="Node2D" parent="." unique_id=845418800]
 z_index = 10
 metadata/_edit_lock_ = true
 
-[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker")]
+[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker", "waiting_for_players_container", "peer_disconnected_container")]
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
 shared_pile_add_time_seconds = 0.0
-can_randomize = false
 submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
+waiting_for_players_container = NodePath("../../CanvasLayer/WaitingForPlayersContainer")
+peer_disconnected_container = NodePath("../../CanvasLayer/PeerDisconnectedContainer")
 metadata/_edit_lock_ = true
 
 [node name="CardDataLoader" parent="World/Spawner" unique_id=1588851902 instance=ExtResource("5_wg18t")]
@@ -188,15 +179,13 @@ position = Vector2(178, 186)
 metadata/_edit_lock_ = true
 
 [node name="SharedPile" type="Node2D" parent="World/Spawner" unique_id=1732153458]
-position = Vector2(547, 192)
+position = Vector2(360, 80)
 script = ExtResource("7_wg18t")
 shared_pile_add_time_seconds = 0.1
 
 [node name="SharedPileArea" type="MarginContainer" parent="World/Spawner/SharedPile" unique_id=670906194]
-offset_left = -124.0
-offset_top = -112.0
-offset_right = 877.0
-offset_bottom = 250.0
+offset_right = 1200.0
+offset_bottom = 360.0
 mouse_filter = 0
 mouse_default_cursor_shape = 7
 metadata/_edit_lock_ = true
@@ -208,60 +197,124 @@ color = Color(0.26293245, 0.26293245, 0.26293242, 0.5254902)
 metadata/_edit_lock_ = true
 
 [node name="Cards" type="Node2D" parent="World/Spawner/SharedPile" unique_id=1183225908]
+position = Vector2(150, 180)
 
 [node name="Piles3" type="Node2D" parent="World/Spawner" unique_id=1355684810]
 visible = false
+position = Vector2(960, 570)
 metadata/_edit_lock_ = true
 
 [node name="Pile" parent="World/Spawner/Piles3" unique_id=747233574 instance=ExtResource("7_bcih5")]
-position = Vector2(686, 572)
+position = Vector2(-290, 0)
 
 [node name="Pile2" parent="World/Spawner/Piles3" unique_id=1150206649 instance=ExtResource("7_bcih5")]
-position = Vector2(939, 572)
 
 [node name="Pile3" parent="World/Spawner/Piles3" unique_id=72795638 instance=ExtResource("7_bcih5")]
-position = Vector2(1187, 572)
+position = Vector2(290, 0)
 
 [node name="Piles4" type="Node2D" parent="World/Spawner" unique_id=350163231]
 visible = false
+position = Vector2(960, 570)
 metadata/_edit_lock_ = true
 
 [node name="Pile" parent="World/Spawner/Piles4" unique_id=1154622778 instance=ExtResource("7_bcih5")]
-position = Vector2(556, 567)
+position = Vector2(-430, 0)
 
 [node name="Pile2" parent="World/Spawner/Piles4" unique_id=1843986011 instance=ExtResource("7_bcih5")]
-position = Vector2(809, 567)
+position = Vector2(-140, 0)
 
 [node name="Pile3" parent="World/Spawner/Piles4" unique_id=328927042 instance=ExtResource("7_bcih5")]
-position = Vector2(1057, 567)
+position = Vector2(140, 0)
 
 [node name="Pile4" parent="World/Spawner/Piles4" unique_id=788757732 instance=ExtResource("7_bcih5")]
-position = Vector2(1297, 565)
+position = Vector2(430, 0)
 
 [node name="Piles5" type="Node2D" parent="World/Spawner" unique_id=965632308]
 visible = false
+position = Vector2(960, 570)
 metadata/_edit_lock_ = true
 
 [node name="Pile" parent="World/Spawner/Piles5" unique_id=402174197 instance=ExtResource("7_bcih5")]
-position = Vector2(679, 508)
+position = Vector2(-580, 0)
 
 [node name="Pile2" parent="World/Spawner/Piles5" unique_id=1794007133 instance=ExtResource("7_bcih5")]
-position = Vector2(932, 508)
+position = Vector2(-290, 0)
 
 [node name="Pile3" parent="World/Spawner/Piles5" unique_id=761211449 instance=ExtResource("7_bcih5")]
-position = Vector2(1180, 508)
 
 [node name="Pile4" parent="World/Spawner/Piles5" unique_id=322459868 instance=ExtResource("7_bcih5")]
-position = Vector2(679, 753)
+position = Vector2(290, 0)
 
 [node name="Pile5" parent="World/Spawner/Piles5" unique_id=1465979100 instance=ExtResource("7_bcih5")]
-position = Vector2(1180, 760)
+position = Vector2(580, 0)
 
 [node name="Hand" parent="World/Spawner" unique_id=1242478005 node_paths=PackedStringArray("submit_button") instance=ExtResource("7_rrxdr")]
-position = Vector2(563, 896)
+position = Vector2(460, 716)
 submit_button = NodePath("../../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=36277276]
+
+[node name="WaitingForPlayersContainer" type="MarginContainer" parent="CanvasLayer" unique_id=85415746]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/WaitingForPlayersContainer" unique_id=815752766]
+layout_mode = 2
+color = Color(0.15686275, 0.15686275, 0.15686275, 0.6039216)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/WaitingForPlayersContainer" unique_id=1589707422]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/WaitingForPlayersContainer/MarginContainer" unique_id=1720551256]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/WaitingForPlayersContainer/MarginContainer/VBoxContainer" unique_id=131432140]
+layout_mode = 2
+text = "WAITING_FOR_OTHER_PLAYERS_TO_FINISH"
+horizontal_alignment = 1
+
+[node name="PeerDisconnectedContainer" type="MarginContainer" parent="CanvasLayer" unique_id=1571054240]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/PeerDisconnectedContainer" unique_id=328451288]
+layout_mode = 2
+color = Color(0.15686275, 0.15686275, 0.15686275, 0.6039216)
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/PeerDisconnectedContainer" unique_id=1035141662]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer" unique_id=2038056839]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=2026350126]
+layout_mode = 2
+text = "WAITING_FOR_PLAYERS"
+horizontal_alignment = 1
+
+[node name="PeerDisconnectedQuitButton" type="Button" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=1310309335]
+custom_minimum_size = Vector2(240, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "QUIT"
 
 [node name="ScoreMenuContainer" parent="CanvasLayer" unique_id=1246059585 instance=ExtResource("10_1dkug")]
 visible = false
@@ -271,3 +324,4 @@ visible = false
 [connection signal="timeout" from="World/Spawner/PlayTimer" to="BoardMenuContainer" method="_on_play_timer_timeout"]
 [connection signal="card_requested" from="World/Spawner/SharedPile" to="World/Spawner" method="_on_shared_pile_card_requested"]
 [connection signal="gui_input" from="World/Spawner/SharedPile/SharedPileArea" to="World/Spawner/SharedPile" method="_on_shared_pile_area_gui_input"]
+[connection signal="pressed" from="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer/PeerDisconnectedQuitButton" to="World/Spawner" method="_on_peer_disconnected_quit_button_pressed"]

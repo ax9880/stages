@@ -7,6 +7,7 @@ extends MarginContainer
 
 var _time_elapsed: float = 0
 
+
 func _ready() -> void:
 	player_label.text = "%s %d" % [tr("PLAYER"), GameData.get_player_number() + 1]
 
@@ -14,10 +15,6 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	# TODO: If there is a time limit, count down instead
 	_update_time_elapsed(delta)
-	
-	if Input.is_action_just_pressed("ui_cancel"):
-		pass
-		# TODO: Quit
 
 
 func _update_time_elapsed(delta: float) -> void:

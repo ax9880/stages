@@ -1,33 +1,29 @@
 [gd_scene format=3 uid="uid://dnci10os6ib1u"]
 
 [ext_resource type="Script" uid="uid://jvscpey8rbkc" path="res://board/score/score_menu_container.gd" id="1_drih8"]
+[ext_resource type="PackedScene" uid="uid://dtv5jk4p4ukdd" path="res://board/score/player_score_container.tscn" id="2_gbl0c"]
 [ext_resource type="AudioStream" uid="uid://c7g472rvx6vby" path="res://sounds/button25.mp3" id="2_uudvu"]
 
-[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("base_score_label", "perfect_hands_label", "penalties_label", "total_score_label", "time_label")]
+[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "perfect_hands_label", "penalties_label", "total_score_label", "time_label", "multiplayer_results", "play_again_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_drih8")
+result_label = NodePath("MarginContainer/VBoxContainer/ResultLabel")
 base_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreLabel")
 perfect_hands_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/PerfectHandsLabel")
 penalties_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer5/PenaltiesLabel")
 total_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/TotalLabel")
 time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
+multiplayer_results = NodePath("MarginContainer/VBoxContainer/MultiplayerResults")
+player_score_container_packed_scene = ExtResource("2_gbl0c")
+play_again_button = NodePath("MarginContainer/VBoxContainer/PlayAgainButton")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1816078611]
 layout_mode = 2
 color = Color(0.15686275, 0.15686275, 0.15686275, 0.6039216)
-
-[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1868194568]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer2" unique_id=140168649]
-layout_mode = 2
-text = "WAITING_FOR_OTHER_PLAYERS_TO_FINISH"
-horizontal_alignment = 1
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1819189067]
 layout_mode = 2
@@ -38,7 +34,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=424545917]
+[node name="ResultLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=424545917]
 layout_mode = 2
 theme_override_font_sizes/font_size = 64
 text = "GAME_FINISHED"
@@ -47,27 +43,6 @@ horizontal_alignment = 1
 [node name="MultiplayerResults" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=2103481800]
 visible = false
 layout_mode = 2
-
-[node name="PlayerPositionContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MultiplayerResults" unique_id=781718607]
-layout_mode = 2
-alignment = 1
-
-[node name="PositionLabel" type="Label" parent="MarginContainer/VBoxContainer/MultiplayerResults/PlayerPositionContainer" unique_id=482404345]
-custom_minimum_size = Vector2(64, 0)
-layout_mode = 2
-text = "#1"
-
-[node name="PlayerLabel" type="Label" parent="MarginContainer/VBoxContainer/MultiplayerResults/PlayerPositionContainer" unique_id=2065931595]
-custom_minimum_size = Vector2(240, 0)
-layout_mode = 2
-text = "PLAYER_1"
-horizontal_alignment = 1
-
-[node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/MultiplayerResults/PlayerPositionContainer" unique_id=1170328785]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-text = "9999"
-horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1088333007]
 layout_mode = 2

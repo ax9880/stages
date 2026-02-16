@@ -11,8 +11,11 @@ extends Node2D
 
 @export var submit_button: Button
 @export var multiplayer_score_tracker: VBoxContainer
+@export var waiting_for_players_container: MarginContainer
 
-signal all_hands_submitted(score_results: ScoreResults)
+@export var peer_disconnected_container: MarginContainer
+
+signal all_hands_submitted(score_results: ScoreResults, positions: Array, total_scores: Array)
 signal score_updated(total_score: int)
 
 # Dictionary<int, Array<Array<CardData>>>
@@ -27,9 +30,15 @@ var score_results: ScoreResults
 
 var _is_transferring_pile: bool = false
 
+var _is_waiting_for_results: bool = false
+var _is_showing_results: bool = false
+
 
 func _ready() -> void:
+	waiting_for_players_container.visible = false
+	
 	score_results = ScoreResults.new()
+	score_results.peer_id = multiplayer.get_unique_id()
 	
 	submit_button.disabled = true
 	
@@ -48,20 +57,31 @@ func _ready() -> void:
 	
 	EventBus.card_dropped_in_shared_pile.connect(_on_card_dropped_in_shared_pile)
 	EventBus.card_picked_up_from_shared_pile.connect(_on_card_picked_up_from_shared_pile)
+	
+	if multiplayer.is_server():
+		multiplayer.peer_connected.connect(_on_peer_connected)
+		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+	else:
+		multiplayer.connected_to_server.connect(_on_connected_to_server)
+		multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
-		set_process(false)
+		_quit()
+
+
+func _quit() -> void:
+	set_process(false)
+	
+	Loader.change_scene("res://main_menu/main_menu.tscn")
+	
+	if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.ConnectionStatus.CONNECTION_CONNECTED:
+		if multiplayer.is_server():
+			for peer in multiplayer.get_peers():
+				multiplayer.multiplayer_peer.disconnect_peer(peer)
 		
-		Loader.change_scene("res://main_menu/main_menu.tscn")
-		
-		if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.ConnectionStatus.CONNECTION_CONNECTED:
-			if multiplayer.is_server():
-				for peer in multiplayer.get_peers():
-					multiplayer.multiplayer_peer.disconnect_peer(peer)
-			
-			multiplayer.multiplayer_peer.close()
+		multiplayer.multiplayer_peer.close()
 
 
 func randomize_piles(players: int = 0) -> void:
@@ -72,8 +92,6 @@ func randomize_piles(players: int = 0) -> void:
 	
 	# + shared pile
 	var total_piles: int = piles_count * players + 1
-	
-	print(total_piles)
 	
 	assert(total_piles <= games.keys().size())
 	
@@ -219,7 +237,91 @@ func _return_cards_to_pile(pile: Pile, can_flip_cards: bool = true, can_reverse_
 
 func _emit_score_signals() -> void:
 	score_updated.emit(score_results.get_total_score())
-	update_score.rpc(score_results.get_total_score(), _submitted_hands)
+	
+	update_score.rpc(score_results.base_score, score_results.perfect_hands, score_results.penalties, _submitted_hands)
+
+
+func _submit_results_to_server() -> void:
+	waiting_for_players_container.visible = true
+	_is_waiting_for_results = true
+	
+	submit_results.rpc(score_results.base_score, score_results.perfect_hands, score_results.penalties, score_results.time_seconds)
+
+
+func sort_results(first: ScoreResults, second: ScoreResults) -> bool:
+	if first.get_total_score() > second.get_total_score():
+		return true
+	elif first.get_total_score() < second.get_total_score():
+		return false
+	
+	if first.penalties < second.penalties:
+		return true
+	elif first.penalties > second.penalties:
+		return false
+	
+	if first.perfect_hands > second.perfect_hands:
+		return true
+	elif first.perfect_hands < second.perfect_hands:
+		return false
+	
+	if first.time_seconds < second.time_seconds:
+		return true
+	elif first.time_seconds > second.time_seconds:
+		return false
+	
+	return false
+
+
+func _present_results() -> void:
+	if _is_showing_results:
+		return
+	
+	_is_showing_results = true
+	
+	var scores: Array = GameData.results.values()
+	
+	scores.sort_custom(sort_results)
+	
+	var positions: Array = []
+	var total_scores: Array = []
+	
+	for score in scores:
+		assert(score.peer_id != 0)
+		
+		positions.push_back(score.peer_id)
+		total_scores.push_back(score.get_total_score())
+	
+	show_results.rpc(positions, total_scores)
+
+
+@rpc("call_local", "any_peer")
+func submit_results(base_score: int, perfect_hands: int, penalties: int, time_seconds: int) -> void:
+	var player_score_results := ScoreResults.new()
+	
+	var sender_id: int = multiplayer.get_remote_sender_id()
+	
+	if sender_id == 0:
+		player_score_results.peer_id = multiplayer.get_unique_id()
+	else:
+		player_score_results.peer_id = sender_id
+	
+	player_score_results.base_score = base_score
+	player_score_results.perfect_hands = perfect_hands
+	player_score_results.penalties = penalties
+	player_score_results.time_seconds = time_seconds
+	
+	GameData.results[player_score_results.peer_id] = player_score_results
+	
+	if GameData.results.keys().size() >= GameData.players - 1:
+		if multiplayer.is_server():
+			_present_results()
+
+
+@rpc("call_local")
+func show_results(positions: Array, total_scores: Array) -> void:
+	waiting_for_players_container.visible = false
+	
+	all_hands_submitted.emit(score_results, positions, total_scores)
 
 
 func _on_submit_button_pressed() -> void:
@@ -231,6 +333,9 @@ func _on_submit_button_pressed() -> void:
 	
 	if results.is_valid:
 		_submitted_hands += 1
+		
+		if results.is_perfect_hand:
+			score_results.perfect_hands += 1
 		
 		score_results.update()
 		_emit_score_signals()
@@ -249,9 +354,10 @@ func _on_submit_button_pressed() -> void:
 		original_pile.submit()
 		
 		if _submitted_hands == piles_count:
-			print("You won!")
-			
-			all_hands_submitted.emit(score_results)
+			if GameData.is_multiplayer():
+				_submit_results_to_server()
+			else:
+				all_hands_submitted.emit(score_results, [], [])
 	else:
 		score_results.add_penalty()
 		
@@ -275,8 +381,33 @@ func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 
 
 func _on_shared_pile_card_requested(card: Card) -> void:
-	# Disable card?
 	request_card.rpc(card._card_data.texture.resource_path)
+
+
+func _on_peer_connected(_id: int) -> void:
+	peer_disconnected_container.visible = false
+
+
+func _on_peer_disconnected(_id: int) -> void:
+	print("Peer disconnected")
+	
+	if _is_waiting_for_results and multiplayer.get_peers().size() >= GameData.players - 1:
+		_present_results()
+	else:
+		peer_disconnected_container.visible = true
+		
+		# TODO: Stop timer
+
+
+func _on_connected_to_server() -> void:
+	peer_disconnected_container.visible = false
+
+
+func _on_server_disconnected() -> void:
+	if _is_showing_results:
+		return
+	
+	peer_disconnected_container.visible = true
 
 
 @rpc("call_local", "any_peer")
@@ -294,7 +425,6 @@ func request_card(card_path: String) -> void:
 		grab_card.rpc_id(multiplayer.get_remote_sender_id(), card_path)
 	else:
 		print("Card taken by ", card.peer_id)
-		pass
 
 
 @rpc("call_local")
@@ -302,15 +432,6 @@ func grab_card(card_path: String) -> void:
 	var card: Card = all_cards[card_path]
 	
 	$SharedPile.handle_card(card)
-
-# func request_card()
-#	get card
-#	if card.peer_id == -1:
-#		card.peer_id = get_request_peer_id()
-#		shared_pile.grab_card.rpc(get_request_peer_id())
-#  		enable card
-#	else:
-#		enable card
 
 
 @rpc("any_peer")
@@ -328,9 +449,6 @@ func drop_card_in_shared_pile(card_path: String, card_position: Vector2) -> void
 	card.flip_up()
 	
 	print("Adding card at %d" % multiplayer.get_unique_id())
-	
-	if multiplayer.is_server():
-		pass
 
 
 @rpc("any_peer")
@@ -346,5 +464,20 @@ func pick_up_card_from_shared_pile(card_path: String) -> void:
 
 
 @rpc("any_peer", "call_local")
-func update_score(score: int, submitted_hands: int) -> void:
-	multiplayer_score_tracker.update(multiplayer.get_remote_sender_id(), score, submitted_hands)
+func update_score(base_score: int, perfect_hands: int, penalties: int, submitted_hands: int) -> void:
+	var peer_id: int = multiplayer.get_remote_sender_id()
+	
+	var results: ScoreResults = ScoreResults.new()
+	results.peer_id = peer_id
+	results.base_score = base_score
+	results.perfect_hands = perfect_hands
+	results.penalties = penalties
+	
+	multiplayer_score_tracker.update(peer_id, results.get_total_score(), submitted_hands)
+	
+	GameData.results[peer_id] = results
+	print("peer id ", peer_id)
+
+
+func _on_peer_disconnected_quit_button_pressed() -> void:
+	_quit()

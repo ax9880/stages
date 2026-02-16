@@ -61,14 +61,16 @@ horizontal_alignment = 1
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=539759399]
 layout_mode = 2
 text = "INSTRUCTIONS"
+horizontal_alignment = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1999258813]
 layout_mode = 2
+theme_override_constants/separation = 64
 alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2006596233]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1783295652 instance=ExtResource("3_3shxk")]
 layout_mode = 2
@@ -130,7 +132,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2055503340]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 5
 
 [node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1705426529 instance=ExtResource("3_3shxk")]
 layout_mode = 2
@@ -192,7 +194,7 @@ horizontal_alignment = 1
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1736476355]
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1916671956 instance=ExtResource("3_3shxk")]
 layout_mode = 2
@@ -278,7 +280,7 @@ text = "PILES"
 
 [node name="PilesOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1651615929]
 layout_mode = 2
-selected = 1
+selected = 0
 item_count = 3
 popup/item_0/text = "3"
 popup/item_0/id = 3
@@ -288,6 +290,7 @@ popup/item_2/text = "5"
 popup/item_2/id = 1
 
 [node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=2038281241]
+visible = false
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 

@@ -7,8 +7,6 @@ signal card_requested(card: Card)
 
 @onready var hand: Node2D = $"../Hand"
 
-var _card: Card = null
-
 var _is_waiting_for_server: bool = false
 
 
@@ -27,7 +25,7 @@ func add_cards(cards: Array) -> void:
 		card.forbid()
 		
 		var tween = get_tree().create_tween()
-		tween.tween_property(card, "position", Vector2(i * 120, 0), shared_pile_add_time_seconds)
+		tween.tween_property(card, "position", Vector2(i * 180, 0), shared_pile_add_time_seconds)
 		
 		await tween.finished
 		
@@ -77,7 +75,7 @@ func _on_card_clicked(card: Card) -> void:
 	if _is_waiting_for_server:
 		return
 	
-	if GameData.players > 1:
+	if GameData.is_multiplayer():
 		_is_waiting_for_server = true
 		
 		card_requested.emit(card)
