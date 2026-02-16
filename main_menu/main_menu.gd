@@ -20,6 +20,11 @@ const _MAX_PILES: int = 13
 @export var join_waiting_label: Label
 @export var join_waiting_h_box_container: HBoxContainer
 
+@export var host_port_text_edit: TextEdit
+
+@export var ip_address_text_edit: TextEdit
+@export var join_port_text_edit: TextEdit
+
 
 func _ready() -> void:
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()
@@ -48,29 +53,51 @@ func _on_characters_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	GameData.disconnect_network()
+	
 	get_tree().quit()
 
 
-func _on_join_button_pressed() -> void:
-	_disable_buttons()
-	
-	join_waiting_label.text = tr("JOINING")
-	
-	$Network/ServerConnector.connect_to_server("localhost", 10800)
-	
-	join_h_box_container.visible = false
-	join_waiting_h_box_container.visible = true
-
-
 func _on_host_button_pressed() -> void:
+	var text: String = host_port_text_edit.text
+	
+	if not text.is_valid_int():
+		return
+	
+	var port: int = text.to_int()
+	
+	if port < 1023 or port > 65535:
+		return
+	
 	_disable_buttons()
 	
 	host_waiting_label.text = tr("WAITING_FOR_PLAYERS")
 	
-	$Network/Server.start_server(10800)
+	$Network/Server.start_server(port)
 	
 	host_h_box_container.visible = false
 	host_waiting_h_box_container.visible = true
+
+
+func _on_join_button_pressed() -> void:
+	var text: String = join_port_text_edit.text
+	
+	if not text.is_valid_int():
+		return
+	
+	var port: int = text.to_int()
+	
+	if port < 1023 or port > 65535:
+		return
+	
+	_disable_buttons()
+	
+	join_waiting_label.text = tr("JOINING")
+	
+	$Network/ServerConnector.connect_to_server(ip_address_text_edit.text, port)
+	
+	join_h_box_container.visible = false
+	join_waiting_h_box_container.visible = true
 
 
 func _on_piles_option_button_item_selected(index: int) -> void:

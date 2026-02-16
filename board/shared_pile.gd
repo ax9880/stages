@@ -38,11 +38,19 @@ func add_cards(cards: Array) -> void:
 
 func add_card(card: Card) -> void:
 	card.reparent($Cards)
+	
 	card.enable()
+	
+	if not hand.is_missing_one_card() and hand.get_active_card() == null:
+		card.forbid()
 	
 	_connect_signals(card)
 	
 	card.play_place_audio()
+
+
+func get_cards() -> Array:
+	return $Cards.get_children()
 
 
 func remove_card(card: Card) -> void:
@@ -71,8 +79,17 @@ func handle_card(card: Card) -> void:
 	_is_waiting_for_server = false
 
 
+func restore_state() -> void:
+	_is_waiting_for_server = false
+
+
 func _on_card_clicked(card: Card) -> void:
 	if _is_waiting_for_server:
+		print("Waiting for server")
+		
+		return
+	
+	if not hand.is_missing_one_card() and hand.get_active_card() == null:
 		return
 	
 	if GameData.is_multiplayer():

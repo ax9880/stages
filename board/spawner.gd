@@ -5,6 +5,7 @@ extends Node2D
 
 @export var card_packed_scene: PackedScene
 
+@export var pile_wait_time_seconds: float = 0.2
 @export var shared_pile_add_time_seconds: float = 0.2
 
 @export var can_randomize: bool = true
@@ -14,6 +15,8 @@ extends Node2D
 @export var waiting_for_players_container: MarginContainer
 
 @export var peer_disconnected_container: MarginContainer
+
+@export var time_label: Label
 
 signal all_hands_submitted(score_results: ScoreResults, positions: Array, total_scores: Array)
 signal score_updated(total_score: int)
@@ -32,6 +35,11 @@ var _is_transferring_pile: bool = false
 
 var _is_waiting_for_results: bool = false
 var _is_showing_results: bool = false
+
+var _time_elapsed: float = 0
+var _can_update_time_label: bool = true
+
+var _submitted_results: int = 0
 
 
 func _ready() -> void:
@@ -58,17 +66,30 @@ func _ready() -> void:
 	EventBus.card_dropped_in_shared_pile.connect(_on_card_dropped_in_shared_pile)
 	EventBus.card_picked_up_from_shared_pile.connect(_on_card_picked_up_from_shared_pile)
 	
-	if multiplayer.is_server():
-		multiplayer.peer_connected.connect(_on_peer_connected)
-		multiplayer.peer_disconnected.connect(_on_peer_disconnected)
-	else:
-		multiplayer.connected_to_server.connect(_on_connected_to_server)
-		multiplayer.server_disconnected.connect(_on_server_disconnected)
+	if GameData.is_multiplayer():
+		if multiplayer.is_server():
+			multiplayer.peer_connected.connect(_on_peer_connected)
+			multiplayer.peer_disconnected.connect(_on_peer_disconnected)
+		else:
+			multiplayer.connected_to_server.connect(_on_connected_to_server)
+			multiplayer.server_disconnected.connect(_on_server_disconnected)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	_update_time_elapsed(delta)
+	
 	if Input.is_action_just_pressed("ui_cancel"):
 		_quit()
+
+
+func _update_time_elapsed(delta: float) -> void:
+	_time_elapsed += delta
+	
+	var minutes = int(_time_elapsed / 60)
+	var seconds = int(_time_elapsed) % 60
+	
+	if _can_update_time_label:
+		time_label.text = "%02d:%02d" % [minutes, seconds]
 
 
 func _quit() -> void:
@@ -77,11 +98,10 @@ func _quit() -> void:
 	Loader.change_scene("res://main_menu/main_menu.tscn")
 	
 	if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.ConnectionStatus.CONNECTION_CONNECTED:
-		if multiplayer.is_server():
-			for peer in multiplayer.get_peers():
-				multiplayer.multiplayer_peer.disconnect_peer(peer)
-		
-		multiplayer.multiplayer_peer.close()
+		if not multiplayer.is_server():
+			multiplayer.server_disconnected.disconnect(_on_server_disconnected)
+	
+	GameData.disconnect_network()
 
 
 func randomize_piles(players: int = 0) -> void:
@@ -178,6 +198,8 @@ func _add_cards_to_piles(chosen_piles: Node2D, deck_children: Array, players: in
 		await pile.cards_added
 		
 		pile.pile_clicked.connect(_on_pile_clicked.bind(pile))
+		
+		await get_tree().create_timer(pile_wait_time_seconds).timeout
 
 
 func _on_pile_clicked(pile: Pile) -> void:
@@ -280,6 +302,10 @@ func _present_results() -> void:
 	
 	var scores: Array = GameData.results.values()
 	
+	for score in scores:
+		if score.time_seconds == 0:
+			score.time_seconds = floori(_time_elapsed)
+	
 	scores.sort_custom(sort_results)
 	
 	var positions: Array = []
@@ -312,14 +338,17 @@ func submit_results(base_score: int, perfect_hands: int, penalties: int, time_se
 	
 	GameData.results[player_score_results.peer_id] = player_score_results
 	
-	if GameData.results.keys().size() >= GameData.players - 1:
-		if multiplayer.is_server():
+	if multiplayer.is_server():
+		_submitted_results += 1
+		
+		if _submitted_results >= GameData.players - 1:
 			_present_results()
 
 
 @rpc("call_local")
 func show_results(positions: Array, total_scores: Array) -> void:
 	waiting_for_players_container.visible = false
+	_can_update_time_label = false
 	
 	all_hands_submitted.emit(score_results, positions, total_scores)
 
@@ -354,6 +383,10 @@ func _on_submit_button_pressed() -> void:
 		original_pile.submit()
 		
 		if _submitted_hands == piles_count:
+			_can_update_time_label = false
+			
+			score_results.time_seconds = floori(_time_elapsed)
+			
 			if GameData.is_multiplayer():
 				_submit_results_to_server()
 			else:
@@ -381,14 +414,18 @@ func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 
 
 func _on_shared_pile_card_requested(card: Card) -> void:
+	print("requesting card")
+	
 	request_card.rpc(card._card_data.texture.resource_path)
 
 
 func _on_peer_connected(_id: int) -> void:
 	peer_disconnected_container.visible = false
+	
+	on_peer_connected.rpc()
 
 
-func _on_peer_disconnected(_id: int) -> void:
+func _on_peer_disconnected(id: int) -> void:
 	print("Peer disconnected")
 	
 	if _is_waiting_for_results and multiplayer.get_peers().size() >= GameData.players - 1:
@@ -396,21 +433,31 @@ func _on_peer_disconnected(_id: int) -> void:
 	else:
 		peer_disconnected_container.visible = true
 		
-		# TODO: Stop timer
+		on_peer_disconnected.rpc()
 
 
 func _on_connected_to_server() -> void:
-	peer_disconnected_container.visible = false
+	on_peer_connected()
 
 
 func _on_server_disconnected() -> void:
+	on_peer_disconnected()
+
+
+@rpc
+func on_peer_connected() -> void:
+	peer_disconnected_container.visible = false
+
+
+@rpc
+func on_peer_disconnected() -> void:
 	if _is_showing_results:
 		return
 	
 	peer_disconnected_container.visible = true
 
 
-@rpc("call_local", "any_peer")
+@rpc("call_local", "any_peer", "reliable")
 func request_card(card_path: String) -> void:
 	if not multiplayer.is_server():
 		return
@@ -422,16 +469,29 @@ func request_card(card_path: String) -> void:
 	if card.peer_id == 0 || card.peer_id == multiplayer.get_remote_sender_id():
 		card.peer_id = multiplayer.get_remote_sender_id()
 		
+		for shared_pile_card in $SharedPile.get_cards():
+			if shared_pile_card != card and shared_pile_card.peer_id == card.peer_id:
+				print("Resetting card peer ID in ", multiplayer.get_unique_id())
+				
+				shared_pile_card.peer_id = 0
+		
 		grab_card.rpc_id(multiplayer.get_remote_sender_id(), card_path)
 	else:
 		print("Card taken by ", card.peer_id)
+		
+		restore_shared_pile_state.rpc_id(multiplayer.get_remote_sender_id())
 
 
-@rpc("call_local")
+@rpc("call_local", "reliable")
 func grab_card(card_path: String) -> void:
 	var card: Card = all_cards[card_path]
 	
 	$SharedPile.handle_card(card)
+
+
+@rpc("call_local", "reliable")
+func restore_shared_pile_state() -> void:
+	$SharedPile.restore_state()
 
 
 @rpc("any_peer")

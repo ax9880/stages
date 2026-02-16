@@ -9,12 +9,11 @@ size = Vector2(152, 200)
 
 [node name="Pile" type="Node2D" unique_id=747233574]
 script = ExtResource("1_1o32j")
-card_add_time_seconds = 0.0
 disabled_color = Color(0.91663986, 0.91663986, 0.9166397, 1)
 hover_color = Color(1, 1, 1, 1)
 
 [node name="PileBackground" type="Sprite2D" parent="." unique_id=1217477242]
-z_index = -1
+z_index = -10
 texture = ExtResource("3_n7xhl")
 metadata/_edit_lock_ = true
 

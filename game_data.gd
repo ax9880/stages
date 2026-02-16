@@ -25,6 +25,9 @@ func is_multiplayer() -> bool:
 
 
 func get_player_number(id: int = multiplayer.get_unique_id()) -> int:
+	if id == 0:
+		return 0
+	
 	return player_numbers[id]
 
 
@@ -72,3 +75,12 @@ func _initialize_results() -> void:
 		score_results = ScoreResults.new()
 		score_results.peer_id = peer_id
 		results[peer_id] = score_results
+
+
+func disconnect_network() -> void:
+	if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.ConnectionStatus.CONNECTION_CONNECTED:
+		if multiplayer.is_server():
+			for peer in multiplayer.get_peers():
+				multiplayer.multiplayer_peer.disconnect_peer(peer)
+		
+		multiplayer.multiplayer_peer.close()

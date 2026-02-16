@@ -48,6 +48,14 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 	penalties_label.text = str(score_results.penalties)
 	
 	total_score_label.text = str(score_results.get_total_score())
+	
+	if score_results.time_seconds > 0:
+		var minutes = int(score_results.time_seconds / 60)
+		var seconds = int(score_results.time_seconds) % 60
+		
+		time_label.text = "%02d:%02d" % [minutes, seconds]
+	else:
+		time_label.text = "--"
 
 
 func _show_multiplayer_results(positions: Array, total_scores: Array) -> void:

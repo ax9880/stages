@@ -20,7 +20,7 @@
 [ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="18_qq33v"]
 [ext_resource type="Texture2D" uid="uid://bbk3r0jdi7xvo" path="res://dotpack/Charas/Touhou16/Charas_096_4.png" id="19_cda7c"]
 
-[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container")]
+[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,6 +40,9 @@ host_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxConta
 join_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer")
 join_waiting_label = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer/JoinWaitingLabel")
 join_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer")
+host_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer/HostPortTextEdit")
+ip_address_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/IpAddressTextEdit")
+join_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinPortTextEdit")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=710832880]
 layout_mode = 2
@@ -279,6 +282,7 @@ size_flags_horizontal = 3
 text = "PILES"
 
 [node name="PilesOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3" unique_id=1651615929]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 selected = 0
 item_count = 3
@@ -322,6 +326,7 @@ size_flags_horizontal = 3
 text = "PLAYERS"
 
 [node name="PlayersOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7" unique_id=1011769395]
+custom_minimum_size = Vector2(90, 0)
 layout_mode = 2
 selected = 0
 item_count = 3
@@ -342,7 +347,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "PORT"
 
-[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=580389728]
+[node name="HostPortTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=580389728]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "30000"
@@ -377,10 +382,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "IP_ADDRESS"
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=960966395]
+[node name="IpAddressTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=960966395]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
-text = "192.168.0.100"
+text = "localhost"
 placeholder_text = "IP_ADDRESS"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=266305291]
@@ -389,7 +394,7 @@ layout_mode = 2
 text = "PORT"
 horizontal_alignment = 2
 
-[node name="TextEdit2" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=82524240]
+[node name="JoinPortTextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=82524240]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "30000"

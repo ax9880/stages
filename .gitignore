@@ -2,6 +2,9 @@
 .godot/
 *.translation
 
+*.exe
+*.pck
+
 dotpack/**/*.png
 
 *.wav

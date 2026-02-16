@@ -52,7 +52,7 @@ _data = {
 
 [node name="GameTree" type="Node" unique_id=642685009]
 
-[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "time_label", "player_label")]
+[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "player_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -60,7 +60,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nv1sn")
 score_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/Label2")
-time_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer2/Label4")
 player_label = NodePath("MarginContainer2/VBoxContainer2/PlayerLabel")
 metadata/_edit_lock_ = true
 
@@ -132,7 +131,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "TIME"
 
-[node name="Label4" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1484418090]
+[node name="TimeLabel" type="Label" parent="BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2" unique_id=1484418090]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 text = "00:00"
@@ -159,24 +158,21 @@ layout_mode = 2
 z_index = 10
 metadata/_edit_lock_ = true
 
-[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker", "waiting_for_players_container", "peer_disconnected_container")]
+[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker", "waiting_for_players_container", "peer_disconnected_container", "time_label")]
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
-shared_pile_add_time_seconds = 0.0
 submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
 waiting_for_players_container = NodePath("../../CanvasLayer/WaitingForPlayersContainer")
 peer_disconnected_container = NodePath("../../CanvasLayer/PeerDisconnectedContainer")
+time_label = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2/TimeLabel")
 metadata/_edit_lock_ = true
 
 [node name="CardDataLoader" parent="World/Spawner" unique_id=1588851902 instance=ExtResource("5_wg18t")]
 
-[node name="PlayTimer" type="Timer" parent="World/Spawner" unique_id=2054629867]
-
 [node name="Deck" type="Node2D" parent="World/Spawner" unique_id=1420116537]
-position = Vector2(178, 186)
-metadata/_edit_lock_ = true
+position = Vector2(270, 260)
 
 [node name="SharedPile" type="Node2D" parent="World/Spawner" unique_id=1732153458]
 position = Vector2(360, 80)
@@ -321,7 +317,6 @@ visible = false
 
 [connection signal="all_hands_submitted" from="World/Spawner" to="CanvasLayer/ScoreMenuContainer" method="_on_spawner_all_hands_submitted"]
 [connection signal="score_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_score_updated"]
-[connection signal="timeout" from="World/Spawner/PlayTimer" to="BoardMenuContainer" method="_on_play_timer_timeout"]
 [connection signal="card_requested" from="World/Spawner/SharedPile" to="World/Spawner" method="_on_shared_pile_card_requested"]
 [connection signal="gui_input" from="World/Spawner/SharedPile/SharedPileArea" to="World/Spawner/SharedPile" method="_on_shared_pile_area_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer/PeerDisconnectedQuitButton" to="World/Spawner" method="_on_peer_disconnected_quit_button_pressed"]

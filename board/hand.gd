@@ -153,6 +153,7 @@ func swap_with_shared_pile_card(card: Card) -> void:
 	_card.reparent(old_parent)
 	_card.stop_following_cursor()
 	_card.global_position = card.global_position
+	_card.peer_id = 0
 	
 	EventBus.card_dropped_in_shared_pile.emit(_card)
 	
