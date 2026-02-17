@@ -23,6 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://ebdkkwqr5m8b" path="res://main_menu/volume_slider.tscn" id="17_qq33v"]
 [ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="18_qq33v"]
 [ext_resource type="Texture2D" uid="uid://bbk3r0jdi7xvo" path="res://dotpack/Charas/Touhou16/Charas_096_4.png" id="19_cda7c"]
+[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="21_ru8rc"]
+[ext_resource type="Script" uid="uid://jyl8yu1q057c" path="res://main_menu/language_option_button.gd" id="22_xayta"]
 
 [node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit")]
 anchors_preset = 15
@@ -453,11 +455,13 @@ theme_override_font_sizes/font_size = 64
 text = "X"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=131046630]
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1768638811]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "START_SINGLE_PLAYER"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=118578740]
 custom_minimum_size = Vector2(720, 0)
@@ -547,10 +551,12 @@ layout_mode = 2
 text = "30000"
 placeholder_text = "PORT"
 
-[node name="HostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=1005940352]
+[node name="HostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=452355250]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "HOST"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="HostWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=501211282]
 visible = false
@@ -562,10 +568,12 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "WAITING_FOR_PLAYERS"
 
-[node name="CancelHostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer" unique_id=1070344073]
+[node name="CancelHostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer" unique_id=2126188378]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 text = "CANCEL"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="JoinHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1973108945]
 custom_minimum_size = Vector2(0, 52)
@@ -594,10 +602,12 @@ layout_mode = 2
 text = "30000"
 placeholder_text = "IP_ADDRESS"
 
-[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=761923145]
+[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=730020617]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "JOIN_MATCH"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="JoinWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=627679541]
 visible = false
@@ -609,56 +619,85 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "JOINING"
 
-[node name="CancelJoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer" unique_id=1210699654]
+[node name="CancelJoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer" unique_id=479048725]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 text = "CANCEL"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="FullScreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=776197096]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=804552741]
+layout_mode = 2
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=776197096]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
-button_pressed = true
+size_flags_horizontal = 3
 text = "FULL_SCREEN"
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=67618019]
+custom_minimum_size = Vector2(180, 0)
+layout_mode = 2
+text = "LANGUAGE"
+horizontal_alignment = 2
+
+[node name="LanguageOptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=1322679632]
+layout_mode = 2
+selected = 0
+item_count = 2
+popup/item_0/text = "English"
+popup/item_0/id = 0
+popup/item_1/text = "Español"
+popup/item_1/id = 1
+script = ExtResource("22_xayta")
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1863270963]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=692364787]
-custom_minimum_size = Vector2(320, 0)
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 text = "SOUND_EFFECTS"
 
 [node name="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1383325425 instance=ExtResource("17_qq33v")]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 bus_name = "Sound effects"
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=119038544]
-custom_minimum_size = Vector2(0, 52)
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=2113607130]
+custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=2113607130]
-custom_minimum_size = Vector2(320, 0)
-layout_mode = 2
+size_flags_horizontal = 3
 text = "MUSIC"
+horizontal_alignment = 2
 
-[node name="HSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer5" unique_id=1506368740 instance=ExtResource("17_qq33v")]
+[node name="HSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1506368740 instance=ExtResource("17_qq33v")]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="CharactersButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=11407471]
+[node name="CharactersButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1539468330]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "CHARACTERS"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=720223461]
+[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=975126878]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "QUIT"
+script = ExtResource("21_ru8rc")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=759145798]
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=882589947]
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 24
+text = "CREDITS"
+autowrap_mode = 2
 
 [node name="Network" type="Node" parent="." unique_id=371164179]
 
@@ -675,7 +714,8 @@ script = ExtResource("17_iri28")
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer/CancelHostButton" to="." method="_on_cancel_host_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer/CancelJoinButton" to="." method="_on_cancel_join_button_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
+[connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LanguageOptionButton" to="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/LanguageOptionButton" method="_on_item_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="on_peer_connection_status_change" from="Network/Server" to="." method="_on_server_on_peer_connection_status_change"]

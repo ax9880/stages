@@ -81,7 +81,7 @@ func _process(delta: float) -> void:
 	_update_time_elapsed(delta)
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		_quit()
 
@@ -328,7 +328,7 @@ func _present_results() -> void:
 	show_results.rpc(positions, total_scores)
 
 
-@rpc("call_local", "any_peer")
+@rpc("call_local", "any_peer", "reliable")
 func submit_results(base_score: int, perfect_hands: int, penalties: int, time_seconds: int) -> void:
 	var player_score_results := ScoreResults.new()
 	
@@ -510,7 +510,7 @@ func restore_shared_pile_state() -> void:
 	$SharedPile.restore_state()
 
 
-@rpc("any_peer")
+@rpc("any_peer", "reliable")
 func drop_card_in_shared_pile(card_path: String, card_position: Vector2) -> void:
 	var card: Card = all_cards[card_path]
 	
@@ -522,23 +522,19 @@ func drop_card_in_shared_pile(card_path: String, card_position: Vector2) -> void
 	
 	card.position = card_position
 	
+	card.appear()
 	card.flip_up()
 	
 	print("Adding card at %d" % multiplayer.get_unique_id())
 
 
-@rpc("any_peer")
+@rpc("any_peer", "reliable")
 func pick_up_card_from_shared_pile(card_path: String) -> void:
 	var card: Card = all_cards[card_path]
 	
 	assert(card != null)
 	
-	$SharedPile.remove_card(card)
-	
-	# TODO: Play animation
-	
-	card.disable()
-	card.reparent($Deck)
+	$SharedPile.remove_card(card, $Deck)
 
 
 @rpc("any_peer", "call_local")
@@ -554,8 +550,11 @@ func update_score(base_score: int, perfect_hands: int, penalties: int, submitted
 	multiplayer_score_tracker.update(peer_id, results.get_total_score(), submitted_hands)
 	
 	GameData.results[peer_id] = results
-	print("peer id ", peer_id)
 
 
 func _on_peer_disconnected_quit_button_pressed() -> void:
+	_quit()
+
+
+func _on_quit_button_pressed() -> void:
 	_quit()

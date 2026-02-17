@@ -292,6 +292,8 @@ func is_valid() -> HandEvaluationResults:
 				results.is_perfect_hand = false
 				
 				break
+		
+		results.game_number = game
 	
 	return results
 

@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="1_rjlel"]
 [ext_resource type="Texture2D" uid="uid://dta0h40cs6hli" path="res://dotpack/Charas/Touhou6/Charas_009_5.png" id="2_e484p"]
 [ext_resource type="Script" uid="uid://ma8vr5ked6er" path="res://card/card.gd" id="2_rjlel"]
-[ext_resource type="Texture2D" uid="uid://bjmpesvr03v2m" path="res://card/cardBack_red3.png" id="4_e484p"]
 [ext_resource type="Texture2D" uid="uid://cudhxnrbl1act" path="res://card/card_blank_2.png" id="5_1n6wr"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="5_346uv"]
 [ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="5_i6okx"]
@@ -61,6 +60,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shadow:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_rjlel"]
 resource_name = "flip_down"
@@ -100,6 +111,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(-1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_fpac0"]
@@ -141,6 +164,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Shadow:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1, 1), Vector2(1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_6xkbt"]
 resource_name = "hide"
@@ -167,7 +202,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("1_rjlel"), ExtResource("4_e484p")]
+"values": [ExtResource("1_rjlel"), ExtResource("6_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -385,8 +420,8 @@ script = ExtResource("2_rjlel")
 [node name="Shadow" type="Sprite2D" parent="." unique_id=107583571]
 modulate = Color(0.005243026, 0.0036890837, 0.07096694, 0.5294118)
 z_index = -5
+position = Vector2(-5, 5)
 texture = ExtResource("5_1n6wr")
-offset = Vector2(-5, 5)
 
 [node name="Card" type="Sprite2D" parent="." unique_id=782429156]
 texture = ExtResource("6_ags6k")

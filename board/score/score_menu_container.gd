@@ -50,7 +50,7 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 	total_score_label.text = str(score_results.get_total_score())
 	
 	if score_results.time_seconds > 0:
-		var minutes = int(score_results.time_seconds / 60)
+		var minutes = int(float(score_results.time_seconds) / 60)
 		var seconds = int(score_results.time_seconds) % 60
 		
 		time_label.text = "%02d:%02d" % [minutes, seconds]
@@ -72,16 +72,19 @@ func _show_multiplayer_results(positions: Array, total_scores: Array) -> void:
 
 
 func _on_play_again_button_pressed() -> void:
-	play_again_button.disabled = true
-	play_again_button.text = tr("WAITING_FOR_PLAYERS")
-	
 	if GameData.is_multiplayer():
+		play_again_button.disabled = true
+		play_again_button.text = tr("WAITING_FOR_PLAYERS")
+		
 		play_again.rpc()
 	else:
 		Loader.change_scene("res://board/game_tree.tscn")
 
 
 func _on_main_menu_button_pressed() -> void:
+	if GameData.is_multiplayer():
+		GameData.disconnect_network()
+	
 	Loader.change_scene("res://main_menu/main_menu.tscn")
 
 

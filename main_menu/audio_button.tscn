@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://chmytgc5m6h7x"]
+
+[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="1_tdb4c"]
+[ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="2_bmss5"]
+
+[node name="AudioButton" type="Button" unique_id=1678372174]
+script = ExtResource("1_tdb4c")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1270795453]
+stream = ExtResource("2_bmss5")
+bus = &"Sound effects"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

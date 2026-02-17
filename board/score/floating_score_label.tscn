@@ -83,18 +83,28 @@ _data = {
 [node name="FloatingScoreLabel" type="Node2D" unique_id=1835447406]
 script = ExtResource("1_cdy57")
 default_color = Color(1, 1, 1, 1)
+perfect_color = Color(0.70440394, 0.8377295, 0.98759574, 1)
 penalty_color = Color(0.8562232, 0.2218355, 0.29210153, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=992727313]
 offset_right = 400.0
-offset_bottom = 82.0
+offset_bottom = 127.0
 size_flags_horizontal = 0
 
-[node name="Label" type="Label" parent="MarginContainer" unique_id=1279945720]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1136833768]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1279945720]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_m2etm")
 theme_override_font_sizes/font_size = 64
 text = "PERFECTO +30"
+horizontal_alignment = 2
+
+[node name="GameLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=422620124]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_m2etm")
+text = "TOUHOU 20"
 horizontal_alignment = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=16176232]

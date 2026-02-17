@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://jvscpey8rbkc" path="res://board/score/score_menu_container.gd" id="1_drih8"]
 [ext_resource type="PackedScene" uid="uid://dtv5jk4p4ukdd" path="res://board/score/player_score_container.tscn" id="2_gbl0c"]
 [ext_resource type="AudioStream" uid="uid://c7g472rvx6vby" path="res://sounds/button25.mp3" id="2_uudvu"]
+[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="3_qpclf"]
 
 [node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "perfect_hands_label", "penalties_label", "total_score_label", "time_label", "multiplayer_results", "play_again_button")]
 anchors_preset = 15
@@ -19,7 +20,7 @@ total_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/Total
 time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
 multiplayer_results = NodePath("MarginContainer/VBoxContainer/MultiplayerResults")
 player_score_container_packed_scene = ExtResource("2_gbl0c")
-play_again_button = NodePath("MarginContainer/VBoxContainer/PlayAgainButton")
+play_again_button = NodePath("")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1816078611]
 layout_mode = 2
@@ -104,13 +105,17 @@ text = "TIME"
 layout_mode = 2
 text = "99:99"
 
-[node name="PlayAgainButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1529582081]
+[node name="PlayAgainButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1529551125]
 layout_mode = 2
 text = "PLAY_AGAIN"
+script = ExtResource("3_qpclf")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=840732188]
+[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1228779658]
 layout_mode = 2
 text = "MAIN_MENU"
+script = ExtResource("3_qpclf")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="GameFinishedAudio" type="AudioStreamPlayer" parent="." unique_id=57707517]
 stream = ExtResource("2_uudvu")

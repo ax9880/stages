@@ -47,7 +47,7 @@ func start_game() -> void:
 	_start_game.rpc(game_seed, player_numbers.keys().size(), piles, player_numbers)
 
 
-@rpc("call_local")
+@rpc("call_local", "reliable")
 func _start_game(_game_seed: int, _players: int, _piles: int, _player_numbers: Dictionary) -> void:
 	game_seed = _game_seed
 	
@@ -60,6 +60,8 @@ func _start_game(_game_seed: int, _players: int, _piles: int, _player_numbers: D
 	_initialize_results()
 	
 	print("Players: ", players)
+	
+	$GameStartAudio.play()
 	
 	Loader.change_scene("res://board/game_tree.tscn")
 

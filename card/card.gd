@@ -70,6 +70,29 @@ func flip_down() -> void:
 	$AnimationPlayer.play("flip_down")
 
 
+func _tween_modulate(target_color: Color) -> void:
+	if _appear_tween != null and _appear_tween.is_running():
+		_appear_tween.kill()
+	
+	_appear_tween = get_tree().create_tween()
+	
+	_appear_tween.tween_property(self, "modulate", target_color, 0.2)
+
+
+func appear() -> void:
+	_tween_modulate(Color.WHITE)
+
+
+func disappear(next_parent: Node) -> void:
+	disable()
+	
+	_tween_modulate(Color.TRANSPARENT)
+	
+	await _appear_tween.finished
+	
+	reparent(next_parent)
+
+
 func play_hide() -> void:
 	disable()
 	
@@ -83,7 +106,7 @@ func follow_cursor() -> void:
 	
 	disable()
 	
-	z_index += 1
+	z_index = 1
 	
 	_tween_scale(target_scale)
 

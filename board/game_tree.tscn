@@ -10,10 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="5_wg18t"]
 [ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://board/spawner.gd" id="6_45ghq"]
 [ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://board/pile.tscn" id="7_bcih5"]
+[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="7_kqjtd"]
 [ext_resource type="PackedScene" uid="uid://b63wl543jj5tj" path="res://board/hand.tscn" id="7_rrxdr"]
 [ext_resource type="Script" uid="uid://bjrlmkkxodevi" path="res://board/shared_pile.gd" id="7_wg18t"]
 [ext_resource type="Script" uid="uid://dfclrbw5ter6p" path="res://board/go_label.gd" id="7_wxf2d"]
 [ext_resource type="PackedScene" uid="uid://dnci10os6ib1u" path="res://board/score/score_menu_container.tscn" id="10_1dkug"]
+[ext_resource type="AudioStream" uid="uid://wnxlp7n768d8" path="res://sounds/cancel2.mp3" id="15_5abq5"]
 
 [sub_resource type="Animation" id="Animation_drss4"]
 length = 0.001
@@ -106,6 +108,21 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/2/type = "audio"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("15_5abq5")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5abq5"]
 _data = {
@@ -220,6 +237,18 @@ horizontal_alignment = 1
 
 [node name="MultiplayerScoreTracker" parent="BoardMenuContainer/MarginContainer2/VBoxContainer2" unique_id=1619415324 instance=ExtResource("4_drss4")]
 layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BoardMenuContainer/MarginContainer2" unique_id=1321922559]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="QuitButton" type="Button" parent="BoardMenuContainer/MarginContainer2/MarginContainer" unique_id=2069029232]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+text = "QUIT"
+script = ExtResource("7_kqjtd")
+metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="World" type="Node2D" parent="." unique_id=845418800]
 z_index = 10
@@ -338,6 +367,9 @@ script = ExtResource("7_wxf2d")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MarginContainer/GoLabel" unique_id=961335400]
 libraries/ = SubResource("AnimationLibrary_5abq5")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer/MarginContainer/GoLabel" unique_id=1561666624]
+bus = &"Sound effects"
+
 [node name="WaitingForPlayersContainer" type="MarginContainer" parent="CanvasLayer" unique_id=85415746]
 visible = false
 anchors_preset = 15
@@ -403,6 +435,7 @@ text = "QUIT"
 [node name="ScoreMenuContainer" parent="CanvasLayer" unique_id=1246059585 instance=ExtResource("10_1dkug")]
 visible = false
 
+[connection signal="pressed" from="BoardMenuContainer/MarginContainer2/MarginContainer/QuitButton" to="World/Spawner" method="_on_quit_button_pressed"]
 [connection signal="all_hands_submitted" from="World/Spawner" to="CanvasLayer/ScoreMenuContainer" method="_on_spawner_all_hands_submitted"]
 [connection signal="score_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_score_updated"]
 [connection signal="card_requested" from="World/Spawner/SharedPile" to="World/Spawner" method="_on_shared_pile_card_requested"]
