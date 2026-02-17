@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://d076wn80ho2c6"]
 
 [ext_resource type="Texture2D" uid="uid://dai4n8kmntrv8" path="res://dotpack/Charas/Touhou6/Charas_008_4.png" id="1_1n6oy"]
-[ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="1_hvw8x"]
+[ext_resource type="Texture2D" uid="uid://cudhxnrbl1act" path="res://card/card_blank_2.png" id="2_1n6oy"]
 
-[node name="VBoxContainer" type="VBoxContainer" unique_id=1260589921]
+[node name="UiCard" type="VBoxContainer" unique_id=1260589921]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 22
@@ -19,10 +19,12 @@ texture = ExtResource("1_1n6oy")
 [node name="TextureRect" type="TextureRect" parent="UiCard" unique_id=730264820]
 show_behind_parent = true
 layout_mode = 1
-offset_right = 140.0
-offset_bottom = 190.0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 148.0
+offset_bottom = 198.0
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_hvw8x")
+texture = ExtResource("2_1n6oy")
 stretch_mode = 4
 
 [node name="Label" type="Label" parent="." unique_id=278166624]

@@ -49,7 +49,7 @@ func start_game() -> void:
 
 @rpc("call_local")
 func _start_game(_game_seed: int, _players: int, _piles: int, _player_numbers: Dictionary) -> void:
-	seed(_game_seed)
+	game_seed = _game_seed
 	
 	players = _players
 	piles = _piles
@@ -77,10 +77,10 @@ func _initialize_results() -> void:
 		results[peer_id] = score_results
 
 
-func disconnect_network() -> void:
+func disconnect_network(force: bool = false) -> void:
 	if multiplayer.multiplayer_peer.get_connection_status() == MultiplayerPeer.ConnectionStatus.CONNECTION_CONNECTED:
 		if multiplayer.is_server():
 			for peer in multiplayer.get_peers():
-				multiplayer.multiplayer_peer.disconnect_peer(peer)
+				multiplayer.multiplayer_peer.disconnect_peer(peer, force)
 		
 		multiplayer.multiplayer_peer.close()

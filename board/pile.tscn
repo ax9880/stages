@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://beced22chfif5"]
 
 [ext_resource type="Script" uid="uid://duarj7gbpeqjh" path="res://board/pile.gd" id="1_1o32j"]
-[ext_resource type="Texture2D" uid="uid://yxn1i8xtyvr0" path="res://card/cardBack_green1.png" id="3_n7xhl"]
+[ext_resource type="Texture2D" uid="uid://806kwhyr0nky" path="res://card/card_back_blue_2.png" id="2_01qhl"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="4_rrfxv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tynfp"]
@@ -14,7 +14,7 @@ hover_color = Color(1, 1, 1, 1)
 
 [node name="PileBackground" type="Sprite2D" parent="." unique_id=1217477242]
 z_index = -10
-texture = ExtResource("3_n7xhl")
+texture = ExtResource("2_01qhl")
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1297028060]

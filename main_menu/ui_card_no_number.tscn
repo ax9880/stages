@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://jql13mb1dho1"]
+
+[ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="1_dwbjv"]
+
+[node name="UiCard" unique_id=1260589921 instance=ExtResource("1_dwbjv")]
+
+[node name="Label" parent="." index="1" unique_id=278166624]
+visible = false

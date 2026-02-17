@@ -12,6 +12,8 @@ dotpack/**/*.png
 *.mp3
 
 *.png
+*.png~
+*.ase
 
 *.ttf
 

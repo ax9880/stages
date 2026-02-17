@@ -4,8 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://dta0h40cs6hli" path="res://dotpack/Charas/Touhou6/Charas_009_5.png" id="2_e484p"]
 [ext_resource type="Script" uid="uid://ma8vr5ked6er" path="res://card/card.gd" id="2_rjlel"]
 [ext_resource type="Texture2D" uid="uid://bjmpesvr03v2m" path="res://card/cardBack_red3.png" id="4_e484p"]
+[ext_resource type="Texture2D" uid="uid://cudhxnrbl1act" path="res://card/card_blank_2.png" id="5_1n6wr"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="5_346uv"]
 [ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="5_i6okx"]
+[ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="6_ags6k"]
+[ext_resource type="AudioStream" uid="uid://dd42iuxcq1108" path="res://card/card-place-2.ogg" id="9_ags6k"]
+[ext_resource type="AudioStream" uid="uid://by46h4fdjebqd" path="res://card/card-slide-7.ogg" id="10_7dy67"]
 
 [sub_resource type="Animation" id="Animation_e484p"]
 length = 0.001
@@ -31,7 +35,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_e484p")]
+"values": [ExtResource("6_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -83,7 +87,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("1_rjlel"), ExtResource("4_e484p")]
+"values": [ExtResource("5_1n6wr"), ExtResource("6_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -123,7 +127,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("4_e484p"), ExtResource("1_rjlel")]
+"values": [ExtResource("6_ags6k"), ExtResource("5_1n6wr")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -377,16 +381,15 @@ _data = {
 
 [node name="Card" type="Sprite2D" unique_id=1737746549]
 script = ExtResource("2_rjlel")
-velocity_pixels_per_second = 64.0
 
 [node name="Shadow" type="Sprite2D" parent="." unique_id=107583571]
-modulate = Color(0, 0, 0, 0.5294118)
+modulate = Color(0.005243026, 0.0036890837, 0.07096694, 0.5294118)
 z_index = -5
-texture = ExtResource("1_rjlel")
+texture = ExtResource("5_1n6wr")
 offset = Vector2(-5, 5)
 
 [node name="Card" type="Sprite2D" parent="." unique_id=782429156]
-texture = ExtResource("4_e484p")
+texture = ExtResource("6_ags6k")
 
 [node name="Character" type="Sprite2D" parent="Card" unique_id=481162636]
 visible = false
@@ -448,4 +451,14 @@ bus = &"Sound effects"
 [node name="ShowStageAudio" type="AudioStreamPlayer" parent="." unique_id=1067033506]
 bus = &"Sound effects"
 
+[node name="PeerPlaceAudio" type="AudioStreamPlayer" parent="." unique_id=1245099389]
+stream = ExtResource("9_ags6k")
+bus = &"Sound effects"
+
+[node name="PeerGrabAudio" type="AudioStreamPlayer" parent="." unique_id=1373450446]
+stream = ExtResource("10_7dy67")
+bus = &"Sound effects"
+
 [connection signal="gui_input" from="MarginContainer" to="." method="_on_margin_container_gui_input"]
+[connection signal="mouse_entered" from="MarginContainer" to="." method="_on_margin_container_mouse_entered"]
+[connection signal="mouse_exited" from="MarginContainer" to="." method="_on_margin_container_mouse_exited"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://jjl7ws833k7m"
-path="res://.godot/imported/system_icons.png-798d0d7c091d6677dc565e95071a216f.ctex"
+uid="uid://806kwhyr0nky"
+path="res://.godot/imported/card_back_blue_2.png-686838f23895a16d2e8074b8a43eb5b8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dotpack/system_icons.png"
-dest_files=["res://.godot/imported/system_icons.png-798d0d7c091d6677dc565e95071a216f.ctex"]
+source_file="res://card/card_back_blue_2.png"
+dest_files=["res://.godot/imported/card_back_blue_2.png-686838f23895a16d2e8074b8a43eb5b8.ctex"]
 
 [params]
 

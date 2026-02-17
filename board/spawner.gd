@@ -18,6 +18,8 @@ extends Node2D
 
 @export var time_label: Label
 
+@export var go_label: Label
+
 signal all_hands_submitted(score_results: ScoreResults, positions: Array, total_scores: Array)
 signal score_updated(total_score: int)
 
@@ -77,7 +79,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	_update_time_elapsed(delta)
-	
+
+
+func _unhandled_input(event: InputEvent) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		_quit()
 
@@ -105,6 +109,8 @@ func _quit() -> void:
 
 
 func randomize_piles(players: int = 0) -> void:
+	seed(GameData.game_seed)
+	
 	var available_games: Array = games.keys().duplicate()
 	
 	if can_randomize:
@@ -155,6 +161,8 @@ func distribute_piles(players: int) -> void:
 	
 	for pile in chosen_piles.get_children():
 		pile.enable_area()
+	
+	go_label.play()
 
 
 func _pick_piles() -> Node2D:
@@ -341,6 +349,8 @@ func submit_results(base_score: int, perfect_hands: int, penalties: int, time_se
 	if multiplayer.is_server():
 		_submitted_results += 1
 		
+		_reset_card_peer_ids(sender_id)
+		
 		if _submitted_results >= GameData.players - 1:
 			_present_results()
 
@@ -425,7 +435,7 @@ func _on_peer_connected(_id: int) -> void:
 	on_peer_connected.rpc()
 
 
-func _on_peer_disconnected(id: int) -> void:
+func _on_peer_disconnected(_id: int) -> void:
 	print("Peer disconnected")
 	
 	if _is_waiting_for_results and multiplayer.get_peers().size() >= GameData.players - 1:
@@ -482,6 +492,12 @@ func request_card(card_path: String) -> void:
 		restore_shared_pile_state.rpc_id(multiplayer.get_remote_sender_id())
 
 
+func _reset_card_peer_ids(peer_id: int) -> void:
+	for shared_pile_card in $SharedPile.get_cards():
+		if shared_pile_card.peer_id == peer_id:
+			shared_pile_card.peer_id = 0
+
+
 @rpc("call_local", "reliable")
 func grab_card(card_path: String) -> void:
 	var card: Card = all_cards[card_path]
@@ -518,6 +534,8 @@ func pick_up_card_from_shared_pile(card_path: String) -> void:
 	assert(card != null)
 	
 	$SharedPile.remove_card(card)
+	
+	# TODO: Play animation
 	
 	card.disable()
 	card.reparent($Deck)

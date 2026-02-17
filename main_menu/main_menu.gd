@@ -53,7 +53,7 @@ func _on_characters_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
-	GameData.disconnect_network()
+	GameData.disconnect_network(true)
 	
 	get_tree().quit()
 
@@ -178,3 +178,10 @@ func _on_connected_to_server() -> void:
 
 func _on_disconnected_to_server() -> void:
 	join_waiting_label.text = tr("JOINING")
+
+
+func _on_full_screen_check_box_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

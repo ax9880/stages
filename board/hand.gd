@@ -137,6 +137,9 @@ func transfer_from_shared_pile(card: Card) -> void:
 	
 	_pick_up_card(card)
 	
+	for card_in_hand in _cards:
+		card_in_hand.allow()
+	
 	EventBus.card_picked_up_from_shared_pile.emit(card)
 
 
@@ -246,6 +249,9 @@ func drop_card_in_shared_pile(shared_pile: Node2D) -> void:
 	_card.peer_id = 0
 	
 	_cards.remove_at(_cards.find(_card))
+	
+	for card in _cards:
+		card.forbid()
 	
 	EventBus.card_dropped_in_shared_pile.emit(_card)
 	

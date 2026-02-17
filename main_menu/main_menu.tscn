@@ -4,11 +4,15 @@
 [ext_resource type="FontFile" uid="uid://bucib1m3mxg2k" path="res://font/Dosis-ExtraBold.ttf" id="2_3shxk"]
 [ext_resource type="Script" uid="uid://c5i6u3lngpfar" path="res://main_menu/main_menu.gd" id="2_tr6y3"]
 [ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="3_3shxk"]
+[ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="3_ie3af"]
 [ext_resource type="Texture2D" uid="uid://d0rbrnltm17fe" path="res://dotpack/Charas/Touhou6/Charas_003_1.png" id="4_qq33v"]
 [ext_resource type="Texture2D" uid="uid://ffwpjt2qve6r" path="res://dotpack/Charas/Touhou7/Charas_013_2.png" id="5_6at21"]
+[ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="5_ifnh7"]
 [ext_resource type="Texture2D" uid="uid://gdgigvaey3bk" path="res://dotpack/Charas/Touhou18/Charas_121_2.png" id="5_og6xe"]
+[ext_resource type="Texture2D" uid="uid://cp6mmjyaivlll" path="res://card/cursor.png" id="6_7f1p5"]
 [ext_resource type="Texture2D" uid="uid://bgghs2ial0kpx" path="res://dotpack/Charas/Touhou10/Charas_041_3.png" id="6_og6xe"]
 [ext_resource type="Texture2D" uid="uid://1a1srpthbmfb" path="res://dotpack/Charas/Touhou12/Charas_061_4.png" id="7_mvfl2"]
+[ext_resource type="PackedScene" uid="uid://jql13mb1dho1" path="res://main_menu/ui_card_no_number.tscn" id="7_ombju"]
 [ext_resource type="Texture2D" uid="uid://dicbsadw26el0" path="res://dotpack/Charas/Touhou16/Charas_097_5.png" id="8_qvn4f"]
 [ext_resource type="Texture2D" uid="uid://cgg5npkwdbaw" path="res://dotpack/Charas/Touhou15/Charas_090_6.png" id="9_g1omr"]
 [ext_resource type="Texture2D" uid="uid://bek03bxbonyax" path="res://dotpack/Charas/Touhou17/Charas_116_5.png" id="14_iri28"]
@@ -44,6 +48,10 @@ host_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/Host
 ip_address_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/IpAddressTextEdit")
 join_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinPortTextEdit")
 
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1292035198]
+layout_mode = 2
+texture = ExtResource("3_ie3af")
+
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=710832880]
 layout_mode = 2
 theme_override_constants/margin_left = 32
@@ -66,6 +74,192 @@ layout_mode = 2
 text = "INSTRUCTIONS"
 horizontal_alignment = 1
 
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=545130056]
+layout_mode = 2
+theme_override_constants/separation = 32
+alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1636719361]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer" unique_id=863885947]
+custom_minimum_size = Vector2(125, 125)
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=998460615]
+layout_mode = 0
+offset_top = 7.5
+offset_right = 75.0
+offset_bottom = 107.5
+texture = ExtResource("5_ifnh7")
+expand_mode = 1
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=1498107030]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 4.5
+offset_right = 78.0
+offset_bottom = 104.5
+texture = ExtResource("5_ifnh7")
+expand_mode = 1
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=553676018]
+layout_mode = 0
+offset_left = 6.0
+offset_top = 1.5
+offset_right = 81.0
+offset_bottom = 101.5
+texture = ExtResource("5_ifnh7")
+expand_mode = 1
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=892724881]
+layout_mode = 0
+offset_left = 9.0
+offset_top = -1.5
+offset_right = 84.0
+offset_bottom = 98.5
+texture = ExtResource("5_ifnh7")
+expand_mode = 1
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=1844524108]
+layout_mode = 0
+offset_left = 12.0
+offset_top = -4.5
+offset_right = 87.0
+offset_bottom = 95.5
+texture = ExtResource("5_ifnh7")
+expand_mode = 1
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=1828227585]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 26.5
+offset_right = 138.0
+offset_bottom = 126.5
+texture = ExtResource("6_7f1p5")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer" unique_id=1974393404]
+layout_mode = 2
+text = "CHOOSE_PILE"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=849220938]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2" unique_id=51916629]
+custom_minimum_size = Vector2(288.51, 125)
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=1260589921 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_top = 7.5
+offset_right = 72.0
+offset_bottom = 79.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard" index="0" unique_id=1783295652]
+texture = ExtResource("4_qq33v")
+
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=620271214 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 7.5
+offset_right = 110.0
+offset_bottom = 79.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard2" index="0" unique_id=1783295652]
+texture = ExtResource("5_6at21")
+
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=1024141027 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 7.5
+offset_right = 144.0
+offset_bottom = 79.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard3" index="0" unique_id=1783295652]
+texture = ExtResource("6_og6xe")
+
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=581229848 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_left = 156.0
+offset_top = 7.5
+offset_right = 228.0
+offset_bottom = 79.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard5" index="0" unique_id=1783295652]
+texture = ExtResource("8_qvn4f")
+
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=494559507 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_left = 197.0
+offset_top = 7.5
+offset_right = 269.0
+offset_bottom = 79.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard6" index="0" unique_id=1783295652]
+texture = ExtResource("9_g1omr")
+
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=961540857 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_left = 104.0
+offset_top = -6.5
+offset_right = 176.0
+offset_bottom = 65.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard4" index="0" unique_id=1783295652]
+texture = ExtResource("17_ifnh7")
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=795175820]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 65.5
+offset_right = 194.0
+offset_bottom = 125.5
+texture = ExtResource("6_7f1p5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2" unique_id=1637863815]
+layout_mode = 2
+text = "CHOOSE_CARD"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1581146159]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3" unique_id=1866423994]
+custom_minimum_size = Vector2(150, 125)
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=1048628934 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_top = 7.5
+offset_right = 72.0
+offset_bottom = 79.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard" index="0" unique_id=1783295652]
+texture = ExtResource("7_mvfl2")
+
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=258169677 instance=ExtResource("7_ombju")]
+layout_mode = 0
+offset_left = 43.0
+offset_top = -2.5
+offset_right = 115.0
+offset_bottom = 69.5
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard5" index="0" unique_id=1783295652]
+texture = ExtResource("17_ifnh7")
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=1429262281]
+layout_mode = 0
+offset_left = 77.0
+offset_top = 62.0
+offset_right = 137.0
+offset_bottom = 122.0
+texture = ExtResource("6_7f1p5")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3" unique_id=98234354]
+layout_mode = 2
+text = "SWAP_CARDS"
+
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1999258813]
 layout_mode = 2
 theme_override_constants/separation = 64
@@ -75,13 +269,13 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 5
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1783295652 instance=ExtResource("3_3shxk")]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1565460565 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard" index="0" unique_id=1783295652]
 texture = ExtResource("4_qq33v")
 
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1260589921 instance=ExtResource("3_3shxk")]
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=893307115 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="0" unique_id=1783295652]
@@ -214,16 +408,6 @@ texture = ExtResource("5_og6xe")
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="1" unique_id=278166624]
 text = "2"
 
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=713705313 instance=ExtResource("3_3shxk")]
-layout_mode = 2
-
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
-
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
-theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
-text = "3"
-
 [node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1357741496 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
@@ -231,6 +415,16 @@ layout_mode = 2
 texture = ExtResource("6_og6xe")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="1" unique_id=278166624]
+theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
+text = "3"
+
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=713705313 instance=ExtResource("3_3shxk")]
+layout_mode = 2
+
+[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="0" unique_id=1783295652]
+texture = ExtResource("17_ifnh7")
+
+[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
 theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
 text = "3"
 
@@ -406,6 +600,7 @@ layout_mode = 2
 text = "JOIN_MATCH"
 
 [node name="JoinWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=627679541]
+visible = false
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 
@@ -419,12 +614,11 @@ custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 text = "CANCEL"
 
-[node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=776197096]
-visible = false
+[node name="FullScreenCheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=776197096]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 button_pressed = true
-text = "PENALTIES"
+text = "FULL_SCREEN"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1863270963]
 custom_minimum_size = Vector2(0, 52)
@@ -481,10 +675,19 @@ script = ExtResource("17_iri28")
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer/CancelHostButton" to="." method="_on_cancel_host_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinButton" to="." method="_on_join_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer/CancelJoinButton" to="." method="_on_cancel_join_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/VBoxContainer/FullScreenCheckBox" to="." method="_on_full_screen_check_box_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/CharactersButton" to="." method="_on_characters_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="on_peer_connection_status_change" from="Network/Server" to="." method="_on_server_on_peer_connection_status_change"]
 
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard5"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3"]
@@ -499,7 +702,7 @@ script = ExtResource("17_iri28")
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5"]
 [editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6"]

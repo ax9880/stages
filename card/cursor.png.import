@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vobx5c624pkh"
-path="res://.godot/imported/all_chara.png-4f6688d904dbb8ad5eb534c57bb24284.ctex"
+uid="uid://cp6mmjyaivlll"
+path="res://.godot/imported/cursor.png-eaad5603493e5b16a7b91778237e38a0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dotpack/all_chara.png"
-dest_files=["res://.godot/imported/all_chara.png-4f6688d904dbb8ad5eb534c57bb24284.ctex"]
+source_file="res://card/cursor.png"
+dest_files=["res://.godot/imported/cursor.png-eaad5603493e5b16a7b91778237e38a0.ctex"]
 
 [params]
 
