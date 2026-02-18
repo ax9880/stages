@@ -107,7 +107,7 @@ func _on_join_button_pressed() -> void:
 	
 	join_waiting_label.text = tr("JOINING")
 	
-	$Network/ServerConnector.connect_to_server(ip_address_text_edit.text, port)
+	$Network/ServerConnector.connect_to_server(ip_address_text_edit.text.strip_edges(), port)
 	
 	join_h_box_container.visible = false
 	join_waiting_h_box_container.visible = true

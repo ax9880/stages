@@ -4,6 +4,7 @@
 
 *.exe
 *.pck
+*.zip
 
 dotpack/**/*.png
 
