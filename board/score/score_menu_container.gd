@@ -1,5 +1,7 @@
 extends MarginContainer
 
+@export var lose_color: Color
+
 @export var result_label: Label
 
 @export var base_score_label: Label
@@ -34,8 +36,12 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 		
 		if positions.front() == multiplayer.get_unique_id():
 			result_label.text = tr("YOU_WIN")
+			
+			result_label.remove_theme_color_override("font_color")
 		else:
 			result_label.text = tr("YOU_LOSE")
+			
+			result_label.add_theme_color_override("font_color", lose_color)
 	
 	base_score_label.text = str(score_results.base_score)
 	

@@ -12,6 +12,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_drih8")
+lose_color = Color(0.95235604, 0.44708616, 0.4318502, 1)
 result_label = NodePath("MarginContainer/VBoxContainer/ResultLabel")
 base_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreLabel")
 penalties_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer5/PenaltiesLabel")
