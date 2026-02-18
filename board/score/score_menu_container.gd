@@ -20,7 +20,7 @@ func _ready() -> void:
 	visible = false
 
 
-func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Array = [], total_scores: Array = []) -> void:
+func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Array = [], total_scores: Array = [], times: Array = []) -> void:
 	visible = true
 	
 	# TODO: Animate
@@ -30,7 +30,7 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 	assert(positions.size() == total_scores.size())
 	
 	if positions.size() > 1:
-		_show_multiplayer_results(positions, total_scores)
+		_show_multiplayer_results(positions, total_scores, times)
 		
 		if positions.front() == multiplayer.get_unique_id():
 			result_label.text = tr("YOU_WIN")
@@ -50,7 +50,7 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 		time_label.text = "--"
 
 
-func _show_multiplayer_results(positions: Array, total_scores: Array) -> void:
+func _show_multiplayer_results(positions: Array, total_scores: Array, times: Array) -> void:
 	multiplayer_results.visible = true
 	
 	for i in positions.size():
@@ -58,7 +58,7 @@ func _show_multiplayer_results(positions: Array, total_scores: Array) -> void:
 		var total_score: int = total_scores[i]
 		
 		var player_score_container = player_score_container_packed_scene.instantiate()
-		player_score_container.set_data(i, GameData.get_player_number(peer_id), total_score)
+		player_score_container.set_data(i, GameData.get_player_number(peer_id), total_score, times[i])
 		
 		multiplayer_results.add_child(player_score_container)
 

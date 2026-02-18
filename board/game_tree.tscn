@@ -257,7 +257,6 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
-can_randomize = false
 submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
 waiting_for_players_container = NodePath("../../CanvasLayer/WaitingForPlayersContainer")

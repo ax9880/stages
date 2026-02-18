@@ -12,7 +12,7 @@ var piles: int = 3
 
 var time_limit_seconds: int = 0
 
-var is_full_screen: bool = false
+var is_full_screen: bool = true
 
 var player_numbers: Dictionary = {}
 

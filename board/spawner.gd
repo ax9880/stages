@@ -20,7 +20,7 @@ extends Node2D
 
 @export var go_label: Label
 
-signal all_hands_submitted(score_results: ScoreResults, positions: Array, total_scores: Array)
+signal all_hands_submitted(score_results: ScoreResults, positions: Array, total_scores: Array, times: Array)
 signal score_updated(total_score: int)
 
 # Dictionary<int, Array<Array<CardData>>>
@@ -289,6 +289,11 @@ func sort_results(first: ScoreResults, second: ScoreResults) -> bool:
 	elif first.penalties > second.penalties:
 		return false
 	
+	if first.time_seconds == 0:
+		return false
+	elif second.time_seconds == 0:
+		return true
+	
 	if first.time_seconds < second.time_seconds:
 		return true
 	elif first.time_seconds > second.time_seconds:
@@ -305,22 +310,20 @@ func _present_results() -> void:
 	
 	var scores: Array = GameData.results.values()
 	
-	for score in scores:
-		if score.time_seconds == 0:
-			score.time_seconds = floori(_time_elapsed)
-	
 	scores.sort_custom(sort_results)
 	
 	var positions: Array = []
 	var total_scores: Array = []
+	var times: Array = []
 	
 	for score in scores:
 		assert(score.peer_id != 0)
 		
 		positions.push_back(score.peer_id)
 		total_scores.push_back(score.get_total_score())
+		times.push_back(score.time_seconds)
 	
-	show_results.rpc(positions, total_scores)
+	show_results.rpc(positions, total_scores, times)
 
 
 @rpc("call_local", "any_peer", "reliable")
@@ -349,14 +352,14 @@ func submit_results(base_score: int, penalties: int, time_seconds: int) -> void:
 			_present_results()
 
 
-@rpc("call_local")
-func show_results(positions: Array, total_scores: Array) -> void:
+@rpc("call_local", "reliable")
+func show_results(positions: Array, total_scores: Array, times: Array) -> void:
 	waiting_for_players_container.visible = false
 	_can_update_time_label = false
 	
 	_is_showing_results = true
 	
-	all_hands_submitted.emit(score_results, positions, total_scores)
+	all_hands_submitted.emit(score_results, positions, total_scores, times)
 
 
 func _on_submit_button_pressed() -> void:
@@ -393,7 +396,7 @@ func _on_submit_button_pressed() -> void:
 			if GameData.is_multiplayer():
 				_submit_results_to_server()
 			else:
-				all_hands_submitted.emit(score_results, [], [])
+				all_hands_submitted.emit(score_results, [], [], [])
 	else:
 		score_results.add_penalty()
 		
