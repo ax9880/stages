@@ -38,7 +38,12 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 			result_label.text = tr("YOU_LOSE")
 	
 	base_score_label.text = str(score_results.base_score)
-	penalties_label.text = str(score_results.penalties)
+	
+	if score_results.penalties == 0:
+		penalties_label.text = str(score_results.penalties)
+	else:
+		penalties_label.text = "%s (%d)" % [score_results.penalties, score_results.penalties * ScoreResults.PENALTY]
+	
 	total_score_label.text = str(score_results.get_total_score())
 	
 	if score_results.time_seconds > 0:

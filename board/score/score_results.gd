@@ -22,4 +22,4 @@ func update() -> void:
 
 
 func get_total_score() -> int:
-	return max(base_score + penalties * PENALTY, 0)
+	return max(base_score + penalties * PENALTY, -50)
