@@ -422,7 +422,7 @@ alignment = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=2026350126]
 layout_mode = 2
-text = "WAITING_FOR_PLAYERS"
+text = "DISCONNECTED"
 horizontal_alignment = 1
 
 [node name="PeerDisconnectedQuitButton" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=1310309335 instance=ExtResource("16_68t1a")]

@@ -27,6 +27,7 @@ WAITING_FOR_PLAYERS,Waiting for players...,Esperando jugadores...
 JOINING,Joining match,Uniéndose a partida...
 CONNECTED,Connected,Conectado
 CANCEL,Cancel,Cancelar
+DISCONNECTED,Disconnected,Desconectado
 WAITING_FOR_OTHER_PLAYERS_TO_FINISH,Waiting for other players to finish,Esperando que terminen los otros jugadores
 YOU_WIN,You win,Ganaste
 YOU_LOSE,You lose,Perdiste
