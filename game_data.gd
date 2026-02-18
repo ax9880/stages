@@ -55,6 +55,8 @@ func start_game() -> void:
 func _start_game(_game_seed: int, _players: int, _piles: int, _player_numbers: Dictionary) -> void:
 	game_seed = _game_seed
 	
+	seed(GameData.game_seed)
+	
 	players = _players
 	piles = _piles
 	player_numbers = _player_numbers

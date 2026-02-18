@@ -109,8 +109,6 @@ func _quit() -> void:
 
 
 func randomize_piles(players: int = 0) -> void:
-	seed(GameData.game_seed)
-	
 	var available_games: Array = games.keys().duplicate()
 	
 	if can_randomize:
