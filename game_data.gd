@@ -2,14 +2,17 @@ extends Node
 
 var game_seed: int = 0
 
+var ip_address: String = "localhost"
+var port: int = 30000
+
 var connected_peers: int = 0
 
 var players: int = 1
-var piles: int = -1
+var piles: int = 3
 
 var time_limit_seconds: int = 0
 
-var is_penalties_enabled: bool = true
+var is_full_screen: bool = false
 
 var player_numbers: Dictionary = {}
 
@@ -36,8 +39,9 @@ func start_game() -> void:
 	game_seed = randi()
 	
 	player_numbers.clear()
-	
 	player_numbers[1] = 0
+	
+	results.clear()
 	
 	for i in multiplayer.get_peers().size():
 		var peer_id: int = multiplayer.get_peers()[i]

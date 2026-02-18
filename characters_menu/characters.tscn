@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="2_eekhk"]
 [ext_resource type="PackedScene" uid="uid://fxq2mrolcqfb" path="res://characters_menu/game_h_box_container.tscn" id="2_j24f1"]
 [ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="4_mkpa6"]
+[ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="5_tn0ug"]
 
 [node name="Characters" type="MarginContainer" unique_id=2023050909]
 anchors_preset = 15
@@ -30,7 +31,7 @@ theme_override_constants/margin_bottom = 32
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1649257433]
 layout_mode = 2
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1620440696]
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" unique_id=1620440696 instance=ExtResource("5_tn0ug")]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4

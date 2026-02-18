@@ -5,26 +5,26 @@
 [ext_resource type="Script" uid="uid://c5i6u3lngpfar" path="res://main_menu/main_menu.gd" id="2_tr6y3"]
 [ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="3_3shxk"]
 [ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="3_ie3af"]
-[ext_resource type="Texture2D" uid="uid://d0rbrnltm17fe" path="res://dotpack/Charas/Touhou6/Charas_003_1.png" id="4_qq33v"]
 [ext_resource type="Texture2D" uid="uid://ffwpjt2qve6r" path="res://dotpack/Charas/Touhou7/Charas_013_2.png" id="5_6at21"]
 [ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="5_ifnh7"]
-[ext_resource type="Texture2D" uid="uid://gdgigvaey3bk" path="res://dotpack/Charas/Touhou18/Charas_121_2.png" id="5_og6xe"]
 [ext_resource type="Texture2D" uid="uid://cp6mmjyaivlll" path="res://card/cursor.png" id="6_7f1p5"]
-[ext_resource type="Texture2D" uid="uid://bgghs2ial0kpx" path="res://dotpack/Charas/Touhou10/Charas_041_3.png" id="6_og6xe"]
-[ext_resource type="Texture2D" uid="uid://1a1srpthbmfb" path="res://dotpack/Charas/Touhou12/Charas_061_4.png" id="7_mvfl2"]
 [ext_resource type="PackedScene" uid="uid://jql13mb1dho1" path="res://main_menu/ui_card_no_number.tscn" id="7_ombju"]
-[ext_resource type="Texture2D" uid="uid://dicbsadw26el0" path="res://dotpack/Charas/Touhou16/Charas_097_5.png" id="8_qvn4f"]
-[ext_resource type="Texture2D" uid="uid://cgg5npkwdbaw" path="res://dotpack/Charas/Touhou15/Charas_090_6.png" id="9_g1omr"]
-[ext_resource type="Texture2D" uid="uid://bek03bxbonyax" path="res://dotpack/Charas/Touhou17/Charas_116_5.png" id="14_iri28"]
-[ext_resource type="Texture2D" uid="uid://ddoklwp88iyt7" path="res://dotpack/Charas/Touhou17/Charas_117_6.png" id="15_qq33v"]
 [ext_resource type="Texture2D" uid="uid://mujolpg51hbd" path="res://dotpack/Charas/Touhou20/Charas_126_1.png" id="16_qq33v"]
-[ext_resource type="Texture2D" uid="uid://cvwfikvnkhpdo" path="res://dotpack/Charas/Touhou17/Charas_114_3.png" id="17_ifnh7"]
 [ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="17_iri28"]
+[ext_resource type="Texture2D" uid="uid://b3yoytn7dphos" path="res://dotpack/Charas/Touhou20/Charas_127_2.png" id="17_nd3u2"]
 [ext_resource type="PackedScene" uid="uid://ebdkkwqr5m8b" path="res://main_menu/volume_slider.tscn" id="17_qq33v"]
+[ext_resource type="Texture2D" uid="uid://bd84up86j7u3c" path="res://dotpack/Charas/Touhou20/Charas_128_3.png" id="18_l18n7"]
 [ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="18_qq33v"]
-[ext_resource type="Texture2D" uid="uid://bbk3r0jdi7xvo" path="res://dotpack/Charas/Touhou16/Charas_096_4.png" id="19_cda7c"]
-[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="21_ru8rc"]
+[ext_resource type="Texture2D" uid="uid://cb46ho5moq7pb" path="res://dotpack/Charas/Touhou20/Charas_129_4.png" id="19_conbw"]
+[ext_resource type="Texture2D" uid="uid://brj73k4d87jf2" path="res://dotpack/Charas/Touhou20/Charas_106_5.png" id="20_pv4yd"]
+[ext_resource type="Texture2D" uid="uid://di5sevy05vp0a" path="res://dotpack/Charas/Touhou20/Charas_130_6.png" id="21_6jtit"]
+[ext_resource type="Texture2D" uid="uid://cidglhb76uq4m" path="res://dotpack/Charas/Touhou7/Charas_012_1.png" id="22_pv4yd"]
 [ext_resource type="Script" uid="uid://jyl8yu1q057c" path="res://main_menu/language_option_button.gd" id="22_xayta"]
+[ext_resource type="Texture2D" uid="uid://dl2tphxhmgjot" path="res://dotpack/Charas/Touhou7/Charas_014_3.png" id="23_6jtit"]
+[ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="24_bphs3"]
+[ext_resource type="Texture2D" uid="uid://8qobkf2hpmbg" path="res://dotpack/Charas/Touhou7/Charas_019_5.png" id="25_koqfm"]
+[ext_resource type="Texture2D" uid="uid://bo810rj8xf2oj" path="res://dotpack/Charas/Touhou7/Charas_017_4.png" id="25_pv4yd"]
+[ext_resource type="Texture2D" uid="uid://briqe3alwhf7m" path="res://dotpack/Charas/Touhou7/Charas_020_6.png" id="26_qk1ns"]
 
 [node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit")]
 anchors_preset = 15
@@ -158,7 +158,7 @@ offset_right = 72.0
 offset_bottom = 79.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("4_qq33v")
+texture = ExtResource("16_qq33v")
 
 [node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=620271214 instance=ExtResource("7_ombju")]
 layout_mode = 0
@@ -168,7 +168,7 @@ offset_right = 110.0
 offset_bottom = 79.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_6at21")
+texture = ExtResource("17_nd3u2")
 
 [node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=1024141027 instance=ExtResource("7_ombju")]
 layout_mode = 0
@@ -178,7 +178,7 @@ offset_right = 144.0
 offset_bottom = 79.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("6_og6xe")
+texture = ExtResource("18_l18n7")
 
 [node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=581229848 instance=ExtResource("7_ombju")]
 layout_mode = 0
@@ -188,7 +188,7 @@ offset_right = 228.0
 offset_bottom = 79.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("8_qvn4f")
+texture = ExtResource("20_pv4yd")
 
 [node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=494559507 instance=ExtResource("7_ombju")]
 layout_mode = 0
@@ -198,7 +198,7 @@ offset_right = 269.0
 offset_bottom = 79.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("9_g1omr")
+texture = ExtResource("21_6jtit")
 
 [node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=961540857 instance=ExtResource("7_ombju")]
 layout_mode = 0
@@ -208,7 +208,7 @@ offset_right = 176.0
 offset_bottom = 65.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
+texture = ExtResource("23_6jtit")
 
 [node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=795175820]
 layout_mode = 0
@@ -237,7 +237,7 @@ offset_right = 72.0
 offset_bottom = 79.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("7_mvfl2")
+texture = ExtResource("18_l18n7")
 
 [node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=258169677 instance=ExtResource("7_ombju")]
 layout_mode = 0
@@ -247,7 +247,7 @@ offset_right = 115.0
 offset_bottom = 69.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
+texture = ExtResource("23_6jtit")
 
 [node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=1429262281]
 layout_mode = 0
@@ -263,6 +263,7 @@ layout_mode = 2
 text = "SWAP_CARDS"
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1999258813]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
@@ -275,13 +276,13 @@ size_flags_horizontal = 5
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("4_qq33v")
+texture = ExtResource("16_qq33v")
 
 [node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=893307115 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_6at21")
+texture = ExtResource("17_nd3u2")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="1" unique_id=278166624]
 text = "2"
@@ -290,7 +291,7 @@ text = "2"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("6_og6xe")
+texture = ExtResource("18_l18n7")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3" index="1" unique_id=278166624]
 text = "3"
@@ -299,7 +300,7 @@ text = "3"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("7_mvfl2")
+texture = ExtResource("19_conbw")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4" index="1" unique_id=278166624]
 text = "4"
@@ -308,7 +309,7 @@ text = "4"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("8_qvn4f")
+texture = ExtResource("20_pv4yd")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5" index="1" unique_id=278166624]
 text = "5"
@@ -317,7 +318,7 @@ text = "5"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("9_g1omr")
+texture = ExtResource("21_6jtit")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6" index="1" unique_id=278166624]
 text = "6"
@@ -337,7 +338,7 @@ size_flags_horizontal = 5
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("14_iri28")
+texture = ExtResource("23_6jtit")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5" index="1" unique_id=278166624]
 text = "5"
@@ -346,13 +347,13 @@ text = "5"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("16_qq33v")
+texture = ExtResource("22_pv4yd")
 
 [node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=256725856 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_og6xe")
+texture = ExtResource("26_qk1ns")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2" index="1" unique_id=278166624]
 text = "2"
@@ -361,7 +362,7 @@ text = "2"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("19_cda7c")
+texture = ExtResource("5_6at21")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4" index="1" unique_id=278166624]
 text = "4"
@@ -370,7 +371,7 @@ text = "4"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("15_qq33v")
+texture = ExtResource("25_pv4yd")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6" index="1" unique_id=278166624]
 text = "6"
@@ -379,7 +380,7 @@ text = "6"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
+texture = ExtResource("25_koqfm")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3" index="1" unique_id=278166624]
 text = "3"
@@ -405,7 +406,7 @@ texture = ExtResource("16_qq33v")
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="0" unique_id=1783295652]
-texture = ExtResource("5_og6xe")
+texture = ExtResource("17_nd3u2")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="1" unique_id=278166624]
 text = "2"
@@ -414,7 +415,7 @@ text = "2"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="0" unique_id=1783295652]
-texture = ExtResource("6_og6xe")
+texture = ExtResource("23_6jtit")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="1" unique_id=278166624]
 theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
@@ -424,7 +425,7 @@ text = "3"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="0" unique_id=1783295652]
-texture = ExtResource("17_ifnh7")
+texture = ExtResource("19_conbw")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
 theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
@@ -434,7 +435,7 @@ text = "3"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5" index="0" unique_id=1783295652]
-texture = ExtResource("8_qvn4f")
+texture = ExtResource("20_pv4yd")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5" index="1" unique_id=278166624]
 text = "5"
@@ -443,7 +444,7 @@ text = "5"
 layout_mode = 2
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6" index="0" unique_id=1783295652]
-texture = ExtResource("15_qq33v")
+texture = ExtResource("21_6jtit")
 
 [node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6" index="1" unique_id=278166624]
 text = "6"
@@ -455,12 +456,11 @@ theme_override_font_sizes/font_size = 64
 text = "X"
 horizontal_alignment = 1
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1768638811]
+[node name="StartButton" parent="MarginContainer/VBoxContainer" unique_id=1768638811 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "START_SINGLE_PLAYER"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=118578740]
@@ -551,11 +551,10 @@ layout_mode = 2
 text = "30000"
 placeholder_text = "PORT"
 
-[node name="HostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=452355250]
+[node name="HostButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer" unique_id=452355250 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "HOST"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="HostWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=501211282]
@@ -568,11 +567,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "WAITING_FOR_PLAYERS"
 
-[node name="CancelHostButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer" unique_id=2126188378]
+[node name="CancelHostButton" parent="MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer" unique_id=2126188378 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 text = "CANCEL"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="JoinHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1973108945]
@@ -602,11 +600,10 @@ layout_mode = 2
 text = "30000"
 placeholder_text = "IP_ADDRESS"
 
-[node name="JoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=730020617]
+[node name="JoinButton" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer" unique_id=730020617 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "JOIN_MATCH"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="JoinWaitingHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=627679541]
@@ -619,11 +616,10 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "JOINING"
 
-[node name="CancelJoinButton" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer" unique_id=479048725]
+[node name="CancelJoinButton" parent="MarginContainer/VBoxContainer/VBoxContainer/JoinWaitingHBoxContainer" unique_id=479048725 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 text = "CANCEL"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=804552741]
@@ -633,6 +629,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
 size_flags_horizontal = 3
+button_pressed = true
 text = "FULL_SCREEN"
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer" unique_id=67618019]
@@ -676,20 +673,18 @@ horizontal_alignment = 2
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 
-[node name="CharactersButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1539468330]
+[node name="CharactersButton" parent="MarginContainer/VBoxContainer" unique_id=1539468330 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "CHARACTERS"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="QuitButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=975126878]
+[node name="QuitButton" parent="MarginContainer/VBoxContainer" unique_id=975126878 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(320, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "QUIT"
-script = ExtResource("21_ru8rc")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=882589947]

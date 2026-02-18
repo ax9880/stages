@@ -1,8 +1,6 @@
 class_name Card
 extends Sprite2D
 
-@export var front_texture: Texture
-@export var back_texture: Texture
 
 @export var target_scale: Vector2 = Vector2(1.1, 1.1)
 
@@ -36,8 +34,7 @@ func set_data(card_data: CardData) -> void:
 	
 	$Card/Character.texture = card_data.texture
 	
-	$StageLabel.text = str(_card_data.stage)
-	$StageLabel/GameLabel.text = str(_card_data.game)
+	$GameLabel.text = str(_card_data.game)
 
 
 func enable() -> void:
@@ -161,13 +158,15 @@ func play_move_audio() -> void:
 
 
 func reveal_number() -> void:
-	$StageLabel/AnimationPlayer.play("reveal_number")
+	$GameLabel/AnimationPlayer.play("reveal_number")
 	
-	await $StageLabel/AnimationPlayer.animation_finished
+	await $GameLabel/AnimationPlayer.animation_finished
 
 
-func show_wrong_number() -> void:
-	$StageLabel/AnimationPlayer.play("show_wrong_number")
+func show_number(color: Color) -> void:
+	$GameLabel.add_theme_color_override("font_color", color)
+	
+	$GameLabel/AnimationPlayer.play("show_number")
 
 
 func _tween_scale(_target_scale: Vector2) -> void:

@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dl85vhvy8ux1e" path="res://board/score/floating_score_label.gd" id="1_cdy57"]
 [ext_resource type="FontFile" uid="uid://bucib1m3mxg2k" path="res://font/Dosis-ExtraBold.ttf" id="2_m2etm"]
-[ext_resource type="AudioStream" uid="uid://c3oouo3o5rgm0" path="res://sounds/button22.mp3" id="2_wlp3i"]
 [ext_resource type="AudioStream" uid="uid://gagvjwpugwhi" path="res://sounds/button53.mp3" id="3_a8863"]
 [ext_resource type="AudioStream" uid="uid://wnxlp7n768d8" path="res://sounds/cancel2.mp3" id="4_w1ons"]
 
@@ -83,7 +82,6 @@ _data = {
 [node name="FloatingScoreLabel" type="Node2D" unique_id=1835447406]
 script = ExtResource("1_cdy57")
 default_color = Color(1, 1, 1, 1)
-perfect_color = Color(0.70440394, 0.8377295, 0.98759574, 1)
 penalty_color = Color(0.8562232, 0.2218355, 0.29210153, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=992727313]
@@ -111,10 +109,6 @@ horizontal_alignment = 2
 libraries/ = SubResource("AnimationLibrary_037tj")
 
 [node name="ScoreAudio" type="AudioStreamPlayer" parent="." unique_id=1408638267]
-stream = ExtResource("2_wlp3i")
-bus = &"Sound effects"
-
-[node name="PerfectAudio" type="AudioStreamPlayer" parent="." unique_id=1822674813]
 stream = ExtResource("3_a8863")
 bus = &"Sound effects"
 

@@ -9,6 +9,10 @@ extends Node2D
 
 @export var submit_button: Button
 
+@export var wrong_color: Color
+@export var wrong_color_2: Color
+@export var wrong_color_3: Color
+
 signal card_clicked(card: Card)
 
 var _cards := []
@@ -258,60 +262,96 @@ func drop_card_in_shared_pile(shared_pile: Node2D) -> void:
 	_card = null
 
 
+func _find_game_and_cards(card: Card, array: Array[GameAndCards]) -> GameAndCards:
+	for game_and_card: GameAndCards in array:
+		if game_and_card.game_number == card._card_data.game:
+			return game_and_card
+	
+	return null
+
+
+func _add_wrong_cards(game_and_cards_list: Array[GameAndCards], start_index: int, wrong_cards: Array) -> void:
+	for i in range(start_index, game_and_cards_list.size()):
+		wrong_cards.append_array(game_and_cards_list[i].cards)
+
+
+func _assign_cards(game_and_cards_list: Array[GameAndCards], results: HandEvaluationResults) -> void:
+	assert(game_and_cards_list.size() >= 1)
+	
+	var number_of_cards: int = game_and_cards_list.front().cards.size()
+	var number_of_ties: int = 0
+	
+	for i in range(1, game_and_cards_list.size()):
+		if number_of_cards > game_and_cards_list[i].cards.size():
+			break
+		else:
+			number_of_ties += 1
+	
+	results.correct_cards = game_and_cards_list.front().cards
+	
+	if number_of_ties == 0:
+		results.correct_cards = game_and_cards_list.front().cards
+		
+		_add_wrong_cards(game_and_cards_list, 1, results.wrong_cards)
+	elif number_of_ties == 1:
+		assert(game_and_cards_list.size() >= 2)
+		
+		results.correct_cards = game_and_cards_list.front().cards
+		results.wrong_cards = game_and_cards_list[1].cards
+		
+		_add_wrong_cards(game_and_cards_list, 2, results.wrong_cards_2)
+	elif number_of_ties == 2:
+		assert(game_and_cards_list.size() >= 3)
+		
+		results.correct_cards = game_and_cards_list.front().cards
+		results.wrong_cards = game_and_cards_list[1].cards
+		results.wrong_cards_2 = game_and_cards_list[2].cards
+		
+		_add_wrong_cards(game_and_cards_list, 3, results.wrong_cards_3)
+	else:
+		_add_wrong_cards(game_and_cards_list, 0, results.wrong_cards)
+
+
 func is_valid() -> HandEvaluationResults:
 	var results := HandEvaluationResults.new()
 	
-	var stages: Dictionary = {}
+	var game_and_cards_list: Array[GameAndCards] = []
 	
-	results.is_valid = true
-	
-	for card: Card in _cards:
-		var card_data: CardData = card._card_data
+	for card in _cards:
+		var game_and_cards: GameAndCards = _find_game_and_cards(card, game_and_cards_list)
 		
-		if stages.has(card_data.stage):
-			stages[card_data.stage].push_back(card)
-			
-			print("Invalid hand! Stage %d is repeated" % card_data.stage)
-			
-			results.is_valid = false
+		if game_and_cards != null:
+			game_and_cards.cards.push_back(card)
 		else:
-			stages.set(card_data.stage, [card])
+			game_and_cards = GameAndCards.new()
+			
+			game_and_cards.game_number = card._card_data.game
+			game_and_cards.cards = [card]
+			
+			game_and_cards_list.push_back(game_and_cards)
 	
-	for cards_per_stage in stages.values():
-		if cards_per_stage.size() > 1:
-			for card in cards_per_stage:
-				results.wrong_cards.push_back(card)
+	game_and_cards_list.sort_custom(GameAndCards.sort_ascending)
 	
-	if results.is_valid:
-		results.is_perfect_hand = true
-		
-		var game: int = _cards.front()._card_data.game
-		
-		for card: Card in _cards:
-			if game != card._card_data.game:
-				results.is_perfect_hand = false
-				
-				break
-		
-		results.game_number = game
+	_assign_cards(game_and_cards_list, results)
+	
+	results.is_valid = game_and_cards_list.size() == 1
+	results.game_number = game_and_cards_list.front().cards.front()._card_data.game
 	
 	return results
 
 
-func show_cards_stages() -> void:
-	for path_follow2d in $Path2D.get_children():
-		var card = path_follow2d.get_child(0)
-		
-		await card.reveal_number()
-	
-	await get_tree().create_timer(0.5).timeout
-
-
 func show_wrong_cards(results: HandEvaluationResults) -> void:
-	for card in results.wrong_cards:
-		card.show_wrong_number()
+	_show_card_colors(results.correct_cards, Color.BLACK)
+	_show_card_colors(results.wrong_cards, wrong_color)
+	_show_card_colors(results.wrong_cards_2, wrong_color_2)
+	_show_card_colors(results.wrong_cards_3, wrong_color_3)
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(2).timeout
+
+
+func _show_card_colors(cards: Array, color: Color) -> void:
+	for card in cards:
+		card.show_number(color)
 
 
 func _on_hand_area_gui_input(event: InputEvent) -> void:

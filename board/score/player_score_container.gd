@@ -3,6 +3,7 @@ extends HBoxContainer
 @export var position_label: Label
 @export var player_label: Label
 @export var score_label: Label
+@export var time_label: Label
 
 
 func set_data(player_position: int, player_number: int, total_score: int) -> void:

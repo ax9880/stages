@@ -10,12 +10,12 @@
 [ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="5_wg18t"]
 [ext_resource type="Script" uid="uid://bj1wmc6kg8bd7" path="res://board/spawner.gd" id="6_45ghq"]
 [ext_resource type="PackedScene" uid="uid://beced22chfif5" path="res://board/pile.tscn" id="7_bcih5"]
-[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="7_kqjtd"]
 [ext_resource type="PackedScene" uid="uid://b63wl543jj5tj" path="res://board/hand.tscn" id="7_rrxdr"]
 [ext_resource type="Script" uid="uid://bjrlmkkxodevi" path="res://board/shared_pile.gd" id="7_wg18t"]
 [ext_resource type="Script" uid="uid://dfclrbw5ter6p" path="res://board/go_label.gd" id="7_wxf2d"]
 [ext_resource type="PackedScene" uid="uid://dnci10os6ib1u" path="res://board/score/score_menu_container.tscn" id="10_1dkug"]
-[ext_resource type="AudioStream" uid="uid://wnxlp7n768d8" path="res://sounds/cancel2.mp3" id="15_5abq5"]
+[ext_resource type="AudioStream" uid="uid://gagvjwpugwhi" path="res://sounds/button53.mp3" id="15_5abq5"]
+[ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="16_68t1a"]
 
 [sub_resource type="Animation" id="Animation_drss4"]
 length = 0.001
@@ -243,11 +243,10 @@ layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
 
-[node name="QuitButton" type="Button" parent="BoardMenuContainer/MarginContainer2/MarginContainer" unique_id=2069029232]
+[node name="QuitButton" parent="BoardMenuContainer/MarginContainer2/MarginContainer" unique_id=2069029232 instance=ExtResource("16_68t1a")]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 text = "QUIT"
-script = ExtResource("7_kqjtd")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="World" type="Node2D" parent="." unique_id=845418800]
@@ -258,6 +257,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
+can_randomize = false
 submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
 waiting_for_players_container = NodePath("../../CanvasLayer/WaitingForPlayersContainer")
@@ -426,7 +426,7 @@ layout_mode = 2
 text = "WAITING_FOR_PLAYERS"
 horizontal_alignment = 1
 
-[node name="PeerDisconnectedQuitButton" type="Button" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=1310309335]
+[node name="PeerDisconnectedQuitButton" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=1310309335 instance=ExtResource("16_68t1a")]
 custom_minimum_size = Vector2(240, 0)
 layout_mode = 2
 size_flags_horizontal = 4

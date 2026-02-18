@@ -27,7 +27,18 @@ const _MAX_PILES: int = 13
 
 
 func _ready() -> void:
+	_on_full_screen_check_box_toggled(GameData.is_full_screen)
+	
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()
+	
+	if GameData.players > 1:
+		players_option_button.selected = GameData.players - 2
+	
+	piles_option_button.selected = GameData.piles - 3
+	
+	ip_address_text_edit.text = GameData.ip_address
+	host_port_text_edit.text = str(GameData.port)
+	join_port_text_edit.text = str(GameData.port)
 	
 	host_h_box_container.visible = true
 	join_h_box_container.visible = true
@@ -43,6 +54,8 @@ func _ready() -> void:
 
 
 func _on_start_button_pressed() -> void:
+	randomize()
+	GameData.game_seed = randi()
 	GameData.players = 1
 	
 	Loader.change_scene("res://board/game_tree.tscn")
@@ -181,6 +194,8 @@ func _on_disconnected_to_server() -> void:
 
 
 func _on_full_screen_check_box_toggled(toggled_on: bool) -> void:
+	GameData.is_full_screen = toggled_on
+	
 	if toggled_on:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:

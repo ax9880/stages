@@ -11,6 +11,9 @@ point_count = 3
 
 [node name="Hand" type="Node2D" unique_id=1242478005]
 script = ExtResource("1_bfasp")
+wrong_color = Color(0.8862745, 0.2901961, 0.29803923, 1)
+wrong_color_2 = Color(0.7957273, 0.16731066, 0.3012501, 1)
+wrong_color_3 = Color(0.53154737, 0.045713224, 0.24436623, 1)
 
 [node name="HandArea" type="MarginContainer" parent="." unique_id=1807598761]
 offset_right = 1000.0

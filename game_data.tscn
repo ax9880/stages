@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dgrtntdlaeg3r"]
 
 [ext_resource type="Script" uid="uid://2ar1kvfwq7bp" path="res://game_data.gd" id="1_r3slu"]
-[ext_resource type="AudioStream" uid="uid://gagvjwpugwhi" path="res://sounds/button53.mp3" id="2_pwrbf"]
+[ext_resource type="AudioStream" uid="uid://t2e340qwy63r" path="res://sounds/button41.mp3" id="2_pwrbf"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_pwrbf"]
 

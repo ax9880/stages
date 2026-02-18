@@ -21,6 +21,8 @@ func start_server(port: int) -> void:
 	multiplayer.multiplayer_peer = _network
 	
 	print("Starting server on port: ", port)
+	
+	GameData.port = port
 
 
 func stop_server() -> void:

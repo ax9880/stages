@@ -268,14 +268,14 @@ func _return_cards_to_pile(pile: Pile, can_flip_cards: bool = true, can_reverse_
 func _emit_score_signals() -> void:
 	score_updated.emit(score_results.get_total_score())
 	
-	update_score.rpc(score_results.base_score, score_results.perfect_hands, score_results.penalties, _submitted_hands)
+	update_score.rpc(score_results.base_score, score_results.penalties, _submitted_hands)
 
 
 func _submit_results_to_server() -> void:
 	waiting_for_players_container.visible = true
 	_is_waiting_for_results = true
 	
-	submit_results.rpc(score_results.base_score, score_results.perfect_hands, score_results.penalties, score_results.time_seconds)
+	submit_results.rpc(score_results.base_score, score_results.penalties, score_results.time_seconds)
 
 
 func sort_results(first: ScoreResults, second: ScoreResults) -> bool:
@@ -287,11 +287,6 @@ func sort_results(first: ScoreResults, second: ScoreResults) -> bool:
 	if first.penalties < second.penalties:
 		return true
 	elif first.penalties > second.penalties:
-		return false
-	
-	if first.perfect_hands > second.perfect_hands:
-		return true
-	elif first.perfect_hands < second.perfect_hands:
 		return false
 	
 	if first.time_seconds < second.time_seconds:
@@ -329,7 +324,7 @@ func _present_results() -> void:
 
 
 @rpc("call_local", "any_peer", "reliable")
-func submit_results(base_score: int, perfect_hands: int, penalties: int, time_seconds: int) -> void:
+func submit_results(base_score: int, penalties: int, time_seconds: int) -> void:
 	var player_score_results := ScoreResults.new()
 	
 	var sender_id: int = multiplayer.get_remote_sender_id()
@@ -340,7 +335,6 @@ func submit_results(base_score: int, perfect_hands: int, penalties: int, time_se
 		player_score_results.peer_id = sender_id
 	
 	player_score_results.base_score = base_score
-	player_score_results.perfect_hands = perfect_hands
 	player_score_results.penalties = penalties
 	player_score_results.time_seconds = time_seconds
 	
@@ -360,6 +354,8 @@ func show_results(positions: Array, total_scores: Array) -> void:
 	waiting_for_players_container.visible = false
 	_can_update_time_label = false
 	
+	_is_showing_results = true
+	
 	all_hands_submitted.emit(score_results, positions, total_scores)
 
 
@@ -373,15 +369,12 @@ func _on_submit_button_pressed() -> void:
 	if results.is_valid:
 		_submitted_hands += 1
 		
-		if results.is_perfect_hand:
-			score_results.perfect_hands += 1
-		
 		score_results.update()
 		_emit_score_signals()
 		
 		EventBus.started_submitting_hand.emit()
 		
-		await $Hand.show_cards_stages()
+		await get_tree().create_timer(0.5).timeout
 		
 		var original_pile: Pile = $Hand.pile
 		
@@ -437,6 +430,9 @@ func _on_peer_connected(_id: int) -> void:
 
 func _on_peer_disconnected(_id: int) -> void:
 	print("Peer disconnected")
+	
+	if _is_showing_results:
+		return
 	
 	if _is_waiting_for_results and multiplayer.get_peers().size() >= GameData.players - 1:
 		_present_results()
@@ -538,13 +534,12 @@ func pick_up_card_from_shared_pile(card_path: String) -> void:
 
 
 @rpc("any_peer", "call_local")
-func update_score(base_score: int, perfect_hands: int, penalties: int, submitted_hands: int) -> void:
+func update_score(base_score: int, penalties: int, submitted_hands: int) -> void:
 	var peer_id: int = multiplayer.get_remote_sender_id()
 	
 	var results: ScoreResults = ScoreResults.new()
 	results.peer_id = peer_id
 	results.base_score = base_score
-	results.perfect_hands = perfect_hands
 	results.penalties = penalties
 	
 	multiplayer_score_tracker.update(peer_id, results.get_total_score(), submitted_hands)

@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://jvscpey8rbkc" path="res://board/score/score_menu_container.gd" id="1_drih8"]
 [ext_resource type="PackedScene" uid="uid://dtv5jk4p4ukdd" path="res://board/score/player_score_container.tscn" id="2_gbl0c"]
 [ext_resource type="AudioStream" uid="uid://c7g472rvx6vby" path="res://sounds/button25.mp3" id="2_uudvu"]
-[ext_resource type="Script" uid="uid://gmjskp4uabus" path="res://main_menu/audio_button.gd" id="3_qpclf"]
+[ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="3_i8p6r"]
 
-[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "perfect_hands_label", "penalties_label", "total_score_label", "time_label", "multiplayer_results", "play_again_button")]
+[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "penalties_label", "total_score_label", "time_label", "multiplayer_results", "play_again_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -14,13 +14,12 @@ grow_vertical = 2
 script = ExtResource("1_drih8")
 result_label = NodePath("MarginContainer/VBoxContainer/ResultLabel")
 base_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreLabel")
-perfect_hands_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/PerfectHandsLabel")
 penalties_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer5/PenaltiesLabel")
 total_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/TotalLabel")
 time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
 multiplayer_results = NodePath("MarginContainer/VBoxContainer/MultiplayerResults")
 player_score_container_packed_scene = ExtResource("2_gbl0c")
-play_again_button = NodePath("")
+play_again_button = NodePath("MarginContainer/VBoxContainer/PlayAgainButton")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1816078611]
 layout_mode = 2
@@ -56,18 +55,6 @@ text = "BASE_SCORE"
 [node name="ScoreLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2026283146]
 layout_mode = 2
 text = "9999"
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=657161802]
-layout_mode = 2
-
-[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=503815951]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "PERFECT_HANDS"
-
-[node name="PerfectHandsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=942319179]
-layout_mode = 2
-text = "9 (+150)"
 
 [node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1130567575]
 layout_mode = 2
@@ -105,16 +92,14 @@ text = "TIME"
 layout_mode = 2
 text = "99:99"
 
-[node name="PlayAgainButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1529551125]
+[node name="PlayAgainButton" parent="MarginContainer/VBoxContainer" unique_id=1529551125 instance=ExtResource("3_i8p6r")]
 layout_mode = 2
 text = "PLAY_AGAIN"
-script = ExtResource("3_qpclf")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="MainMenuButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1228779658]
+[node name="MainMenuButton" parent="MarginContainer/VBoxContainer" unique_id=1228779658 instance=ExtResource("3_i8p6r")]
 layout_mode = 2
 text = "MAIN_MENU"
-script = ExtResource("3_qpclf")
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
 [node name="GameFinishedAudio" type="AudioStreamPlayer" parent="." unique_id=57707517]

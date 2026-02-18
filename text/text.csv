@@ -12,8 +12,7 @@ SOUND_EFFECTS,Sound Effects,Efectos de sonido
 MUSIC,Music,Música
 CHARACTERS,Characters,Personajes
 QUIT,Quit,Salir
-INSTRUCTIONS,"Assemble hands of characters from stages 1 to 6 in any order","Arma manos con personajes de los niveles 1 a 6 en cualquier orden"
-CREDITS,"",""
+INSTRUCTIONS,"Assemble piles of characters that belong to the same Touhou game","Arma conjuntos de personajes que pertenecen al mismo juego de Touhou"
 SUBMIT_HAND,Submit hand,Presentar mano
 SCORE,Score,Puntaje
 TIME,Time,Tiempo

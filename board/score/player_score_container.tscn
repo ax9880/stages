@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://dvcucoa8cpums" path="res://board/score/player_score_container.gd" id="1_gsvgp"]
 
-[node name="PlayerScoreContainer" type="HBoxContainer" unique_id=1780558736 node_paths=PackedStringArray("position_label", "player_label", "score_label")]
+[node name="PlayerScoreContainer" type="HBoxContainer" unique_id=1780558736 node_paths=PackedStringArray("position_label", "player_label", "score_label", "time_label")]
 alignment = 1
 script = ExtResource("1_gsvgp")
 position_label = NodePath("PositionLabel")
 player_label = NodePath("PlayerLabel")
 score_label = NodePath("ScoreLabel")
+time_label = NodePath("TimeLabel")
 
 [node name="PositionLabel" type="Label" parent="." unique_id=2049810684]
 custom_minimum_size = Vector2(64, 0)
@@ -24,4 +25,11 @@ horizontal_alignment = 1
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 text = "9999"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="." unique_id=1475434100]
+visible = false
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+text = "99:99"
 horizontal_alignment = 1
