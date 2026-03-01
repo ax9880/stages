@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://b2j73ancyi23m" path="res://network/server_connector.tscn" id="25_xayta"]
 [ext_resource type="Texture2D" uid="uid://bt37i0ps3nyt7" path="res://dotpack/Charas/Touhou7/Charas_7_6.png" id="26_qk1ns"]
 
-[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "multiplayer_is_desktop_only_label", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit", "quit_button")]
+[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "multiplayer_is_desktop_only_label", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit", "full_screen_check_box", "quit_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -50,6 +50,7 @@ join_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxConta
 host_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer/HostPortTextEdit")
 ip_address_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/IpAddressTextEdit")
 join_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinPortTextEdit")
+full_screen_check_box = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer/FullScreenCheckBox")
 quit_button = NodePath("MarginContainer/VBoxContainer/QuitButton")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1292035198]
@@ -697,6 +698,7 @@ horizontal_alignment = 2
 [node name="HSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1506368740 instance=ExtResource("17_qq33v")]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+editable = false
 
 [node name="CharactersButton" parent="MarginContainer/VBoxContainer" unique_id=1539468330 instance=ExtResource("24_bphs3")]
 custom_minimum_size = Vector2(320, 0)

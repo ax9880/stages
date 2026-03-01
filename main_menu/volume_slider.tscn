@@ -1,12 +1,17 @@
 [gd_scene format=3 uid="uid://ebdkkwqr5m8b"]
 
 [ext_resource type="Script" uid="uid://da7016g5x6y7b" path="res://main_menu/volume_slider.gd" id="1_p0qy0"]
+[ext_resource type="AudioStream" uid="uid://hd0wvn5ir7rg" path="res://sounds/cursor7.mp3" id="2_7hh5l"]
 
 [node name="VolumeHSlider" type="HSlider" unique_id=1383325425]
 custom_minimum_size = Vector2(320, 0)
 size_flags_vertical = 4
 max_value = 1.0
-step = 0.01
+step = 0.1
 script = ExtResource("1_p0qy0")
 
 [node name="SlideAudio" type="AudioStreamPlayer" parent="." unique_id=85923175]
+stream = ExtResource("2_7hh5l")
+bus = &"Sound effects"
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

@@ -27,11 +27,18 @@ const _MAX_PILES: int = 13
 @export var ip_address_text_edit: TextEdit
 @export var join_port_text_edit: TextEdit
 
+@export var full_screen_check_box: CheckBox
+
 @export var quit_button: AudioButton
+
 
 func _ready() -> void:
 	$Network/ServerConnector.stop()
 	
+	if OS.get_name() == "Web":
+		GameData.is_full_screen = false
+	
+	full_screen_check_box.set_pressed_no_signal(GameData.is_full_screen)
 	_on_full_screen_check_box_toggled(GameData.is_full_screen)
 	
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()
