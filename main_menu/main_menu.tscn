@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cp6mmjyaivlll" path="res://card/cursor.png" id="6_7f1p5"]
 [ext_resource type="PackedScene" uid="uid://jql13mb1dho1" path="res://main_menu/ui_card_no_number.tscn" id="7_ombju"]
 [ext_resource type="Texture2D" uid="uid://dwbwvb0u31ib8" path="res://dotpack/Charas/Touhou20/Charas_1.png" id="16_qq33v"]
-[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="17_iri28"]
 [ext_resource type="Texture2D" uid="uid://cg4i4pq3louwf" path="res://dotpack/Charas/Touhou20/Charas_2.png" id="17_nd3u2"]
 [ext_resource type="PackedScene" uid="uid://ebdkkwqr5m8b" path="res://main_menu/volume_slider.tscn" id="17_qq33v"]
 [ext_resource type="Texture2D" uid="uid://cltk6fmoi1dbk" path="res://dotpack/Charas/Touhou20/Charas_3.png" id="18_l18n7"]
@@ -24,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="24_bphs3"]
 [ext_resource type="Texture2D" uid="uid://hmq3l6qh7ndk" path="res://dotpack/Charas/Touhou7/Charas_7_5.png" id="25_koqfm"]
 [ext_resource type="Texture2D" uid="uid://7ulergnbovpu" path="res://dotpack/Charas/Touhou7/Charas_7c_4.png" id="25_pv4yd"]
+[ext_resource type="PackedScene" uid="uid://b2j73ancyi23m" path="res://network/server_connector.tscn" id="25_xayta"]
 [ext_resource type="Texture2D" uid="uid://bt37i0ps3nyt7" path="res://dotpack/Charas/Touhou7/Charas_7_6.png" id="26_qk1ns"]
 
 [node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit")]
@@ -717,8 +717,7 @@ autowrap_mode = 2
 [node name="Server" type="Node" parent="Network" unique_id=1562212262]
 script = ExtResource("18_qq33v")
 
-[node name="ServerConnector" type="Node" parent="Network" unique_id=997302448]
-script = ExtResource("17_iri28")
+[node name="ServerConnector" parent="Network" unique_id=1809023548 instance=ExtResource("25_xayta")]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="item_selected" from="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer3/PilesOptionButton" to="." method="_on_piles_option_button_item_selected"]

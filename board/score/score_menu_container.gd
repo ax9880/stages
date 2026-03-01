@@ -15,7 +15,7 @@ extends MarginContainer
 
 @export var play_again_button: Button
 
-var _peer_ids: Array = []
+var _peers_that_want_to_play_again: int = 0
 
 
 func _ready() -> void:
@@ -34,7 +34,7 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 	if positions.size() > 1:
 		_show_multiplayer_results(positions, total_scores, times)
 		
-		if positions.front() == multiplayer.get_unique_id():
+		if positions.front() == GameData.persistent_peer_id:
 			result_label.text = tr("YOU_WIN")
 			
 			result_label.remove_theme_color_override("font_color")
@@ -93,7 +93,7 @@ func _on_main_menu_button_pressed() -> void:
 
 @rpc("call_local", "any_peer")
 func play_again() -> void:
-	_peer_ids.push_back(multiplayer.get_remote_sender_id())
+	_peers_that_want_to_play_again += 1
 	
-	if _peer_ids.size() == GameData.players and multiplayer.is_server():
+	if _peers_that_want_to_play_again == GameData.players and multiplayer.is_server():
 		GameData.start_game()

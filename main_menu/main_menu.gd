@@ -27,6 +27,8 @@ const _MAX_PILES: int = 13
 
 
 func _ready() -> void:
+	$Network/ServerConnector.stop()
+	
 	_on_full_screen_check_box_toggled(GameData.is_full_screen)
 	
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()

@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://b2j73ancyi23m"]
+
+[ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="1_v5cmk"]
+
+[node name="ServerConnector" type="Node" unique_id=1809023548]
+script = ExtResource("1_v5cmk")

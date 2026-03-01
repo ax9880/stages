@@ -48,7 +48,7 @@ func _ready() -> void:
 	waiting_for_players_container.visible = false
 	
 	score_results = ScoreResults.new()
-	score_results.peer_id = multiplayer.get_unique_id()
+	score_results.peer_id = GameData.persistent_peer_id
 	
 	submit_button.disabled = true
 	
@@ -70,7 +70,6 @@ func _ready() -> void:
 	
 	if GameData.is_multiplayer():
 		if multiplayer.is_server():
-			multiplayer.peer_connected.connect(_on_peer_connected)
 			multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 		else:
 			multiplayer.connected_to_server.connect(_on_connected_to_server)
@@ -266,14 +265,14 @@ func _return_cards_to_pile(pile: Pile, can_flip_cards: bool = true, can_reverse_
 func _emit_score_signals() -> void:
 	score_updated.emit(score_results.get_total_score())
 	
-	update_score.rpc(score_results.base_score, score_results.penalties, _submitted_hands)
+	update_score.rpc(GameData.persistent_peer_id, score_results.base_score, score_results.penalties, _submitted_hands)
 
 
 func _submit_results_to_server() -> void:
 	waiting_for_players_container.visible = true
 	_is_waiting_for_results = true
 	
-	submit_results.rpc(score_results.base_score, score_results.penalties, score_results.time_seconds)
+	submit_results.rpc(GameData.persistent_peer_id, score_results.base_score, score_results.penalties, score_results.time_seconds)
 
 
 func sort_results(first: ScoreResults, second: ScoreResults) -> bool:
@@ -325,13 +324,13 @@ func _present_results() -> void:
 
 
 @rpc("call_local", "any_peer", "reliable")
-func submit_results(base_score: int, penalties: int, time_seconds: int) -> void:
+func submit_results(persistent_peer_id: int, base_score: int, penalties: int, time_seconds: int) -> void:
 	var player_score_results := ScoreResults.new()
 	
-	var sender_id: int = multiplayer.get_remote_sender_id()
+	var sender_id: int = persistent_peer_id
 	
 	if sender_id == 0:
-		player_score_results.peer_id = multiplayer.get_unique_id()
+		player_score_results.peer_id = GameData.persistent_peer_id
 	else:
 		player_score_results.peer_id = sender_id
 	
@@ -406,24 +405,26 @@ func _on_submit_button_pressed() -> void:
 
 
 func _on_card_dropped_in_shared_pile(card: Card) -> void:
-	print("%d dropped card" % multiplayer.get_unique_id())
+	print("%d dropped card" % GameData.persistent_peer_id)
+	
+	card.peer_id = 0
 	
 	drop_card_in_shared_pile.rpc(card._card_data.texture.resource_path, card.position)
 
 
 func _on_card_picked_up_from_shared_pile(card: Card) -> void:
-	print("%d picked up card" % multiplayer.get_unique_id())
+	print("%d picked up card" % GameData.persistent_peer_id)
 	
 	pick_up_card_from_shared_pile.rpc(card._card_data.texture.resource_path)
 
 
 func _on_shared_pile_card_requested(card: Card) -> void:
-	print("requesting card")
+	print("Requesting card")
 	
-	request_card.rpc(card._card_data.texture.resource_path)
+	request_card.rpc(GameData.persistent_peer_id, card._card_data.texture.resource_path)
 
 
-func _on_peer_connected(_id: int) -> void:
+func _on_connection_manager_peer_reconnected() -> void:
 	peer_disconnected_container.visible = false
 	
 	on_peer_connected.rpc()
@@ -451,7 +452,7 @@ func _on_server_disconnected() -> void:
 	on_peer_disconnected()
 
 
-@rpc
+@rpc("reliable")
 func on_peer_connected() -> void:
 	peer_disconnected_container.visible = false
 
@@ -465,20 +466,20 @@ func on_peer_disconnected() -> void:
 
 
 @rpc("call_local", "any_peer", "reliable")
-func request_card(card_path: String) -> void:
+func request_card(persistent_peer_id: int, card_path: String) -> void:
 	if not multiplayer.is_server():
 		return
 	
-	print("Card requested by ", multiplayer.get_remote_sender_id())
+	print("Card requested by ", persistent_peer_id)
 	
 	var card: Card = all_cards[card_path]
 	
-	if card.peer_id == 0 || card.peer_id == multiplayer.get_remote_sender_id():
-		card.peer_id = multiplayer.get_remote_sender_id()
+	if card.peer_id == 0 || card.peer_id == persistent_peer_id:
+		card.peer_id = persistent_peer_id
 		
 		for shared_pile_card in $SharedPile.get_cards():
 			if shared_pile_card != card and shared_pile_card.peer_id == card.peer_id:
-				print("Resetting card peer ID in ", multiplayer.get_unique_id())
+				print("Resetting card peer ID in ", GameData.persistent_peer_id)
 				
 				shared_pile_card.peer_id = 0
 		
@@ -522,7 +523,7 @@ func drop_card_in_shared_pile(card_path: String, card_position: Vector2) -> void
 	card.appear()
 	card.flip_up()
 	
-	print("Adding card at %d" % multiplayer.get_unique_id())
+	print("Adding card at %d" % GameData.persistent_peer_id)
 
 
 @rpc("any_peer", "reliable")
@@ -535,17 +536,15 @@ func pick_up_card_from_shared_pile(card_path: String) -> void:
 
 
 @rpc("any_peer", "call_local")
-func update_score(base_score: int, penalties: int, submitted_hands: int) -> void:
-	var peer_id: int = multiplayer.get_remote_sender_id()
-	
+func update_score(persistent_peer_id: int, base_score: int, penalties: int, submitted_hands: int) -> void:
 	var results: ScoreResults = ScoreResults.new()
-	results.peer_id = peer_id
+	results.peer_id = persistent_peer_id
 	results.base_score = base_score
 	results.penalties = penalties
 	
-	multiplayer_score_tracker.update(peer_id, results.get_total_score(), submitted_hands)
+	multiplayer_score_tracker.update(persistent_peer_id, results.get_total_score(), submitted_hands)
 	
-	GameData.results[peer_id] = results
+	GameData.results[persistent_peer_id] = results
 
 
 func _on_peer_disconnected_quit_button_pressed() -> void:

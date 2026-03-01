@@ -5,18 +5,24 @@ var game_seed: int = 0
 var ip_address: String = "localhost"
 var port: int = 30000
 
-var connected_peers: int = 0
 
 var players: int = 1
 var piles: int = 3
+
+# Persistent peer ID, player number
+var player_numbers: Dictionary[int, int] = {}
+
+# Current peer ID to handle reconnection requests
+var current_peer_id: int = 0
+
+# Original peer ID, to handle scoring and card assignments
+var persistent_peer_id: int
 
 var time_limit_seconds: int = 0
 
 var is_full_screen: bool = true
 
-var player_numbers: Dictionary = {}
-
-var results: Dictionary = {}
+var results: Dictionary[int, ScoreResults] = {}
 
 
 func _ready() -> void:
@@ -27,7 +33,7 @@ func is_multiplayer() -> bool:
 	return players > 1
 
 
-func get_player_number(id: int = multiplayer.get_unique_id()) -> int:
+func get_player_number(id: int = persistent_peer_id) -> int:
 	if id == 0:
 		return 0
 	
@@ -61,7 +67,7 @@ func _start_game(_game_seed: int, _players: int, _piles: int, _player_numbers: D
 	piles = _piles
 	player_numbers = _player_numbers
 	
-	connected_peers = multiplayer.get_peers().size()
+	persistent_peer_id = multiplayer.get_unique_id()
 	
 	_initialize_results()
 	
@@ -74,7 +80,7 @@ func _start_game(_game_seed: int, _players: int, _piles: int, _player_numbers: D
 
 func _initialize_results() -> void:
 	var score_results := ScoreResults.new()
-	score_results.peer_id = multiplayer.get_unique_id()
+	score_results.peer_id = persistent_peer_id
 	results[score_results.peer_id] = score_results
 	
 	for i in multiplayer.get_peers().size():

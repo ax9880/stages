@@ -14,8 +14,11 @@
 [ext_resource type="Script" uid="uid://bjrlmkkxodevi" path="res://board/shared_pile.gd" id="7_wg18t"]
 [ext_resource type="Script" uid="uid://dfclrbw5ter6p" path="res://board/go_label.gd" id="7_wxf2d"]
 [ext_resource type="PackedScene" uid="uid://dnci10os6ib1u" path="res://board/score/score_menu_container.tscn" id="10_1dkug"]
+[ext_resource type="Script" uid="uid://brp3ul4hxhq6i" path="res://board/connection_manager.gd" id="11_68t1a"]
+[ext_resource type="PackedScene" uid="uid://b2j73ancyi23m" path="res://network/server_connector.tscn" id="12_12vny"]
 [ext_resource type="AudioStream" uid="uid://gagvjwpugwhi" path="res://sounds/button53.mp3" id="15_5abq5"]
 [ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="16_68t1a"]
+[ext_resource type="Script" uid="uid://6il6s228cc8y" path="res://board/disconnect.gd" id="19_7tlgs"]
 
 [sub_resource type="Animation" id="Animation_drss4"]
 length = 0.001
@@ -257,6 +260,7 @@ metadata/_edit_lock_ = true
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
+can_randomize = false
 submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
 waiting_for_players_container = NodePath("../../CanvasLayer/WaitingForPlayersContainer")
@@ -266,6 +270,14 @@ go_label = NodePath("../../CanvasLayer/MarginContainer/GoLabel")
 metadata/_edit_lock_ = true
 
 [node name="CardDataLoader" parent="World/Spawner" unique_id=1588851902 instance=ExtResource("5_wg18t")]
+
+[node name="ConnectionManager" type="Node" parent="World/Spawner" unique_id=2138417220]
+script = ExtResource("11_68t1a")
+
+[node name="ReconnectionTimer" type="Timer" parent="World/Spawner/ConnectionManager" unique_id=486264756]
+wait_time = 2.5
+
+[node name="ServerConnector" parent="World/Spawner/ConnectionManager" unique_id=1809023548 instance=ExtResource("12_12vny")]
 
 [node name="Deck" type="Node2D" parent="World/Spawner" unique_id=1420116537]
 position = Vector2(270, 260)
@@ -434,9 +446,19 @@ text = "QUIT"
 [node name="ScoreMenuContainer" parent="CanvasLayer" unique_id=1246059585 instance=ExtResource("10_1dkug")]
 visible = false
 
+[node name="DisconnectTestButton" type="Button" parent="." unique_id=1823265476]
+visible = false
+offset_right = 240.0
+offset_bottom = 138.0
+text = "Disconnect"
+script = ExtResource("19_7tlgs")
+
 [connection signal="pressed" from="BoardMenuContainer/MarginContainer2/MarginContainer/QuitButton" to="World/Spawner" method="_on_quit_button_pressed"]
 [connection signal="all_hands_submitted" from="World/Spawner" to="CanvasLayer/ScoreMenuContainer" method="_on_spawner_all_hands_submitted"]
 [connection signal="score_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_score_updated"]
+[connection signal="peer_reconnected" from="World/Spawner/ConnectionManager" to="World/Spawner" method="_on_connection_manager_peer_reconnected"]
+[connection signal="timeout" from="World/Spawner/ConnectionManager/ReconnectionTimer" to="World/Spawner/ConnectionManager" method="_on_reconnection_timer_timeout"]
 [connection signal="card_requested" from="World/Spawner/SharedPile" to="World/Spawner" method="_on_shared_pile_card_requested"]
 [connection signal="gui_input" from="World/Spawner/SharedPile/SharedPileArea" to="World/Spawner/SharedPile" method="_on_shared_pile_area_gui_input"]
 [connection signal="pressed" from="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer/PeerDisconnectedQuitButton" to="World/Spawner" method="_on_peer_disconnected_quit_button_pressed"]
+[connection signal="pressed" from="DisconnectTestButton" to="DisconnectTestButton" method="_on_pressed"]
