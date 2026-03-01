@@ -33,8 +33,7 @@ One player will host the match and the others will connect to them. To host, sta
 The source code files (.gd, .tres) files belonging to this project are licensed under the MIT license. This repository does not include any assets.
 
 Additional credits:
-- Touhou Game Jam Pixel Character Pack by tea_basira.
-- Sky Ruins arrangement by dobuusagi from dBu music.
+- Touhou character art by [dairi](https://www.pixiv.net/en/users/4920496).
 - Sound effects from [SoundEffect Lab](https://soundeffect-lab.info/) and [Kenney](https://www.kenney.nl/assets/playing-cards-pack).
 - Additional graphics by [Kenney](https://www.kenney.nl/assets/playing-cards-pack).
 - [Dosis font](https://fonts.google.com/specimen/Dosis) from Google Fonts.
