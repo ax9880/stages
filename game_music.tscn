@@ -1,10 +1,7 @@
 [gd_scene format=3 uid="uid://ocgffq7k1o50"]
 
-[ext_resource type="AudioStream" uid="uid://b6jtaoaw8l6cq" path="res://music/09_sky_ruins_98.ogg" id="1_1y0jw"]
-
 [node name="GameMusic" type="Node" unique_id=445559393]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=35361071]
-stream = ExtResource("1_1y0jw")
 autoplay = true
 bus = &"Music"

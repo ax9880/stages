@@ -26,6 +26,7 @@ expand_mode = 5
 stretch_mode = 5
 
 [node name="UiCard" type="TextureRect" parent="MarginContainer" unique_id=1783295652]
+texture_filter = 4
 custom_minimum_size = Vector2(68, 100)
 layout_mode = 2
 size_flags_horizontal = 4

@@ -160,7 +160,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1260589921, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("16_qq33v")
 
 [node name="UiCard25" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=620271214 instance=ExtResource("7_ombju")]
@@ -173,7 +172,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard25/MarginContainer" parent_id_path=PackedInt32Array(620271214, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("17_nd3u2")
 
 [node name="UiCard33" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=1024141027 instance=ExtResource("7_ombju")]
@@ -186,7 +184,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard33/MarginContainer" parent_id_path=PackedInt32Array(1024141027, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("18_l18n7")
 
 [node name="UiCard5" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=581229848 instance=ExtResource("7_ombju")]
@@ -199,7 +196,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard5/MarginContainer" parent_id_path=PackedInt32Array(581229848, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("20_pv4yd")
 
 [node name="UiCard6" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=494559507 instance=ExtResource("7_ombju")]
@@ -212,7 +208,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard6/MarginContainer" parent_id_path=PackedInt32Array(494559507, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("21_6jtit")
 
 [node name="UiCard4" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=961540857 instance=ExtResource("7_ombju")]
@@ -223,7 +218,6 @@ offset_right = 179.0
 offset_bottom = 93.5
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard4/MarginContainer" parent_id_path=PackedInt32Array(961540857, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("23_6jtit")
 expand_mode = 1
 
@@ -255,7 +249,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1048628934, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("19_conbw")
 
 [node name="TextureRect2" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1048628934, 843359961) index="2" unique_id=1275844712]
@@ -271,7 +264,6 @@ size_flags_horizontal = 1
 size_flags_vertical = 1
 
 [node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard55/MarginContainer" parent_id_path=PackedInt32Array(258169677, 843359961) index="1" unique_id=1783295652]
-texture_filter = 1
 texture = ExtResource("23_6jtit")
 stretch_mode = 0
 
