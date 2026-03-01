@@ -1,31 +1,47 @@
 [gd_scene format=3 uid="uid://d076wn80ho2c6"]
 
-[ext_resource type="Texture2D" uid="uid://dai4n8kmntrv8" path="res://dotpack/Charas/Touhou6/Charas_008_4.png" id="1_1n6oy"]
-[ext_resource type="Texture2D" uid="uid://cudhxnrbl1act" path="res://card/card_blank_2.png" id="2_1n6oy"]
+[ext_resource type="Texture2D" uid="uid://bqj6hv8oi3sr3" path="res://dotpack/Charas/Touhou6/Charas_6_4.png" id="1_1n6oy"]
+[ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="2_v1e1f"]
+[ext_resource type="Texture2D" uid="uid://bpbx5f37o01a7" path="res://card/card_border.png" id="3_v1e1f"]
 
 [node name="UiCard" type="VBoxContainer" unique_id=1260589921]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 75.0
+offset_bottom = 100.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme_override_constants/separation = 22
 
-[node name="UiCard" type="TextureRect" parent="." unique_id=1783295652]
-texture_filter = 1
-custom_minimum_size = Vector2(72, 72)
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=843359961]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
-texture = ExtResource("1_1n6oy")
 
-[node name="TextureRect" type="TextureRect" parent="UiCard" unique_id=730264820]
-show_behind_parent = true
-layout_mode = 1
-offset_left = -2.0
-offset_top = -2.0
-offset_right = 148.0
-offset_bottom = 198.0
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_1n6oy")
-stretch_mode = 4
+[node name="TextureRect" type="TextureRect" parent="MarginContainer" unique_id=730264820]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("2_v1e1f")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="UiCard" type="TextureRect" parent="MarginContainer" unique_id=1783295652]
+custom_minimum_size = Vector2(68, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_1n6oy")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer" unique_id=1275844712]
+custom_minimum_size = Vector2(75, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("3_v1e1f")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="." unique_id=278166624]
 visible = false

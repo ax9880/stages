@@ -5,26 +5,26 @@
 [ext_resource type="Script" uid="uid://c5i6u3lngpfar" path="res://main_menu/main_menu.gd" id="2_tr6y3"]
 [ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="3_3shxk"]
 [ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="3_ie3af"]
-[ext_resource type="Texture2D" uid="uid://ffwpjt2qve6r" path="res://dotpack/Charas/Touhou7/Charas_013_2.png" id="5_6at21"]
+[ext_resource type="Texture2D" uid="uid://cok1viptdaolv" path="res://dotpack/Charas/Touhou7/Charas_7_2.png" id="5_6at21"]
 [ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="5_ifnh7"]
 [ext_resource type="Texture2D" uid="uid://cp6mmjyaivlll" path="res://card/cursor.png" id="6_7f1p5"]
 [ext_resource type="PackedScene" uid="uid://jql13mb1dho1" path="res://main_menu/ui_card_no_number.tscn" id="7_ombju"]
-[ext_resource type="Texture2D" uid="uid://mujolpg51hbd" path="res://dotpack/Charas/Touhou20/Charas_126_1.png" id="16_qq33v"]
+[ext_resource type="Texture2D" uid="uid://dwbwvb0u31ib8" path="res://dotpack/Charas/Touhou20/Charas_1.png" id="16_qq33v"]
 [ext_resource type="Script" uid="uid://d05eyqxfqedm1" path="res://network/server_connector.gd" id="17_iri28"]
-[ext_resource type="Texture2D" uid="uid://b3yoytn7dphos" path="res://dotpack/Charas/Touhou20/Charas_127_2.png" id="17_nd3u2"]
+[ext_resource type="Texture2D" uid="uid://cg4i4pq3louwf" path="res://dotpack/Charas/Touhou20/Charas_2.png" id="17_nd3u2"]
 [ext_resource type="PackedScene" uid="uid://ebdkkwqr5m8b" path="res://main_menu/volume_slider.tscn" id="17_qq33v"]
-[ext_resource type="Texture2D" uid="uid://bd84up86j7u3c" path="res://dotpack/Charas/Touhou20/Charas_128_3.png" id="18_l18n7"]
+[ext_resource type="Texture2D" uid="uid://cltk6fmoi1dbk" path="res://dotpack/Charas/Touhou20/Charas_3.png" id="18_l18n7"]
 [ext_resource type="Script" uid="uid://e7dr1psjr3ll" path="res://network/server.gd" id="18_qq33v"]
-[ext_resource type="Texture2D" uid="uid://cb46ho5moq7pb" path="res://dotpack/Charas/Touhou20/Charas_129_4.png" id="19_conbw"]
-[ext_resource type="Texture2D" uid="uid://brj73k4d87jf2" path="res://dotpack/Charas/Touhou20/Charas_106_5.png" id="20_pv4yd"]
-[ext_resource type="Texture2D" uid="uid://di5sevy05vp0a" path="res://dotpack/Charas/Touhou20/Charas_130_6.png" id="21_6jtit"]
-[ext_resource type="Texture2D" uid="uid://cidglhb76uq4m" path="res://dotpack/Charas/Touhou7/Charas_012_1.png" id="22_pv4yd"]
+[ext_resource type="Texture2D" uid="uid://ikern2nhaw1o" path="res://dotpack/Charas/Touhou20/Charas_4.png" id="19_conbw"]
+[ext_resource type="Texture2D" uid="uid://b2ddwctm5pbir" path="res://dotpack/Charas/Touhou20/Charas_5.png" id="20_pv4yd"]
+[ext_resource type="Texture2D" uid="uid://cq7r1ydwqrcrm" path="res://dotpack/Charas/Touhou20/Charas_6.png" id="21_6jtit"]
+[ext_resource type="Texture2D" uid="uid://bgehxmu6wukla" path="res://dotpack/Charas/Touhou7/Charas_7_1.png" id="22_pv4yd"]
 [ext_resource type="Script" uid="uid://jyl8yu1q057c" path="res://main_menu/language_option_button.gd" id="22_xayta"]
-[ext_resource type="Texture2D" uid="uid://dl2tphxhmgjot" path="res://dotpack/Charas/Touhou7/Charas_014_3.png" id="23_6jtit"]
+[ext_resource type="Texture2D" uid="uid://cklfx76m6ko5p" path="res://dotpack/Charas/Touhou7/Charas_7_3.png" id="23_6jtit"]
 [ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="24_bphs3"]
-[ext_resource type="Texture2D" uid="uid://8qobkf2hpmbg" path="res://dotpack/Charas/Touhou7/Charas_019_5.png" id="25_koqfm"]
-[ext_resource type="Texture2D" uid="uid://bo810rj8xf2oj" path="res://dotpack/Charas/Touhou7/Charas_017_4.png" id="25_pv4yd"]
-[ext_resource type="Texture2D" uid="uid://briqe3alwhf7m" path="res://dotpack/Charas/Touhou7/Charas_020_6.png" id="26_qk1ns"]
+[ext_resource type="Texture2D" uid="uid://hmq3l6qh7ndk" path="res://dotpack/Charas/Touhou7/Charas_7_5.png" id="25_koqfm"]
+[ext_resource type="Texture2D" uid="uid://7ulergnbovpu" path="res://dotpack/Charas/Touhou7/Charas_7c_4.png" id="25_pv4yd"]
+[ext_resource type="Texture2D" uid="uid://bt37i0ps3nyt7" path="res://dotpack/Charas/Touhou7/Charas_7_6.png" id="26_qk1ns"]
 
 [node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit")]
 anchors_preset = 15
@@ -76,19 +76,19 @@ layout_mode = 2
 text = "INSTRUCTIONS"
 horizontal_alignment = 1
 
-[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=545130056]
+[node name="TutorialHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=545130056]
 layout_mode = 2
 theme_override_constants/separation = 32
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1636719361]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer" unique_id=1636719361]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer" unique_id=863885947]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer" unique_id=863885947]
 custom_minimum_size = Vector2(125, 125)
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=998460615]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=998460615]
 layout_mode = 0
 offset_top = 7.5
 offset_right = 75.0
@@ -96,7 +96,7 @@ offset_bottom = 107.5
 texture = ExtResource("5_ifnh7")
 expand_mode = 1
 
-[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=1498107030]
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=1498107030]
 layout_mode = 0
 offset_left = 3.0
 offset_top = 4.5
@@ -105,7 +105,7 @@ offset_bottom = 104.5
 texture = ExtResource("5_ifnh7")
 expand_mode = 1
 
-[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=553676018]
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=553676018]
 layout_mode = 0
 offset_left = 6.0
 offset_top = 1.5
@@ -114,7 +114,7 @@ offset_bottom = 101.5
 texture = ExtResource("5_ifnh7")
 expand_mode = 1
 
-[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=892724881]
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=892724881]
 layout_mode = 0
 offset_left = 9.0
 offset_top = -1.5
@@ -123,7 +123,7 @@ offset_bottom = 98.5
 texture = ExtResource("5_ifnh7")
 expand_mode = 1
 
-[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=1844524108]
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=1844524108]
 layout_mode = 0
 offset_left = 12.0
 offset_top = -4.5
@@ -132,7 +132,7 @@ offset_bottom = 95.5
 texture = ExtResource("5_ifnh7")
 expand_mode = 1
 
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer/Control" unique_id=1828227585]
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=1828227585]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 26.5
@@ -140,116 +140,142 @@ offset_right = 138.0
 offset_bottom = 126.5
 texture = ExtResource("6_7f1p5")
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer" unique_id=1974393404]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer" unique_id=1974393404]
 layout_mode = 2
 text = "CHOOSE_PILE"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=849220938]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer" unique_id=849220938]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2" unique_id=51916629]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2" unique_id=51916629]
 custom_minimum_size = Vector2(288.51, 125)
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=1260589921 instance=ExtResource("7_ombju")]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=1260589921 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_top = 7.5
 offset_right = 72.0
 offset_bottom = 79.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1260589921, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("16_qq33v")
 
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=620271214 instance=ExtResource("7_ombju")]
+[node name="UiCard25" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=620271214 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_left = 38.0
 offset_top = 7.5
 offset_right = 110.0
 offset_bottom = 79.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard2" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard25/MarginContainer" parent_id_path=PackedInt32Array(620271214, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("17_nd3u2")
 
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=1024141027 instance=ExtResource("7_ombju")]
+[node name="UiCard33" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=1024141027 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_left = 72.0
 offset_top = 7.5
 offset_right = 144.0
 offset_bottom = 79.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard3" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard33/MarginContainer" parent_id_path=PackedInt32Array(1024141027, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("18_l18n7")
 
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=581229848 instance=ExtResource("7_ombju")]
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=581229848 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_left = 156.0
 offset_top = 7.5
 offset_right = 228.0
 offset_bottom = 79.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard5" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard5/MarginContainer" parent_id_path=PackedInt32Array(581229848, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("20_pv4yd")
 
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=494559507 instance=ExtResource("7_ombju")]
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=494559507 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_left = 197.0
 offset_top = 7.5
 offset_right = 269.0
 offset_bottom = 79.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard6" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard6/MarginContainer" parent_id_path=PackedInt32Array(494559507, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("21_6jtit")
 
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=961540857 instance=ExtResource("7_ombju")]
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=961540857 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_left = 104.0
 offset_top = -6.5
-offset_right = 176.0
-offset_bottom = 65.5
+offset_right = 179.0
+offset_bottom = 93.5
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard4" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard4/MarginContainer" parent_id_path=PackedInt32Array(961540857, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("23_6jtit")
-
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control" unique_id=795175820]
-layout_mode = 0
-offset_left = 134.0
-offset_top = 65.5
-offset_right = 194.0
-offset_bottom = 125.5
-texture = ExtResource("6_7f1p5")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2" unique_id=1637863815]
+[node name="CursorTextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control" unique_id=1407902239]
+layout_mode = 0
+offset_left = 121.0
+offset_top = 34.0
+offset_right = 221.0
+offset_bottom = 134.0
+texture = ExtResource("6_7f1p5")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2" unique_id=1637863815]
 layout_mode = 2
 text = "CHOOSE_CARD"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer5" unique_id=1581146159]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer" unique_id=1581146159]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3" unique_id=1866423994]
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3" unique_id=1866423994]
 custom_minimum_size = Vector2(150, 125)
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=1048628934 instance=ExtResource("7_ombju")]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control" unique_id=1048628934 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_top = 7.5
 offset_right = 72.0
 offset_bottom = 79.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard" index="0" unique_id=1783295652]
-texture = ExtResource("18_l18n7")
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1048628934, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
+texture = ExtResource("19_conbw")
 
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=258169677 instance=ExtResource("7_ombju")]
+[node name="TextureRect2" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1048628934, 843359961) index="2" unique_id=1275844712]
+stretch_mode = 4
+
+[node name="UiCard55" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control" unique_id=258169677 instance=ExtResource("7_ombju")]
 layout_mode = 0
 offset_left = 43.0
 offset_top = -2.5
 offset_right = 115.0
 offset_bottom = 69.5
+size_flags_horizontal = 1
+size_flags_vertical = 1
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard5" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard55/MarginContainer" parent_id_path=PackedInt32Array(258169677, 843359961) index="1" unique_id=1783295652]
+texture_filter = 1
 texture = ExtResource("23_6jtit")
+stretch_mode = 0
 
-[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control" unique_id=1429262281]
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control" unique_id=1429262281]
 layout_mode = 0
 offset_left = 77.0
 offset_top = 62.0
@@ -258,198 +284,198 @@ offset_bottom = 122.0
 texture = ExtResource("6_7f1p5")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3" unique_id=98234354]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3" unique_id=98234354]
 layout_mode = 2
 text = "SWAP_CARDS"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1999258813]
+[node name="ExamplesHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1999258813]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_constants/separation = 64
 alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2006596233]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer" unique_id=2006596233]
 layout_mode = 2
 size_flags_horizontal = 5
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1565460565 instance=ExtResource("3_3shxk")]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=1565460565 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1565460565, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("16_qq33v")
 
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=893307115 instance=ExtResource("3_3shxk")]
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=893307115 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard2/MarginContainer" parent_id_path=PackedInt32Array(893307115, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("17_nd3u2")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard2" index="1" unique_id=278166624]
 text = "2"
 
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1559422051 instance=ExtResource("3_3shxk")]
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=1559422051 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard3/MarginContainer" parent_id_path=PackedInt32Array(1559422051, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("18_l18n7")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard3" index="1" unique_id=278166624]
 text = "3"
 
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=1944841455 instance=ExtResource("3_3shxk")]
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=1944841455 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard4/MarginContainer" parent_id_path=PackedInt32Array(1944841455, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("19_conbw")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard4" index="1" unique_id=278166624]
 text = "4"
 
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=240579335 instance=ExtResource("3_3shxk")]
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=240579335 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard5/MarginContainer" parent_id_path=PackedInt32Array(240579335, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("20_pv4yd")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard5" index="1" unique_id=278166624]
 text = "5"
 
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=8698106 instance=ExtResource("3_3shxk")]
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=8698106 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard6/MarginContainer" parent_id_path=PackedInt32Array(8698106, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("21_6jtit")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard6" index="1" unique_id=278166624]
 text = "6"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer" unique_id=994401338]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer" unique_id=994401338]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3shxk")
 theme_override_font_sizes/font_size = 64
 text = "OK"
 horizontal_alignment = 1
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=2055503340]
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer" unique_id=2055503340]
 layout_mode = 2
 size_flags_horizontal = 5
 
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1705426529 instance=ExtResource("3_3shxk")]
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=1705426529 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard5/MarginContainer" parent_id_path=PackedInt32Array(1705426529, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("23_6jtit")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard5" index="1" unique_id=278166624]
 text = "5"
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=962683657 instance=ExtResource("3_3shxk")]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=962683657 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard/MarginContainer" parent_id_path=PackedInt32Array(962683657, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("22_pv4yd")
 
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=256725856 instance=ExtResource("3_3shxk")]
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=256725856 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard2/MarginContainer" parent_id_path=PackedInt32Array(256725856, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("26_qk1ns")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard2" index="1" unique_id=278166624]
 text = "2"
 
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1123059623 instance=ExtResource("3_3shxk")]
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=1123059623 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard4/MarginContainer" parent_id_path=PackedInt32Array(1123059623, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("5_6at21")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard4" index="1" unique_id=278166624]
 text = "4"
 
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1130416161 instance=ExtResource("3_3shxk")]
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=1130416161 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard6/MarginContainer" parent_id_path=PackedInt32Array(1130416161, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("25_pv4yd")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard6" index="1" unique_id=278166624]
 text = "6"
 
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1610902906 instance=ExtResource("3_3shxk")]
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=1610902906 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard3/MarginContainer" parent_id_path=PackedInt32Array(1610902906, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("25_koqfm")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard3" index="1" unique_id=278166624]
 text = "3"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3" unique_id=1505649915]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3" unique_id=1505649915]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3shxk")
 theme_override_font_sizes/font_size = 64
 text = "OK"
 horizontal_alignment = 1
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer4" unique_id=1736476355]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer" unique_id=1736476355]
 layout_mode = 2
 size_flags_horizontal = 5
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1916671956 instance=ExtResource("3_3shxk")]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=1916671956 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard/MarginContainer" parent_id_path=PackedInt32Array(1916671956, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("16_qq33v")
 
-[node name="UiCard2" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1092097388 instance=ExtResource("3_3shxk")]
+[node name="UiCard2" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=1092097388 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard2/MarginContainer" parent_id_path=PackedInt32Array(1092097388, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("17_nd3u2")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard2" index="1" unique_id=278166624]
 text = "2"
 
-[node name="UiCard4" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=1357741496 instance=ExtResource("3_3shxk")]
+[node name="UiCard4" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=1357741496 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard4/MarginContainer" parent_id_path=PackedInt32Array(1357741496, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("23_6jtit")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard4" index="1" unique_id=278166624]
 theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
 text = "3"
 
-[node name="UiCard3" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=713705313 instance=ExtResource("3_3shxk")]
+[node name="UiCard3" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=713705313 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard3/MarginContainer" parent_id_path=PackedInt32Array(713705313, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("19_conbw")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard3" index="1" unique_id=278166624]
 theme_override_colors/font_color = Color(0.8862745, 0.2627451, 0.13725491, 1)
 text = "3"
 
-[node name="UiCard5" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=804245333 instance=ExtResource("3_3shxk")]
+[node name="UiCard5" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=804245333 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard5/MarginContainer" parent_id_path=PackedInt32Array(804245333, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("20_pv4yd")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard5" index="1" unique_id=278166624]
 text = "5"
 
-[node name="UiCard6" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=611727771 instance=ExtResource("3_3shxk")]
+[node name="UiCard6" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=611727771 instance=ExtResource("3_3shxk")]
 layout_mode = 2
 
-[node name="UiCard" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6" index="0" unique_id=1783295652]
+[node name="UiCard" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard6/MarginContainer" parent_id_path=PackedInt32Array(611727771, 843359961) index="1" unique_id=1783295652]
 texture = ExtResource("21_6jtit")
 
-[node name="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6" index="1" unique_id=278166624]
+[node name="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard6" index="1" unique_id=278166624]
 text = "6"
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2" unique_id=129413270]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2" unique_id=129413270]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_3shxk")
 theme_override_font_sizes/font_size = 64
@@ -715,29 +741,29 @@ script = ExtResource("17_iri28")
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
 [connection signal="on_peer_connection_status_change" from="Network/Server" to="." method="_on_server_on_peer_connection_status_change"]
 
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard6"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer2/Control/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer5/HBoxContainer3/Control/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer/UiCard6"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard6"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer3/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard2"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard4"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard3"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard5"]
-[editable path="MarginContainer/VBoxContainer/HBoxContainer4/HBoxContainer2/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard25"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard33"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer2/Control/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard"]
+[editable path="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer3/Control/UiCard55"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard6"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer3/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard2"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard4"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard3"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard5"]
+[editable path="MarginContainer/VBoxContainer/ExamplesHBoxContainer/HBoxContainer2/UiCard6"]

@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://bhxeo5a3qdbh8"]
 
 [ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="1_rjlel"]
-[ext_resource type="Texture2D" uid="uid://dta0h40cs6hli" path="res://dotpack/Charas/Touhou6/Charas_009_5.png" id="2_e484p"]
 [ext_resource type="Script" uid="uid://ma8vr5ked6er" path="res://card/card.gd" id="2_rjlel"]
-[ext_resource type="Texture2D" uid="uid://cudhxnrbl1act" path="res://card/card_blank_2.png" id="5_1n6wr"]
+[ext_resource type="Texture2D" uid="uid://dppklvjwc60sd" path="res://dotpack/Charas/Touhou8/Charas_8_5.png" id="4_ags6k"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="5_346uv"]
 [ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="5_i6okx"]
+[ext_resource type="Texture2D" uid="uid://bpbx5f37o01a7" path="res://card/card_border.png" id="6_7dy67"]
 [ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="6_ags6k"]
 [ext_resource type="AudioStream" uid="uid://dd42iuxcq1108" path="res://card/card-place-2.ogg" id="9_ags6k"]
 [ext_resource type="AudioStream" uid="uid://by46h4fdjebqd" path="res://card/card-slide-7.ogg" id="10_7dy67"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ags6k"]
+load_path = "res://.godot/imported/card_blank_2.png-1018a67b97d869e4fc3c81114b8ca159.ctex"
 
 [sub_resource type="Animation" id="Animation_e484p"]
 length = 0.001
@@ -98,7 +101,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("5_1n6wr"), ExtResource("6_ags6k")]
+"values": [ExtResource("6_7dy67"), ExtResource("6_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -150,7 +153,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_ags6k"), ExtResource("5_1n6wr")]
+"values": [ExtResource("6_ags6k"), ExtResource("6_7dy67")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -202,7 +205,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("1_rjlel"), ExtResource("6_ags6k")]
+"values": [ExtResource("6_7dy67"), ExtResource("6_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -373,17 +376,19 @@ script = ExtResource("2_rjlel")
 modulate = Color(0.005243026, 0.0036890837, 0.07096694, 0.5294118)
 z_index = -5
 position = Vector2(-5, 5)
-texture = ExtResource("5_1n6wr")
+texture = SubResource("CompressedTexture2D_ags6k")
 
 [node name="Card" type="Sprite2D" parent="." unique_id=782429156]
 texture = ExtResource("6_ags6k")
 
+[node name="Background" type="Sprite2D" parent="Card" unique_id=309831225]
+show_behind_parent = true
+texture = ExtResource("1_rjlel")
+
 [node name="Character" type="Sprite2D" parent="Card" unique_id=481162636]
 visible = false
-texture_filter = 1
-position = Vector2(0, -17)
-scale = Vector2(3, 3)
-texture = ExtResource("2_e484p")
+show_behind_parent = true
+texture = ExtResource("4_ags6k")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=198398882]
 libraries/ = SubResource("AnimationLibrary_q5obu")

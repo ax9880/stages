@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cheq6g2khaqcw"]
 
 [ext_resource type="Script" uid="uid://bhauewmlfwtli" path="res://characters_menu/character_v_box_container.gd" id="1_5qw8b"]
-[ext_resource type="Texture2D" uid="uid://dai4n8kmntrv8" path="res://dotpack/Charas/Touhou6/Charas_008_4.png" id="1_74fvy"]
+[ext_resource type="Texture2D" uid="uid://bqj6hv8oi3sr3" path="res://dotpack/Charas/Touhou6/Charas_6_4.png" id="1_74fvy"]
 
 [node name="CharacterVBoxContainer" type="VBoxContainer" unique_id=1153589870]
 script = ExtResource("1_5qw8b")
