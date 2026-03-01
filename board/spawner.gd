@@ -140,7 +140,7 @@ func randomize_piles(players: int = 0) -> void:
 			
 			$Deck.add_child(card)
 			
-			all_cards[card._card_data.texture.resource_path] = card
+			all_cards[card.card_data.texture.resource_path] = card
 
 
 func distribute_piles(players: int) -> void:
@@ -409,25 +409,33 @@ func _on_card_dropped_in_shared_pile(card: Card) -> void:
 	
 	card.peer_id = 0
 	
-	drop_card_in_shared_pile.rpc(card._card_data.texture.resource_path, card.position)
+	drop_card_in_shared_pile.rpc(card.card_data.texture.resource_path, card.position)
 
 
 func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 	print("%d picked up card" % GameData.persistent_peer_id)
 	
-	pick_up_card_from_shared_pile.rpc(card._card_data.texture.resource_path)
+	pick_up_card_from_shared_pile.rpc(card.card_data.texture.resource_path)
 
 
 func _on_shared_pile_card_requested(card: Card) -> void:
 	print("Requesting card")
 	
-	request_card.rpc(GameData.persistent_peer_id, card._card_data.texture.resource_path)
+	request_card.rpc(GameData.persistent_peer_id, card.card_data.texture.resource_path)
 
 
 func _on_connection_manager_peer_reconnected() -> void:
 	peer_disconnected_container.visible = false
 	
-	on_peer_connected.rpc()
+	var shared_pile_card_paths: Array = []
+	var card_positions: Array = []
+	
+	for card: Card in $SharedPile.get_cards():
+		shared_pile_card_paths.push_back(card.card_data.texture.resource_path)
+		
+		card_positions.push_back(card.position)
+	
+	synchronize_shared_pile.rpc(shared_pile_card_paths, card_positions)
 
 
 func _on_peer_disconnected(_id: int) -> void:
@@ -457,12 +465,63 @@ func on_peer_connected() -> void:
 	peer_disconnected_container.visible = false
 
 
+func _has_same_cards(shared_pile_card_paths: Array, card_positions: Array, current_cards: Array) -> bool:
+	if shared_pile_card_paths.size() != current_cards.size():
+		return false
+
+	for i in shared_pile_card_paths.size():
+		var current_card: Card = current_cards[i]
+		var shared_pile_card: Card = all_cards[shared_pile_card_paths[i]]
+		
+		if current_card != shared_pile_card:
+			return false
+		
+		if not card_positions[i].is_equal_approx(shared_pile_card.position):
+			# The card was moved
+			return false
+	
+	return true
+
+
+## Synchronize the shared pile with the server so that all players have the same
+## shared cards
+@rpc("reliable")
+func synchronize_shared_pile(shared_pile_card_paths: Array, card_positions: Array) -> void:
+	on_peer_connected()
+	
+	var current_cards: Array = $SharedPile.get_cards()
+	
+	if _has_same_cards(shared_pile_card_paths, card_positions, current_cards):
+		print("Shared pile has same cards")
+		
+		return
+	
+	for card in current_cards:
+		$SharedPile.remove_card(card, $Deck, true)
+		
+		card.peer_id = 0
+	
+	for i in shared_pile_card_paths.size():
+		var card: Card = all_cards[shared_pile_card_paths[i]]
+		
+		$SharedPile.add_card(card)
+		
+		card.flip_up()
+		
+		if $Hand.is_missing_one_card():
+			card.allow()
+		else:
+			card.forbid()
+		
+		card.position = card_positions[i]
+
+
 @rpc
 func on_peer_disconnected() -> void:
 	if _is_showing_results:
 		return
 	
-	peer_disconnected_container.visible = true
+	#peer_disconnected_container.visible = true
 
 
 @rpc("call_local", "any_peer", "reliable")

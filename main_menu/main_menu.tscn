@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://b2j73ancyi23m" path="res://network/server_connector.tscn" id="25_xayta"]
 [ext_resource type="Texture2D" uid="uid://bt37i0ps3nyt7" path="res://dotpack/Charas/Touhou7/Charas_7_6.png" id="26_qk1ns"]
 
-[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit")]
+[node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "multiplayer_is_desktop_only_label", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit", "quit_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -40,6 +40,7 @@ players_option_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HB
 host_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer/HostButton")
 join_button = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinButton")
 characters_button = NodePath("MarginContainer/VBoxContainer/CharactersButton")
+multiplayer_is_desktop_only_label = NodePath("MarginContainer/VBoxContainer/VBoxContainer/MultiplayerIsDesktopOnlyLabel")
 host_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer")
 host_waiting_label = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer/HostWaitingLabel")
 host_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostWaitingHBoxContainer")
@@ -49,6 +50,7 @@ join_waiting_h_box_container = NodePath("MarginContainer/VBoxContainer/VBoxConta
 host_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/HostHBoxContainer/HostPortTextEdit")
 ip_address_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/IpAddressTextEdit")
 join_port_text_edit = NodePath("MarginContainer/VBoxContainer/VBoxContainer/JoinHBoxContainer/JoinPortTextEdit")
+quit_button = NodePath("MarginContainer/VBoxContainer/QuitButton")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1292035198]
 layout_mode = 2
@@ -553,6 +555,11 @@ popup/item_1/id = 1
 popup/item_2/text = "4"
 popup/item_2/id = 2
 
+[node name="MultiplayerIsDesktopOnlyLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=1083116470]
+visible = false
+layout_mode = 2
+text = "MULTIPLAYER_IS_DESKTOP_ONLY"
+
 [node name="HostHBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer" unique_id=82980520]
 custom_minimum_size = Vector2(0, 52)
 layout_mode = 2
@@ -705,7 +712,7 @@ size_flags_horizontal = 4
 text = "QUIT"
 metadata/_custom_type_script = "uid://gmjskp4uabus"
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer" unique_id=882589947]
+[node name="CreditsLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=882589947]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24

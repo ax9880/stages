@@ -8,7 +8,7 @@ signal flipped_up
 
 signal card_clicked
 
-var _card_data: CardData
+var card_data: CardData
 
 var _position_tween: Tween
 var _appear_tween: Tween
@@ -29,12 +29,12 @@ func _physics_process(_delta: float) -> void:
 	global_position = lerp(global_position, get_global_mouse_position(), 0.25)
 
 
-func set_data(card_data: CardData) -> void:
-	_card_data = card_data
+func set_data(_card_data: CardData) -> void:
+	card_data = _card_data
 	
 	$Card/Character.texture = card_data.texture
 	
-	$GameLabel.text = str(_card_data.game)
+	$GameLabel.text = str(card_data.game)
 
 
 func enable() -> void:
@@ -80,12 +80,13 @@ func appear() -> void:
 	_tween_modulate(Color.WHITE)
 
 
-func disappear(next_parent: Node) -> void:
+func disappear(next_parent: Node, is_silent: bool) -> void:
 	disable()
 	
-	_tween_modulate(Color.TRANSPARENT)
-	
-	await _appear_tween.finished
+	if not is_silent:
+		_tween_modulate(Color.TRANSPARENT)
+		
+		await _appear_tween.finished
 	
 	reparent(next_parent)
 

@@ -264,7 +264,7 @@ func drop_card_in_shared_pile(shared_pile: Node2D) -> void:
 
 func _find_game_and_cards(card: Card, array: Array[GameAndCards]) -> GameAndCards:
 	for game_and_card: GameAndCards in array:
-		if game_and_card.game_number == card._card_data.game:
+		if game_and_card.game_number == card.card_data.game:
 			return game_and_card
 	
 	return null
@@ -325,7 +325,7 @@ func is_valid() -> HandEvaluationResults:
 		else:
 			game_and_cards = GameAndCards.new()
 			
-			game_and_cards.game_number = card._card_data.game
+			game_and_cards.game_number = card.card_data.game
 			game_and_cards.cards = [card]
 			
 			game_and_cards_list.push_back(game_and_cards)
@@ -335,7 +335,7 @@ func is_valid() -> HandEvaluationResults:
 	_assign_cards(game_and_cards_list, results)
 	
 	results.is_valid = game_and_cards_list.size() == 1
-	results.game_number = game_and_cards_list.front().cards.front()._card_data.game
+	results.game_number = game_and_cards_list.front().cards.front().card_data.game
 	
 	return results
 

@@ -53,12 +53,13 @@ func get_cards() -> Array:
 	return $Cards.get_children()
 
 
-func remove_card(card: Card, next_parent: Node) -> void:
+func remove_card(card: Card, next_parent: Node, is_silent: bool = false) -> void:
 	_disconnect_signals(card)
 	
-	card.disappear(next_parent)
+	card.disappear(next_parent, is_silent)
 	
-	card.play_peer_grab_audio()
+	if not is_silent:
+		card.play_peer_grab_audio()
 
 
 func handle_card(card: Card) -> void:

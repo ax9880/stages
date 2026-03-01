@@ -1,16 +1,19 @@
 extends VBoxContainer
 
 
+@export var multiplayer_score_container_packed_scene: PackedScene
+
+
 func _ready() -> void:
 	if GameData.players == 1:
 		visible = false
 	
 	for i in GameData.players:
-		var label: Label = Label.new()
+		var multiplayer_score_container: Control = multiplayer_score_container_packed_scene.instantiate()
 		
-		_set_label_text(label, i, 0, 0)
-		
-		add_child(label)
+		multiplayer_score_container.set_text(i, 0, 0)
+
+		add_child(multiplayer_score_container)
 
 
 func update(player_id: int, score: int, submitted_hands: int) -> void:
@@ -21,13 +24,6 @@ func update(player_id: int, score: int, submitted_hands: int) -> void:
 	
 	assert(player_number <= get_child_count())
 	
-	var label: Label = get_child(player_number)
+	var multiplayer_score_container: Control = get_child(player_number)
 	
-	_set_label_text(label, player_number, score, submitted_hands)
-
-
-func _set_label_text(label: Label, player_number: int, score: int, submitted_hands: int) -> void:
-	# PLAYER X
-	# Score: 9999
-	# 1/6
-	label.text = "%s %d\n%s: %d\n%d/%d" % [tr("PLAYER"), player_number + 1, tr("SCORE"), score, submitted_hands, GameData.piles]
+	multiplayer_score_container.set_text(player_number, score, submitted_hands)

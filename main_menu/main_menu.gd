@@ -11,6 +11,8 @@ const _MAX_PILES: int = 13
 
 @export var characters_button: Button
 
+@export var multiplayer_is_desktop_only_label: Label
+
 @export var host_h_box_container: HBoxContainer
 @export var host_waiting_label: Label
 @export var host_waiting_h_box_container: HBoxContainer
@@ -25,6 +27,7 @@ const _MAX_PILES: int = 13
 @export var ip_address_text_edit: TextEdit
 @export var join_port_text_edit: TextEdit
 
+@export var quit_button: AudioButton
 
 func _ready() -> void:
 	$Network/ServerConnector.stop()
@@ -42,8 +45,18 @@ func _ready() -> void:
 	host_port_text_edit.text = str(GameData.port)
 	join_port_text_edit.text = str(GameData.port)
 	
-	host_h_box_container.visible = true
-	join_h_box_container.visible = true
+	if OS.get_name() == "Web":
+		host_h_box_container.visible = false
+		join_h_box_container.visible = false
+		
+		multiplayer_is_desktop_only_label.visible = true
+		
+		quit_button.visible = false
+	else:
+		host_h_box_container.visible = true
+		join_h_box_container.visible = true
+		
+		multiplayer_is_desktop_only_label.visible = false
 	
 	host_waiting_h_box_container.visible = false
 	join_waiting_h_box_container.visible = false

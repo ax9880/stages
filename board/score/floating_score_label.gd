@@ -12,7 +12,6 @@ func show_score(results: HandEvaluationResults) -> void:
 	game_label.visible = results.is_valid
 	
 	if results.is_valid:
-		# Button 22
 		label.modulate = default_color
 		
 		$ScoreAudio.play()

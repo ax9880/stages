@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://by48rkg3nrht0"]
 
 [ext_resource type="Script" uid="uid://dm775utj0xit" path="res://board/multiplayer_score_tracker.gd" id="1_py0up"]
+[ext_resource type="PackedScene" uid="uid://cc1rodoo8s3mt" path="res://board/score/multiplayer_score_container.tscn" id="2_qcm16"]
 
 [node name="MultiplayerScoreTracker" type="VBoxContainer" unique_id=1619415324]
 custom_minimum_size = Vector2(320, 320)
@@ -8,3 +9,4 @@ size_flags_horizontal = 0
 size_flags_vertical = 0
 theme_override_constants/separation = 32
 script = ExtResource("1_py0up")
+multiplayer_score_container_packed_scene = ExtResource("2_qcm16")
