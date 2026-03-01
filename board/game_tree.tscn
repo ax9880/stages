@@ -447,6 +447,7 @@ text = "QUIT"
 visible = false
 
 [node name="DisconnectTestButton" type="Button" parent="." unique_id=1823265476]
+visible = false
 offset_right = 240.0
 offset_bottom = 138.0
 text = "Disconnect"
