@@ -15,6 +15,7 @@ extends Node2D
 @export var waiting_for_players_container: MarginContainer
 
 @export var peer_disconnected_container: MarginContainer
+@export var peer_disconnected_label: Label
 
 @export var time_label: Label
 
@@ -74,6 +75,8 @@ func _ready() -> void:
 		else:
 			multiplayer.connected_to_server.connect(_on_connected_to_server)
 			multiplayer.server_disconnected.connect(_on_server_disconnected)
+			
+			peer_disconnected_label.text = tr("DISCONNECTED_TRYING_TO_CONNECT")
 
 
 func _process(delta: float) -> void:
@@ -521,7 +524,7 @@ func on_peer_disconnected() -> void:
 	if _is_showing_results:
 		return
 	
-	#peer_disconnected_container.visible = true
+	peer_disconnected_container.visible = true
 
 
 @rpc("call_local", "any_peer", "reliable")

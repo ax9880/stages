@@ -28,7 +28,8 @@ JOINING,Joining match,Uniéndose a partida...
 CONNECTED,Connected,Conectado
 CANCEL,Cancel,Cancelar
 DISCONNECTED,Disconnected,Desconectado
-WAITING_FOR_OTHER_PLAYERS_TO_FINISH,Waiting for other players to finish,Esperando que terminen los otros jugadores
+DISCONNECTED_TRYING_TO_CONNECT,Disconnected. Trying to connect to server...,Desconectado. Tratando de conectarse al servidor...
+WAITING_FOR_OTHER_PLAYERS_TO_FINISH,Waiting for other players to finish...,Esperando que terminen los otros jugadores...
 YOU_WIN,You win,Ganaste
 YOU_LOSE,You lose,Perdiste
 PERFECT,PERFECT,PERFECTO
@@ -38,5 +39,6 @@ SWAP_CARDS,3. Swap cards,3. Intercambia cartas
 FULL_SCREEN,Full screen,Pantalla completa
 START_MATCH,Go!,¡A jugar!
 LANGUAGE,Language,Idioma
-CREDITS,"By illusorybread for Touhou Station Game Jam 2026. Uses Touhou Game Jam Pixel Character Pack by tea_basira. Sky Ruins arrangement by dobuusagi from dBu music. Sound effects from SoundEffect Lab and Kenney. Additional graphics by Kenney","Por illusorybread para Touhou Station Game Jam 2026. Touhou Game Jam Pixel Character Pack hecho por tea_basira. Arreglo de Sky Ruins hecho for dobuusagi de dBu music. Efectos de sonido de SoundEffect Lab y Kenney. Gráficos adicionales por Kenney"
+CREDITS,"By illusorybread for Touhou Station Game Jam 2026. Touhou character art by dairi. Sound effects from SoundEffect Lab and Kenney. Additional graphics by Kenney.","Por illusorybread para Touhou Station Game Jam 2026. Arte de personajes de Touhou hecho por dairi. Efectos de sonido de SoundEffect Lab y Kenney. Gráficos adicionales por Kenney."
 TOUHOU,Touhou,Touhou
+MULTIPLAYER_IS_DESKTOP_ONLY,Multiplayer is only available on desktop version,El modo multijugador solo está disponible en la versión de PC

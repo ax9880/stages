@@ -256,7 +256,7 @@ metadata/_custom_type_script = "uid://gmjskp4uabus"
 z_index = 10
 metadata/_edit_lock_ = true
 
-[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker", "waiting_for_players_container", "peer_disconnected_container", "time_label", "go_label")]
+[node name="Spawner" type="Node2D" parent="World" unique_id=1008470769 node_paths=PackedStringArray("submit_button", "multiplayer_score_tracker", "waiting_for_players_container", "peer_disconnected_container", "peer_disconnected_label", "time_label", "go_label")]
 script = ExtResource("6_45ghq")
 piles_count = 3
 card_packed_scene = ExtResource("3_uotic")
@@ -264,6 +264,7 @@ submit_button = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContaine
 multiplayer_score_tracker = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer2/MultiplayerScoreTracker")
 waiting_for_players_container = NodePath("../../CanvasLayer/WaitingForPlayersContainer")
 peer_disconnected_container = NodePath("../../CanvasLayer/PeerDisconnectedContainer")
+peer_disconnected_label = NodePath("../../CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer/PeerDisconnectedLabel")
 time_label = NodePath("../../BoardMenuContainer/MarginContainer2/VBoxContainer/HBoxContainer2/TimeLabel")
 go_label = NodePath("../../CanvasLayer/MarginContainer/GoLabel")
 metadata/_edit_lock_ = true
@@ -431,7 +432,7 @@ theme_override_constants/margin_bottom = 8
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=2026350126]
+[node name="PeerDisconnectedLabel" type="Label" parent="CanvasLayer/PeerDisconnectedContainer/MarginContainer/VBoxContainer" unique_id=2026350126]
 layout_mode = 2
 text = "DISCONNECTED"
 horizontal_alignment = 1
