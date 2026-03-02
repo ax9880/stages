@@ -1,6 +1,6 @@
 # Stages!
 
-Matching card game for the [Touhou Station Jam 2026](https://en.touhougarakuta.com/news-en/gamejam2026-en/). Supports up to 4-player LAN multiplayer.
+Matching card game for the [Touhou Station Jam 2026](https://en.touhougarakuta.com/news-en/gamejam2026-en/), also [available on itch.io](https://illusorybread.itch.io/stages). Supports up to 4-player LAN multiplayer.
 
 Available from 2026/02/20 to 2026/03/28 [here](https://touhou-gamejam.whiteluckbringers.dev/en/work/958badfb-7116-4e2a-bd47-30eb25a77866/).
 
@@ -39,3 +39,8 @@ Additional credits:
 - [Dosis font](https://fonts.google.com/specimen/Dosis) from Google Fonts.
 
 Touhou Project is a property of Team Shanghai Alice.
+
+### Jam version credits
+
+- Touhou Game Jam Pixel Character Pack by tea_basira.
+- Sky Ruins arrangement by dobuusagi from dBu music.
