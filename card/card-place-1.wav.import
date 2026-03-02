@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/card-place-1.wav-c70d4f1018a7b4999e3913cdfdc2
 [params]
 
 force/8_bit=false
-force/mono=false
+force/mono=true
 force/max_rate=false
 force/max_rate_hz=44100
 edit/trim=false

@@ -1,14 +1,37 @@
 [gd_scene format=3 uid="uid://bhxeo5a3qdbh8"]
 
-[ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="1_rjlel"]
+[ext_resource type="Texture2D" uid="uid://dmgiuecbpthw0" path="res://card/cards.png" id="2_7dy67"]
 [ext_resource type="Script" uid="uid://ma8vr5ked6er" path="res://card/card.gd" id="2_rjlel"]
 [ext_resource type="Texture2D" uid="uid://cq7r1ydwqrcrm" path="res://dotpack/Charas/Touhou20/Charas_6.png" id="4_ags6k"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="5_346uv"]
 [ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="5_i6okx"]
-[ext_resource type="Texture2D" uid="uid://bpbx5f37o01a7" path="res://card/card_border.png" id="6_7dy67"]
-[ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="6_ags6k"]
 [ext_resource type="AudioStream" uid="uid://dd42iuxcq1108" path="res://card/card-place-2.ogg" id="9_ags6k"]
 [ext_resource type="AudioStream" uid="uid://by46h4fdjebqd" path="res://card/card-slide-7.ogg" id="10_7dy67"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_houxr"]
+atlas = ExtResource("2_7dy67")
+region = Rect2(150, 200, 150, 200)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_7dy67"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1by4f"]
+atlas = SubResource("CompressedTexture2D_7dy67")
+region = Rect2(300, 200, 150, 200)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1n6wr"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ags6k"]
+atlas = SubResource("CompressedTexture2D_1n6wr")
+region = Rect2(0, 0, 150, 200)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ags6k"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7dy67"]
+atlas = SubResource("CompressedTexture2D_ags6k")
+region = Rect2(150, 0, 150, 200)
 
 [sub_resource type="Animation" id="Animation_e484p"]
 length = 0.001
@@ -34,7 +57,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_ags6k")]
+"values": [SubResource("AtlasTexture_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -97,6 +120,13 @@ tracks/6/keys = {
 "values": [true]
 }
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_houxr"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1k3d"]
+atlas = SubResource("CompressedTexture2D_houxr")
+region = Rect2(0, 200, 150, 200)
+
 [sub_resource type="Animation" id="Animation_rjlel"]
 resource_name = "flip_down"
 length = 0.2
@@ -122,7 +152,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_7dy67"), ExtResource("6_ags6k")]
+"values": [SubResource("AtlasTexture_b1k3d"), SubResource("AtlasTexture_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -198,7 +228,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_ags6k"), ExtResource("6_7dy67")]
+"values": [SubResource("AtlasTexture_ags6k"), SubResource("AtlasTexture_b1k3d")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -274,7 +304,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ExtResource("6_7dy67"), ExtResource("6_ags6k")]
+"values": [SubResource("AtlasTexture_b1k3d"), SubResource("AtlasTexture_ags6k")]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -469,20 +499,20 @@ script = ExtResource("2_rjlel")
 modulate = Color(0.003921569, 0.003921569, 0.07058824, 0.5294118)
 z_index = -5
 position = Vector2(-5, 5)
-texture = ExtResource("1_rjlel")
+texture = SubResource("AtlasTexture_houxr")
 
 [node name="Shadow2" type="Sprite2D" parent="." unique_id=2018842071]
 modulate = Color(0.06345311, 0.06334161, 0.35725686, 0.36078432)
 show_behind_parent = true
 position = Vector2(-5, 5)
-texture = ExtResource("1_rjlel")
+texture = SubResource("AtlasTexture_1by4f")
 
 [node name="Card" type="Sprite2D" parent="." unique_id=782429156]
-texture = ExtResource("6_ags6k")
+texture = SubResource("AtlasTexture_ags6k")
 
 [node name="Background" type="Sprite2D" parent="Card" unique_id=309831225]
 show_behind_parent = true
-texture = ExtResource("1_rjlel")
+texture = SubResource("AtlasTexture_7dy67")
 
 [node name="Character" type="Sprite2D" parent="Card" unique_id=481162636]
 visible = false

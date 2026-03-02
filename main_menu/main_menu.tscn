@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="3_3shxk"]
 [ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="3_ie3af"]
 [ext_resource type="Texture2D" uid="uid://cok1viptdaolv" path="res://dotpack/Charas/Touhou7/Charas_7_2.png" id="5_6at21"]
-[ext_resource type="Texture2D" uid="uid://cr1fetm0p84i6" path="res://card/card_back_blue.png" id="5_ifnh7"]
 [ext_resource type="Texture2D" uid="uid://cp6mmjyaivlll" path="res://card/cursor.png" id="6_7f1p5"]
 [ext_resource type="PackedScene" uid="uid://jql13mb1dho1" path="res://main_menu/ui_card_no_number.tscn" id="7_ombju"]
 [ext_resource type="Texture2D" uid="uid://dwbwvb0u31ib8" path="res://dotpack/Charas/Touhou20/Charas_1.png" id="16_qq33v"]
@@ -25,6 +24,13 @@
 [ext_resource type="Texture2D" uid="uid://7ulergnbovpu" path="res://dotpack/Charas/Touhou7/Charas_7c_4.png" id="25_pv4yd"]
 [ext_resource type="PackedScene" uid="uid://b2j73ancyi23m" path="res://network/server_connector.tscn" id="25_xayta"]
 [ext_resource type="Texture2D" uid="uid://bt37i0ps3nyt7" path="res://dotpack/Charas/Touhou7/Charas_7_6.png" id="26_qk1ns"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_xayta"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bphs3"]
+atlas = SubResource("CompressedTexture2D_xayta")
+region = Rect2(0, 0, 150, 200)
 
 [node name="MainMenu" type="MarginContainer" unique_id=813007979 node_paths=PackedStringArray("start_button", "piles_option_button", "players_option_button", "host_button", "join_button", "characters_button", "multiplayer_is_desktop_only_label", "host_h_box_container", "host_waiting_label", "host_waiting_h_box_container", "join_h_box_container", "join_waiting_label", "join_waiting_h_box_container", "host_port_text_edit", "ip_address_text_edit", "join_port_text_edit", "full_screen_check_box", "quit_button")]
 anchors_preset = 15
@@ -96,7 +102,7 @@ layout_mode = 0
 offset_top = 7.5
 offset_right = 75.0
 offset_bottom = 107.5
-texture = ExtResource("5_ifnh7")
+texture = SubResource("AtlasTexture_bphs3")
 expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=1498107030]
@@ -105,7 +111,7 @@ offset_left = 3.0
 offset_top = 4.5
 offset_right = 78.0
 offset_bottom = 104.5
-texture = ExtResource("5_ifnh7")
+texture = SubResource("AtlasTexture_bphs3")
 expand_mode = 1
 
 [node name="TextureRect3" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=553676018]
@@ -114,7 +120,7 @@ offset_left = 6.0
 offset_top = 1.5
 offset_right = 81.0
 offset_bottom = 101.5
-texture = ExtResource("5_ifnh7")
+texture = SubResource("AtlasTexture_bphs3")
 expand_mode = 1
 
 [node name="TextureRect4" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=892724881]
@@ -123,7 +129,7 @@ offset_left = 9.0
 offset_top = -1.5
 offset_right = 84.0
 offset_bottom = 98.5
-texture = ExtResource("5_ifnh7")
+texture = SubResource("AtlasTexture_bphs3")
 expand_mode = 1
 
 [node name="TextureRect5" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=1844524108]
@@ -132,7 +138,7 @@ offset_left = 12.0
 offset_top = -4.5
 offset_right = 87.0
 offset_bottom = 95.5
-texture = ExtResource("5_ifnh7")
+texture = SubResource("AtlasTexture_bphs3")
 expand_mode = 1
 
 [node name="TextureRect6" type="TextureRect" parent="MarginContainer/VBoxContainer/TutorialHBoxContainer/HBoxContainer/Control" unique_id=1828227585]

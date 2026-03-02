@@ -1,8 +1,14 @@
 [gd_scene format=3 uid="uid://beced22chfif5"]
 
 [ext_resource type="Script" uid="uid://duarj7gbpeqjh" path="res://board/pile.gd" id="1_1o32j"]
-[ext_resource type="Texture2D" uid="uid://806kwhyr0nky" path="res://card/card_back_blue_2.png" id="2_01qhl"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="4_rrfxv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_1o000"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01qhl"]
+atlas = SubResource("CompressedTexture2D_1o000")
+region = Rect2(300, 0, 150, 200)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tynfp"]
 size = Vector2(152, 200)
@@ -15,7 +21,7 @@ hover_color = Color(1, 1, 1, 1)
 [node name="PileBackground" type="Sprite2D" parent="." unique_id=1217477242]
 modulate = Color(1, 1, 1, 0.5019608)
 z_index = -10
-texture = ExtResource("2_01qhl")
+texture = SubResource("AtlasTexture_01qhl")
 metadata/_edit_lock_ = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1297028060]

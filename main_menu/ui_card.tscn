@@ -1,8 +1,20 @@
 [gd_scene format=3 uid="uid://d076wn80ho2c6"]
 
 [ext_resource type="Texture2D" uid="uid://bqj6hv8oi3sr3" path="res://dotpack/Charas/Touhou6/Charas_6_4.png" id="1_1n6oy"]
-[ext_resource type="Texture2D" uid="uid://bx873ix4j4nta" path="res://card/card_blank.png" id="2_v1e1f"]
-[ext_resource type="Texture2D" uid="uid://bpbx5f37o01a7" path="res://card/card_border.png" id="3_v1e1f"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ags6k"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n6oy"]
+atlas = SubResource("CompressedTexture2D_ags6k")
+region = Rect2(150, 0, 150, 200)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_houxr"]
+load_path = "res://.godot/imported/cards.png-6dcf724e95a5d82c39e768f68ebf9846.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hvw8x"]
+atlas = SubResource("CompressedTexture2D_houxr")
+region = Rect2(0, 200, 150, 200)
 
 [node name="UiCard" type="VBoxContainer" unique_id=1260589921]
 offset_right = 75.0
@@ -21,7 +33,7 @@ custom_minimum_size = Vector2(75, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("2_v1e1f")
+texture = SubResource("AtlasTexture_1n6oy")
 expand_mode = 5
 stretch_mode = 5
 
@@ -40,7 +52,7 @@ custom_minimum_size = Vector2(75, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource("3_v1e1f")
+texture = SubResource("AtlasTexture_hvw8x")
 expand_mode = 5
 stretch_mode = 5
 
