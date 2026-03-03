@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ikern2nhaw1o"
-path="res://.godot/imported/Charas_4.png-c5dbbd3beaf6011462c32258df33e20f.ctex"
+uid="uid://c26hyywpea6nh"
+path="res://.godot/imported/Charas_20_4.png-1c372fea0f3b3770441fca353e54b740.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://dotpack/Charas/Touhou20/Charas_4.png"
-dest_files=["res://.godot/imported/Charas_4.png-c5dbbd3beaf6011462c32258df33e20f.ctex"]
+source_file="res://dotpack/Charas/Touhou20/Charas_20_4.png"
+dest_files=["res://.godot/imported/Charas_20_4.png-1c372fea0f3b3770441fca353e54b740.ctex"]
 
 [params]
 

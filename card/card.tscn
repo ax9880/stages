@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dmgiuecbpthw0" path="res://card/cards.png" id="2_7dy67"]
 [ext_resource type="Script" uid="uid://ma8vr5ked6er" path="res://card/card.gd" id="2_rjlel"]
-[ext_resource type="Texture2D" uid="uid://cq7r1ydwqrcrm" path="res://dotpack/Charas/Touhou20/Charas_6.png" id="4_ags6k"]
+[ext_resource type="Texture2D" uid="uid://bxxujhpyi55n4" path="res://dotpack/Charas/Touhou20/Charas_20_6.png" id="4_ags6k"]
 [ext_resource type="AudioStream" uid="uid://duormjb5u7xi" path="res://card/card-place-1.wav" id="5_346uv"]
 [ext_resource type="AudioStream" uid="uid://dhl60xkr1tcc3" path="res://sounds/cursor6.mp3" id="5_i6okx"]
 [ext_resource type="AudioStream" uid="uid://dd42iuxcq1108" path="res://card/card-place-2.ogg" id="9_ags6k"]
