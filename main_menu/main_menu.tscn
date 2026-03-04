@@ -695,6 +695,7 @@ layout_mode = 2
 bus_name = "Sound effects"
 
 [node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=2113607130]
+visible = false
 custom_minimum_size = Vector2(160, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -702,6 +703,7 @@ text = "MUSIC"
 horizontal_alignment = 2
 
 [node name="HSlider2" parent="MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer4" unique_id=1506368740 instance=ExtResource("17_qq33v")]
+visible = false
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 editable = false
