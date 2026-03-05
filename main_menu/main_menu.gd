@@ -52,20 +52,22 @@ func _ready() -> void:
 	join_port_text_edit.text = str(GameData.port)
 	
 	if OS.get_name() == "Web":
-		host_h_box_container.visible = false
-		join_h_box_container.visible = false
+		host_h_box_container.hide()
+		join_h_box_container.hide()
 		
-		multiplayer_is_desktop_only_label.visible = true
+		multiplayer_is_desktop_only_label.show()
 		
-		quit_button.visible = false
+		quit_button.hide()
+		
+		full_screen_check_box.hide()
 	else:
-		host_h_box_container.visible = true
-		join_h_box_container.visible = true
+		host_h_box_container.show()
+		join_h_box_container.show()
 		
-		multiplayer_is_desktop_only_label.visible = false
+		multiplayer_is_desktop_only_label.hide()
 	
-	host_waiting_h_box_container.visible = false
-	join_waiting_h_box_container.visible = false
+	host_waiting_h_box_container.hide()
+	join_waiting_h_box_container.hide()
 	
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.server_disconnected.connect(_on_disconnected_to_server)
@@ -109,8 +111,8 @@ func _on_host_button_pressed() -> void:
 	
 	$Network/Server.start_server(port)
 	
-	host_h_box_container.visible = false
-	host_waiting_h_box_container.visible = true
+	host_h_box_container.hide()
+	host_waiting_h_box_container.show()
 
 
 func _on_join_button_pressed() -> void:
@@ -130,8 +132,8 @@ func _on_join_button_pressed() -> void:
 	
 	$Network/ServerConnector.connect_to_server(ip_address_text_edit.text.strip_edges(), port)
 	
-	join_h_box_container.visible = false
-	join_waiting_h_box_container.visible = true
+	join_h_box_container.hide()
+	join_waiting_h_box_container.show()
 
 
 func _on_piles_option_button_item_selected(index: int) -> void:
@@ -169,8 +171,8 @@ func _update_players(index: int) -> void:
 func _on_cancel_host_button_pressed() -> void:
 	$Network/Server.stop_server()
 	
-	host_h_box_container.visible = true
-	host_waiting_h_box_container.visible = false
+	host_h_box_container.show()
+	host_waiting_h_box_container.hide()
 	
 	_enable_buttons()
 
@@ -200,8 +202,8 @@ func _on_server_on_peer_connection_status_change(connected_peers: int) -> void:
 func _on_cancel_join_button_pressed() -> void:
 	$Network/ServerConnector.stop()
 	
-	join_h_box_container.visible = true
-	join_waiting_h_box_container.visible = false
+	join_h_box_container.show()
+	join_waiting_h_box_container.hide()
 	
 	_enable_buttons()
 
