@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Stages!"
-config/version="1.0.0.0"
+config/description="Touhou matching card game where you build piles of characters that belong to the same Touhou game."
+config/version="1.1.0.0"
 run/main_scene="uid://jhrpt5l1vqaw"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 boot_splash/stretch_mode=0
@@ -33,6 +34,7 @@ GameData="*uid://dgrtntdlaeg3r"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=3
 window/size/window_width_override=1440
 window/size/window_height_override=810
 window/stretch/mode="canvas_items"
