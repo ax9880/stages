@@ -3,6 +3,8 @@ extends Node2D
 @export var cards_per_pile: int = 6
 @export var piles_count: int = 6
 
+@export var card_in_deck_spacing: int = 2
+
 @export var card_packed_scene: PackedScene
 
 @export var pile_wait_time_seconds: float = 0.2
@@ -61,8 +63,8 @@ func _ready() -> void:
 	else:
 		GameData.piles = piles_count
 	
-	randomize_piles(GameData.players)
-	distribute_piles(GameData.players)
+	_randomize_piles(GameData.players)
+	_distribute_piles(GameData.players)
 	
 	submit_button.pressed.connect(_on_submit_button_pressed)
 	
@@ -110,7 +112,7 @@ func _quit() -> void:
 	GameData.disconnect_network()
 
 
-func randomize_piles(players: int = 0) -> void:
+func _randomize_piles(players: int = 0) -> void:
 	var available_games: Array = games.keys().duplicate()
 	
 	if can_randomize:
@@ -141,23 +143,41 @@ func randomize_piles(players: int = 0) -> void:
 			
 			card.set_data(chosen_cards.pop_front())
 			
+			# Hide the cards so that in multiplayer the cards
+			# that are dealt to other players remain hidden while
+			# dealing the current player's cards
+			card.hide()
+			
 			$Deck.add_child(card)
 			
 			all_cards[card.card_data.texture.resource_path] = card
 
 
-func distribute_piles(players: int) -> void:
+func _distribute_piles(players: int) -> void:
 	var deck_children: Array[Node] = $Deck.get_children()
-	var chosen_piles: Node2D = _pick_piles()
 	
-	await _add_cards_to_piles(chosen_piles, deck_children, players)
+	# Reverse the children so that the cards that were last added
+	# are processed first, because those cards show on top of the others
+	deck_children.reverse()
+	
+	var chosen_piles: Node2D = _choose_piles()
+	var chosen_cards: Array = _choose_cards(chosen_piles, deck_children, players)
+	
+	var shared_cards: Array = deck_children.slice(-6)
+	
+	_position_cards(chosen_cards, shared_cards)
+	
+	await _add_cards_to_piles(chosen_piles, chosen_cards)
 	
 	# Shared pile
-	$SharedPile.add_cards(deck_children.slice(-6))
+	$SharedPile.add_cards(shared_cards)
 	
 	await $SharedPile.cards_added
 	
 	$Deck.hide()
+	
+	for card in $Deck.get_children():
+		card.show()
 	
 	for pile in chosen_piles.get_children():
 		pile.enable_area()
@@ -165,7 +185,7 @@ func distribute_piles(players: int) -> void:
 	go_label.play()
 
 
-func _pick_piles() -> Node2D:
+func _choose_piles() -> Node2D:
 	if piles_count == 3:
 		return $Piles3
 	elif piles_count == 4:
@@ -176,9 +196,7 @@ func _pick_piles() -> Node2D:
 		return null
 
 
-func _add_cards_to_piles(chosen_piles: Node2D, deck_children: Array, players: int) -> void:
-	chosen_piles.visible = true
-	
+func _choose_cards(chosen_piles: Node2D, deck_children: Array, players: int) -> Array:
 	var sliced_deck: Array
 	
 	if players > 1 and not multiplayer.is_server():
@@ -193,13 +211,37 @@ func _add_cards_to_piles(chosen_piles: Node2D, deck_children: Array, players: in
 	
 	assert(sliced_deck.size() == chosen_piles.get_child_count() * cards_per_pile)
 	
+	return sliced_deck
+
+
+func _position_cards(chosen_cards: Array, shared_cards: Array) -> void:
+	var cards: Array = []
+	cards.append_array(chosen_cards)
+	cards.append_array(shared_cards)
+	
+	# Reverse it so that the card at the bottom
+	# (from the shared cards) is at position 0,0 and
+	# the other cards are on top of it
+	cards.reverse()
+	
+	for i in cards.size():
+		var card: Card = cards[i]
+		
+		# Set the position of the cards so it looks like they
+		# are in a deck
+		card.position.y = -card_in_deck_spacing * i
+		
+		card.show()
+
+
+func _add_cards_to_piles(chosen_piles: Node2D, sliced_deck: Array) -> void:
+	chosen_piles.visible = true
+	
 	for pile in chosen_piles.get_children():
 		var cards_to_add := []
 		
 		for i in cards_per_pile:
 			cards_to_add.push_back(sliced_deck.pop_front())
-		
-		cards_to_add.reverse()
 		
 		pile.add_cards(cards_to_add)
 		
