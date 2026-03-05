@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bwehwd412sxxy" path="res://characters_menu/characters.gd" id="1_j24f1"]
 [ext_resource type="PackedScene" uid="uid://d3n5t1kqv46ka" path="res://board/card_data_loader.tscn" id="2_eekhk"]
 [ext_resource type="PackedScene" uid="uid://fxq2mrolcqfb" path="res://characters_menu/game_h_box_container.tscn" id="2_j24f1"]
-[ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="4_mkpa6"]
+[ext_resource type="Texture2D" uid="uid://dk360y4q2lfqs" path="res://background.jpg" id="4_mkpa6"]
 [ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="5_tn0ug"]
 
 [node name="Characters" type="MarginContainer" unique_id=2023050909]

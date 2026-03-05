@@ -4,7 +4,7 @@
 [ext_resource type="FontFile" uid="uid://bucib1m3mxg2k" path="res://font/Dosis-ExtraBold.ttf" id="2_3shxk"]
 [ext_resource type="Script" uid="uid://c5i6u3lngpfar" path="res://main_menu/main_menu.gd" id="2_tr6y3"]
 [ext_resource type="PackedScene" uid="uid://d076wn80ho2c6" path="res://main_menu/ui_card.tscn" id="3_3shxk"]
-[ext_resource type="Texture2D" uid="uid://krnhxcoetn3p" path="res://background.png" id="3_ie3af"]
+[ext_resource type="Texture2D" uid="uid://dk360y4q2lfqs" path="res://background.jpg" id="3_ie3af"]
 [ext_resource type="Texture2D" uid="uid://cok1viptdaolv" path="res://dotpack/Charas/Touhou7/Charas_7_2.png" id="5_6at21"]
 [ext_resource type="Texture2D" uid="uid://cp6mmjyaivlll" path="res://card/cursor.png" id="6_7f1p5"]
 [ext_resource type="PackedScene" uid="uid://jql13mb1dho1" path="res://main_menu/ui_card_no_number.tscn" id="7_ombju"]
