@@ -33,10 +33,12 @@ const _MAX_PILES: int = 13
 
 
 func _ready() -> void:
-	$Network/ServerConnector.stop()
+	get_tree().root.size_changed.connect(_on_size_changed)
+	_on_size_changed()
 	
-	GameData.is_full_screen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	full_screen_check_box.set_pressed(GameData.is_full_screen)
+	
+	$Network/ServerConnector.stop()
 	
 	$MarginContainer/VBoxContainer/StartButton.grab_focus()
 	
@@ -219,3 +221,9 @@ func _on_full_screen_check_box_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+func _on_size_changed() -> void:
+	var is_full_screen: bool = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	
+	full_screen_check_box.set_pressed_no_signal(is_full_screen)
