@@ -55,6 +55,7 @@ func _ready() -> void:
 		host_h_box_container.hide()
 		join_h_box_container.hide()
 		
+		$MarginContainer/VBoxContainer/VBoxContainer/HBoxContainer7.hide()
 		multiplayer_is_desktop_only_label.show()
 		
 		quit_button.hide()
