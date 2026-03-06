@@ -226,6 +226,6 @@ func _on_full_screen_check_box_toggled(toggled_on: bool) -> void:
 
 
 func _on_size_changed() -> void:
-	var is_full_screen: bool = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	GameData.is_full_screen = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
 	
-	full_screen_check_box.set_pressed_no_signal(is_full_screen)
+	full_screen_check_box.set_pressed(GameData.is_full_screen)
