@@ -11,6 +11,7 @@ extends MarginContainer
 
 @export var cards_swapped_label: Label
 @export var piles_viewed_label: Label
+@export var total_movements_label: Label
 
 @export var multiplayer_results: VBoxContainer
 
@@ -65,6 +66,8 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, cards_swapped:
 	
 	cards_swapped_label.text = str(cards_swapped)
 	piles_viewed_label.text = str(piles_viewed)
+	
+	total_movements_label.text = str(cards_swapped + piles_viewed)
 
 
 func _show_multiplayer_results(positions: Array, total_scores: Array, times: Array) -> void:

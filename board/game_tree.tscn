@@ -135,7 +135,7 @@ _data = {
 
 [node name="GameTree" type="Node" unique_id=642685009]
 
-[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "player_label")]
+[node name="BoardMenuContainer" type="MarginContainer" parent="." unique_id=2061058605 node_paths=PackedStringArray("score_label", "player_label", "movements_label")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -144,6 +144,7 @@ grow_vertical = 2
 script = ExtResource("1_nv1sn")
 score_label = NodePath("MarginContainer2/VBoxContainer/HBoxContainer/Label2")
 player_label = NodePath("MarginContainer2/VBoxContainer2/PlayerLabel")
+movements_label = NodePath("MarginContainer2/MarginContainer2/VBoxContainer/HBoxContainer3/MovementsLabel")
 metadata/_edit_lock_ = true
 
 [node name="ColorRect" type="ColorRect" parent="BoardMenuContainer" unique_id=974869240]
@@ -247,10 +248,36 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 
 [node name="QuitButton" parent="BoardMenuContainer/MarginContainer2/MarginContainer" unique_id=2069029232 instance=ExtResource("16_68t1a")]
-custom_minimum_size = Vector2(120, 0)
+custom_minimum_size = Vector2(128, 64)
 layout_mode = 2
 text = "QUIT"
 metadata/_custom_type_script = "uid://gmjskp4uabus"
+
+[node name="MarginContainer2" type="MarginContainer" parent="BoardMenuContainer/MarginContainer2" unique_id=1506713800]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="BoardMenuContainer/MarginContainer2/MarginContainer2" unique_id=1405457149]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="BoardMenuContainer/MarginContainer2/MarginContainer2/VBoxContainer" unique_id=246097367]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="MovementsLabel" type="Label" parent="BoardMenuContainer/MarginContainer2/MarginContainer2/VBoxContainer/HBoxContainer3" unique_id=1463549773]
+custom_minimum_size = Vector2(48, 0)
+layout_mode = 2
+text = "MOVEMENTS: 0"
+horizontal_alignment = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="BoardMenuContainer/MarginContainer2/MarginContainer2/VBoxContainer" unique_id=2107160512]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
 
 [node name="World" type="Node2D" parent="." unique_id=845418800]
 z_index = 10
@@ -455,6 +482,7 @@ script = ExtResource("19_7tlgs")
 
 [connection signal="pressed" from="BoardMenuContainer/MarginContainer2/MarginContainer/QuitButton" to="World/Spawner" method="_on_quit_button_pressed"]
 [connection signal="all_hands_submitted" from="World/Spawner" to="CanvasLayer/ScoreMenuContainer" method="_on_spawner_all_hands_submitted"]
+[connection signal="movements_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_movements_updated"]
 [connection signal="score_updated" from="World/Spawner" to="BoardMenuContainer" method="_on_spawner_score_updated"]
 [connection signal="peer_reconnected" from="World/Spawner/ConnectionManager" to="World/Spawner" method="_on_connection_manager_peer_reconnected"]
 [connection signal="timeout" from="World/Spawner/ConnectionManager/ReconnectionTimer" to="World/Spawner/ConnectionManager" method="_on_reconnection_timer_timeout"]

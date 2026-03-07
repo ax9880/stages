@@ -26,6 +26,8 @@ extends Node2D
 signal all_hands_submitted(score_results: ScoreResults, cards_swapped: int, piles_viewed: int, positions: Array, total_scores: Array, times: Array)
 signal score_updated(total_score: int)
 
+signal movements_updated(total_movements: int)
+
 # Dictionary<int, Array<Array<CardData>>>
 var games: Dictionary = {}
 var all_cards: Dictionary = {}
@@ -274,6 +276,7 @@ func _on_pile_clicked(pile: Pile) -> void:
 		print("Swapping piles")
 		
 		_piles_viewed += 1
+		_emit_movements()
 		
 		var original_pile: Pile = $Hand.pile
 		
@@ -290,6 +293,7 @@ func _on_pile_clicked(pile: Pile) -> void:
 		print("Transferring cards from pile")
 		
 		_piles_viewed += 1
+		_emit_movements()
 		
 		await $Hand.transfer_from_pile(pile)
 		
@@ -411,6 +415,10 @@ func show_results(positions: Array, total_scores: Array, times: Array) -> void:
 	all_hands_submitted.emit(score_results, _cards_swapped, _piles_viewed, positions, total_scores, times)
 
 
+func _emit_movements() -> void:
+	movements_updated.emit(_cards_swapped + _piles_viewed)
+
+
 func _on_submit_button_pressed() -> void:
 	var results: HandEvaluationResults = $Hand.is_valid()
 	
@@ -468,6 +476,8 @@ func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 	print("%d picked up card" % GameData.persistent_peer_id)
 	
 	_cards_swapped += 1
+	
+	_emit_movements()
 	
 	pick_up_card_from_shared_pile.rpc(card.card_data.texture.resource_path)
 

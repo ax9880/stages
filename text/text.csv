@@ -44,3 +44,5 @@ TOUHOU,Touhou,Touhou
 MULTIPLAYER_IS_DESKTOP_ONLY,Multiplayer is only available in desktop version,El multijugador solo está disponible en la versión de PC
 CARDS_SWAPPED,Cards swapped,Cartas intercambiadas
 PILES_VIEWED,Piles viewed,Pilas vistas
+MOVEMENTS,Movements: %d,Movimientos: %d
+TOTAL_MOVEMENTS,Total movements,Total de movimientos

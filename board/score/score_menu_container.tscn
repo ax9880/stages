@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c7g472rvx6vby" path="res://sounds/button25.mp3" id="2_uudvu"]
 [ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="3_i8p6r"]
 
-[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "penalties_label", "total_score_label", "time_label", "cards_swapped_label", "piles_viewed_label", "multiplayer_results", "play_again_button")]
+[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "penalties_label", "total_score_label", "time_label", "cards_swapped_label", "piles_viewed_label", "total_movements_label", "multiplayer_results", "play_again_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,6 +20,7 @@ total_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/Total
 time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
 cards_swapped_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/CardsSwappedLabel")
 piles_viewed_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer6/PilesViewedLabel")
+total_movements_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer7/TotalMovementsLabel")
 multiplayer_results = NodePath("MarginContainer/VBoxContainer/MultiplayerResults")
 player_score_container_packed_scene = ExtResource("2_gbl0c")
 play_again_button = NodePath("MarginContainer/VBoxContainer/PlayAgainButton")
@@ -116,6 +117,18 @@ size_flags_horizontal = 3
 text = "PILES_VIEWED"
 
 [node name="PilesViewedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1845188845]
+layout_mode = 2
+text = "999"
+
+[node name="HBoxContainer7" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1659603169]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer7" unique_id=172916836]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "TOTAL_MOVEMENTS"
+
+[node name="TotalMovementsLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer7" unique_id=1301837629]
 layout_mode = 2
 text = "999"
 
