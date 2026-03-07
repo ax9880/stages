@@ -738,6 +738,7 @@ metadata/_custom_type_script = "uid://gmjskp4uabus"
 [node name="CreditsLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=882589947]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
+size_flags_vertical = 10
 theme_override_font_sizes/font_size = 24
 text = "CREDITS"
 autowrap_mode = 2
