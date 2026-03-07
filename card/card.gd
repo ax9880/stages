@@ -37,6 +37,10 @@ func set_data(_card_data: CardData) -> void:
 	$GameLabel.text = str(card_data.game)
 
 
+func get_resource_path() -> String:
+	return card_data.texture.resource_path
+
+
 func enable() -> void:
 	$MarginContainer.visible = true
 

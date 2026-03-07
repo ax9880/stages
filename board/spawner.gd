@@ -55,7 +55,7 @@ var _piles_viewed: int = 0
 func _ready() -> void:
 	set_process(false)
 	
-	waiting_for_players_container.visible = false
+	waiting_for_players_container.hide()
 	
 	_update_time_elapsed(0)
 	
@@ -159,7 +159,7 @@ func _randomize_piles(players: int = 0) -> void:
 			
 			$Deck.add_child(card)
 			
-			all_cards[card.card_data.texture.resource_path] = card
+			all_cards[card.get_resource_path()] = card
 
 
 func _distribute_piles(players: int) -> void:
@@ -247,7 +247,7 @@ func _position_cards(chosen_cards: Array, shared_cards: Array) -> void:
 
 
 func _add_cards_to_piles(chosen_piles: Node2D, sliced_deck: Array) -> void:
-	chosen_piles.visible = true
+	chosen_piles.show()
 	
 	for pile in chosen_piles.get_children():
 		var cards_to_add := []
@@ -332,7 +332,7 @@ func _emit_score_signals() -> void:
 
 
 func _submit_results_to_server() -> void:
-	waiting_for_players_container.visible = true
+	waiting_for_players_container.show()
 	_is_waiting_for_results = true
 	
 	submit_results.rpc(GameData.persistent_peer_id, score_results.base_score, score_results.penalties, score_results.time_seconds)
@@ -414,7 +414,7 @@ func submit_results(persistent_peer_id: int, base_score: int, penalties: int, ti
 
 @rpc("call_local", "reliable")
 func show_results(positions: Array, total_scores: Array, times: Array) -> void:
-	waiting_for_players_container.visible = false
+	waiting_for_players_container.hide()
 	_can_update_time_label = false
 	
 	_is_showing_results = true
@@ -476,7 +476,7 @@ func _on_card_dropped_in_shared_pile(card: Card) -> void:
 	
 	card.peer_id = 0
 	
-	drop_card_in_shared_pile.rpc(card.card_data.texture.resource_path, card.position, card.rotation)
+	drop_card_in_shared_pile.rpc(card.get_resource_path(), card.position, card.rotation)
 
 
 func _on_card_picked_up_from_shared_pile(card: Card) -> void:
@@ -485,24 +485,24 @@ func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 	_cards_swapped += 1
 	_emit_movements()
 	
-	pick_up_card_from_shared_pile.rpc(card.card_data.texture.resource_path)
+	pick_up_card_from_shared_pile.rpc(card.get_resource_path())
 
 
 func _on_shared_pile_card_requested(card: Card) -> void:
 	print("Requesting card")
 	
-	request_card.rpc(GameData.persistent_peer_id, card.card_data.texture.resource_path)
+	request_card.rpc(GameData.persistent_peer_id, card.get_resource_path())
 
 
 func _on_connection_manager_peer_reconnected() -> void:
-	peer_disconnected_container.visible = false
+	peer_disconnected_container.hide()
 	
 	var shared_pile_card_paths: Array = []
 	var card_positions: Array = []
 	var card_rotations: Array = []
 	
 	for card: Card in $SharedPile.get_cards():
-		shared_pile_card_paths.push_back(card.card_data.texture.resource_path)
+		shared_pile_card_paths.push_back(card.get_resource_path())
 		
 		card_positions.push_back(card.position)
 		card_rotations.push_back(card.rotation)
@@ -519,7 +519,7 @@ func _on_peer_disconnected(_id: int) -> void:
 	if _is_waiting_for_results and multiplayer.get_peers().size() >= GameData.players - 1:
 		_present_results()
 	else:
-		peer_disconnected_container.visible = true
+		peer_disconnected_container.show()
 		
 		on_peer_disconnected.rpc()
 
@@ -534,7 +534,7 @@ func _on_server_disconnected() -> void:
 
 @rpc("reliable")
 func on_peer_connected() -> void:
-	peer_disconnected_container.visible = false
+	peer_disconnected_container.hide()
 
 
 func _has_same_cards(shared_pile_card_paths: Array, card_positions: Array, current_cards: Array) -> bool:
@@ -578,6 +578,7 @@ func synchronize_shared_pile(shared_pile_card_paths: Array, card_positions: Arra
 		
 		$SharedPile.add_card(card)
 		
+		card.show()
 		card.flip_up()
 		
 		if $Hand.is_missing_one_card():
@@ -587,6 +588,43 @@ func synchronize_shared_pile(shared_pile_card_paths: Array, card_positions: Arra
 		
 		card.position = card_positions[i]
 		card.rotation = card_rotations[i]
+	
+	if $Hand.is_missing_one_card():
+		var card_paths: Array = []
+		
+		for card in current_cards:
+			card_paths.push_back(card.get_resource_path())
+		
+		request_missing_card.rpc(GameData.persistent_peer_id, card_paths)
+
+
+## Request the missing card, if any.
+## This can happen if the player disconnects and drops
+## a card in the shared pile. The server will not know about that card
+## so it will not send it in the synchronized share pile RPC.
+@rpc("any_peer", "reliable")
+func request_missing_card(persistent_peer_id: int, card_paths: Array) -> void:
+	var cards: Array[Card] = []
+	
+	for card_path in card_paths:
+		cards.push_back(all_cards[card_path])
+	
+	for card in cards:
+		# No one has claimed this card, or the last player
+		# who claimed it was the current player
+		if card.get_parent() == $Deck and (card.peer_id == 0 or card.peer_id == persistent_peer_id):
+			print("Found missing card")
+			
+			receive_missing_card.rpc_id(multiplayer.get_remote_sender_id(), card.get_resource_path())
+			
+			break
+
+
+@rpc("reliable")
+func receive_missing_card(card_path: String) -> void:
+	var card: Card = all_cards[card_path]
+	
+	$Hand.transfer_from_shared_pile(card)
 
 
 @rpc
@@ -594,7 +632,7 @@ func on_peer_disconnected() -> void:
 	if _is_showing_results:
 		return
 	
-	peer_disconnected_container.visible = true
+	peer_disconnected_container.show()
 
 
 @rpc("call_local", "any_peer", "reliable")
