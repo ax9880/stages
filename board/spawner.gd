@@ -53,7 +53,11 @@ var _piles_viewed: int = 0
 
 
 func _ready() -> void:
+	set_process(false)
+	
 	waiting_for_players_container.visible = false
+	
+	_update_time_elapsed(0)
 	
 	score_results = ScoreResults.new()
 	score_results.peer_id = GameData.persistent_peer_id
@@ -188,6 +192,9 @@ func _distribute_piles(players: int) -> void:
 		pile.enable_area()
 	
 	go_label.play()
+	
+	# Start counting time
+	set_process(true)
 
 
 func _choose_piles() -> Node2D:
@@ -476,7 +483,6 @@ func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 	print("%d picked up card" % GameData.persistent_peer_id)
 	
 	_cards_swapped += 1
-	
 	_emit_movements()
 	
 	pick_up_card_from_shared_pile.rpc(card.card_data.texture.resource_path)
