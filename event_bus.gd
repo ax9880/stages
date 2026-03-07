@@ -11,3 +11,7 @@ signal card_dropped_in_shared_pile(card: Card)
 signal started_submitting_hand()
 
 signal finished_submitting_hand()
+
+signal card_swapped()
+
+signal pile_selected()

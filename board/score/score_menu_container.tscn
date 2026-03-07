@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c7g472rvx6vby" path="res://sounds/button25.mp3" id="2_uudvu"]
 [ext_resource type="PackedScene" uid="uid://chmytgc5m6h7x" path="res://main_menu/audio_button.tscn" id="3_i8p6r"]
 
-[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "penalties_label", "total_score_label", "time_label", "multiplayer_results", "play_again_button")]
+[node name="ScoreMenuContainer" type="MarginContainer" unique_id=1246059585 node_paths=PackedStringArray("result_label", "base_score_label", "penalties_label", "total_score_label", "time_label", "cards_swapped_label", "piles_viewed_label", "multiplayer_results", "play_again_button")]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,6 +18,8 @@ base_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer/ScoreLa
 penalties_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer5/PenaltiesLabel")
 total_score_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer4/TotalLabel")
 time_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer2/TimeLabel")
+cards_swapped_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer3/CardsSwappedLabel")
+piles_viewed_label = NodePath("MarginContainer/VBoxContainer/HBoxContainer6/PilesViewedLabel")
 multiplayer_results = NodePath("MarginContainer/VBoxContainer/MultiplayerResults")
 player_score_container_packed_scene = ExtResource("2_gbl0c")
 play_again_button = NodePath("MarginContainer/VBoxContainer/PlayAgainButton")
@@ -92,6 +94,30 @@ text = "TIME"
 [node name="TimeLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2" unique_id=1165583708]
 layout_mode = 2
 text = "99:99"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1626977853]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=2090354914]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "CARDS_SWAPPED"
+
+[node name="CardsSwappedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer3" unique_id=1807275631]
+layout_mode = 2
+text = "999"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1946520677]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer6" unique_id=759900330]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PILES_VIEWED"
+
+[node name="PilesViewedLabel" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer6" unique_id=1845188845]
+layout_mode = 2
+text = "999"
 
 [node name="PlayAgainButton" parent="MarginContainer/VBoxContainer" unique_id=1529551125 instance=ExtResource("3_i8p6r")]
 layout_mode = 2

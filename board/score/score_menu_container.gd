@@ -9,6 +9,9 @@ extends MarginContainer
 @export var total_score_label: Label
 @export var time_label: Label
 
+@export var cards_swapped_label: Label
+@export var piles_viewed_label: Label
+
 @export var multiplayer_results: VBoxContainer
 
 @export var player_score_container_packed_scene: PackedScene
@@ -22,7 +25,7 @@ func _ready() -> void:
 	visible = false
 
 
-func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Array = [], total_scores: Array = [], times: Array = []) -> void:
+func _on_spawner_all_hands_submitted(score_results: ScoreResults, cards_swapped: int, piles_viewed: int, positions: Array, total_scores: Array, times: Array) -> void:
 	visible = true
 	
 	# TODO: Animate
@@ -59,6 +62,9 @@ func _on_spawner_all_hands_submitted(score_results: ScoreResults, positions: Arr
 		time_label.text = "%02d:%02d" % [minutes, seconds]
 	else:
 		time_label.text = "--"
+	
+	cards_swapped_label.text = str(cards_swapped)
+	piles_viewed_label.text = str(piles_viewed)
 
 
 func _show_multiplayer_results(positions: Array, total_scores: Array, times: Array) -> void:

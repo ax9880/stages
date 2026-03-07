@@ -1,6 +1,6 @@
 keys,en,es
 START_SINGLE_PLAYER,Start (single player),Comenzar (1 jugador)
-PILES,Piles,Montones
+PILES,Piles,Pilas
 TIME_LIMIT,Time limit,Límite de tiempo
 PLAYERS,Players,Jugadores
 PORT,Port,Puerto
@@ -33,7 +33,7 @@ WAITING_FOR_OTHER_PLAYERS_TO_FINISH,Waiting for other players to finish...,Esper
 YOU_WIN,You win,Ganaste
 YOU_LOSE,You lose,Perdiste
 PERFECT,PERFECT,PERFECTO
-CHOOSE_PILE,1. Choose a pile,1. Elige las cartas
+CHOOSE_PILE,1. Choose a pile,1. Elige una pila
 CHOOSE_CARD,2. Choose a card,2. Elige una carta
 SWAP_CARDS,3. Swap cards,3. Intercambia cartas
 FULL_SCREEN,Full screen,Pantalla completa
@@ -42,3 +42,5 @@ LANGUAGE,Language,Idioma
 CREDITS,"By illusorybread for Touhou Station Game Jam 2026. Touhou character art by dairi. Sound effects from SoundEffect Lab and Kenney. Additional graphics by Kenney.","Por illusorybread para Touhou Station Game Jam 2026. Arte de personajes de Touhou hecho por dairi. Efectos de sonido de SoundEffect Lab y Kenney. Gráficos adicionales por Kenney."
 TOUHOU,Touhou,Touhou
 MULTIPLAYER_IS_DESKTOP_ONLY,Multiplayer is only available in desktop version,El multijugador solo está disponible en la versión de PC
+CARDS_SWAPPED,Cards swapped,Cartas intercambiadas
+PILES_VIEWED,Piles viewed,Pilas vistas

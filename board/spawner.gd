@@ -23,7 +23,7 @@ extends Node2D
 
 @export var go_label: Label
 
-signal all_hands_submitted(score_results: ScoreResults, positions: Array, total_scores: Array, times: Array)
+signal all_hands_submitted(score_results: ScoreResults, cards_swapped: int, piles_viewed: int, positions: Array, total_scores: Array, times: Array)
 signal score_updated(total_score: int)
 
 # Dictionary<int, Array<Array<CardData>>>
@@ -45,6 +45,9 @@ var _time_elapsed: float = 0
 var _can_update_time_label: bool = true
 
 var _submitted_results: int = 0
+
+var _cards_swapped: int = 0
+var _piles_viewed: int = 0
 
 
 func _ready() -> void:
@@ -270,6 +273,8 @@ func _on_pile_clicked(pile: Pile) -> void:
 	elif $Hand.pile != null and $Hand.pile != pile:
 		print("Swapping piles")
 		
+		_piles_viewed += 1
+		
 		var original_pile: Pile = $Hand.pile
 		
 		pile.disable_area()
@@ -283,6 +288,8 @@ func _on_pile_clicked(pile: Pile) -> void:
 		submit_button.disabled = false
 	else:
 		print("Transferring cards from pile")
+		
+		_piles_viewed += 1
 		
 		await $Hand.transfer_from_pile(pile)
 		
@@ -401,7 +408,7 @@ func show_results(positions: Array, total_scores: Array, times: Array) -> void:
 	
 	_is_showing_results = true
 	
-	all_hands_submitted.emit(score_results, positions, total_scores, times)
+	all_hands_submitted.emit(score_results, _cards_swapped, _piles_viewed, positions, total_scores, times)
 
 
 func _on_submit_button_pressed() -> void:
@@ -438,7 +445,7 @@ func _on_submit_button_pressed() -> void:
 			if GameData.is_multiplayer():
 				_submit_results_to_server()
 			else:
-				all_hands_submitted.emit(score_results, [], [], [])
+				all_hands_submitted.emit(score_results, _cards_swapped, _piles_viewed, [], [], [])
 	else:
 		score_results.add_penalty()
 		
@@ -454,11 +461,13 @@ func _on_card_dropped_in_shared_pile(card: Card) -> void:
 	
 	card.peer_id = 0
 	
-	drop_card_in_shared_pile.rpc(card.card_data.texture.resource_path, card.position)
+	drop_card_in_shared_pile.rpc(card.card_data.texture.resource_path, card.position, card.rotation)
 
 
 func _on_card_picked_up_from_shared_pile(card: Card) -> void:
 	print("%d picked up card" % GameData.persistent_peer_id)
+	
+	_cards_swapped += 1
 	
 	pick_up_card_from_shared_pile.rpc(card.card_data.texture.resource_path)
 
@@ -474,13 +483,15 @@ func _on_connection_manager_peer_reconnected() -> void:
 	
 	var shared_pile_card_paths: Array = []
 	var card_positions: Array = []
+	var card_rotations: Array = []
 	
 	for card: Card in $SharedPile.get_cards():
 		shared_pile_card_paths.push_back(card.card_data.texture.resource_path)
 		
 		card_positions.push_back(card.position)
+		card_rotations.push_back(card.rotation)
 	
-	synchronize_shared_pile.rpc(shared_pile_card_paths, card_positions)
+	synchronize_shared_pile.rpc(shared_pile_card_paths, card_positions, card_rotations)
 
 
 func _on_peer_disconnected(_id: int) -> void:
@@ -531,7 +542,7 @@ func _has_same_cards(shared_pile_card_paths: Array, card_positions: Array, curre
 ## Synchronize the shared pile with the server so that all players have the same
 ## shared cards
 @rpc("reliable")
-func synchronize_shared_pile(shared_pile_card_paths: Array, card_positions: Array) -> void:
+func synchronize_shared_pile(shared_pile_card_paths: Array, card_positions: Array, card_rotations: Array) -> void:
 	on_peer_connected()
 	
 	var current_cards: Array = $SharedPile.get_cards()
@@ -559,6 +570,7 @@ func synchronize_shared_pile(shared_pile_card_paths: Array, card_positions: Arra
 			card.forbid()
 		
 		card.position = card_positions[i]
+		card.rotation = card_rotations[i]
 
 
 @rpc
@@ -613,7 +625,7 @@ func restore_shared_pile_state() -> void:
 
 
 @rpc("any_peer", "reliable")
-func drop_card_in_shared_pile(card_path: String, card_position: Vector2) -> void:
+func drop_card_in_shared_pile(card_path: String, card_position: Vector2, card_rotation: float) -> void:
 	var card: Card = all_cards[card_path]
 	
 	card.peer_id = 0
@@ -623,6 +635,7 @@ func drop_card_in_shared_pile(card_path: String, card_position: Vector2) -> void
 	$SharedPile.add_card(card)
 	
 	card.position = card_position
+	card.rotation = card_rotation
 	
 	card.appear()
 	card.flip_up()
