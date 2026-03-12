@@ -38,5 +38,3 @@ stream = ExtResource("2_e75s6")
 bus = &"Sound effects"
 
 [connection signal="gui_input" from="HandArea" to="." method="_on_hand_area_gui_input"]
-[connection signal="mouse_entered" from="HandArea" to="." method="_on_hand_area_mouse_entered"]
-[connection signal="mouse_exited" from="HandArea" to="." method="_on_hand_area_mouse_exited"]

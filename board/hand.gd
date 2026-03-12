@@ -20,8 +20,6 @@ var pile: Pile = null
 
 var _card: Card = null
 
-var _is_in_hand_area: bool = false
-
 
 func _ready() -> void:
 	var start: float = 0.5 - offset
@@ -40,9 +38,6 @@ func _physics_process(_delta: float) -> void:
 
 func _track_card() -> void:
 	if _card == null:
-		return
-	
-	if not _is_in_hand_area:
 		return
 	
 	var index: int = $Path2D.get_children().find(_card.get_parent())
@@ -357,11 +352,3 @@ func _show_card_colors(cards: Array, color: Color) -> void:
 func _on_hand_area_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		_drop_card()
-
-
-func _on_hand_area_mouse_entered() -> void:
-	_is_in_hand_area = true
-
-
-func _on_hand_area_mouse_exited() -> void:
-	_is_in_hand_area = true
