@@ -379,6 +379,7 @@ position = Vector2(290, 0)
 position = Vector2(580, 0)
 
 [node name="Hand" parent="World/Spawner" unique_id=1242478005 node_paths=PackedStringArray("submit_button") instance=ExtResource("7_rrxdr")]
+z_index = 1
 position = Vector2(460, 716)
 submit_button = NodePath("../../../BoardMenuContainer/MarginContainer2/VBoxContainer/Control/SubmitButton")
 

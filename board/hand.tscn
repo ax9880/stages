@@ -16,6 +16,7 @@ wrong_color_2 = Color(0.7957273, 0.16731066, 0.3012501, 1)
 wrong_color_3 = Color(0.53154737, 0.045713224, 0.24436623, 1)
 
 [node name="HandArea" type="MarginContainer" parent="." unique_id=1807598761]
+z_index = -1
 offset_right = 1000.0
 offset_bottom = 320.0
 metadata/_edit_lock_ = true
