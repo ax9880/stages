@@ -10,6 +10,7 @@ script = ExtResource("1_5qw8b")
 custom_minimum_size = Vector2(144, 144)
 layout_mode = 2
 texture = ExtResource("1_74fvy")
+stretch_mode = 5
 
 [node name="Label" type="Label" parent="." unique_id=1873734130]
 layout_mode = 2
